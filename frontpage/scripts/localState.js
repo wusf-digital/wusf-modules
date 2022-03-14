@@ -1,4 +1,7 @@
 // DOM Elements
+
+const sectionWrapperStories = document.querySelector('.section__wrapper--stories')
+
 const localStateHeadline1 = document.querySelector('#localState__headline-1')
 const localStateHeadline2 = document.querySelector('#localState__headline-2')
 const localStateHeadline3 = document.querySelector('#localState__headline-3')
@@ -23,6 +26,7 @@ const localStateButtonLink1 = document.querySelector('#localState__headline-1--b
 const localStateButtonLink2 = document.querySelector('#localState__headline-2--button')
 const localStateButtonLink3 = document.querySelector('#localState__headline-3--button')
 const localStateButtonLink4 = document.querySelector('#localState__headline-4--button')
+
 
 getLocalState()
     .then(
@@ -53,8 +57,23 @@ getLocalState()
             localStateButtonLink2.href = res[1].link[0]
             localStateButtonLink3.href = res[2].link[0]
             localStateButtonLink4.href = res[3].link[0]
+
+            localStateButtonLink1.textContent = 'Read More'
+            localStateButtonLink1.classList.add('button__read-more', 'button__read-more--section-story')
+
+            localStateButtonLink2.textContent = 'Read More'
+            localStateButtonLink2.classList.add('button__read-more', 'button__read-more--section-story')
+
+            localStateButtonLink3.textContent = 'Read More'
+            localStateButtonLink3.classList.add('button__read-more', 'button__read-more--section-story')
+
+            localStateButtonLink4.textContent = 'Read More'
+            localStateButtonLink4.classList.add('button__read-more', 'button__read-more--section-story')
         }
     )
     .catch(
-        err => console.log(err)
+        err => {
+            console.log(err)
+            sectionWrapperStories.innerHTML = ' '
+        }
     )

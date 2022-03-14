@@ -1,4 +1,6 @@
 // DOM Elements
+const sectionWrapperStories = document.querySelector('.section__wrapper--stories')
+
 const healthNewsHeadline1 = document.querySelector('#health-news__headline-1')
 const healthNewsHeadline2 = document.querySelector('#health-news__headline-2')
 const healthNewsHeadline3 = document.querySelector('#health-news__headline-3')
@@ -53,8 +55,21 @@ getHealthNews()
             healthNewsButtonLink2.href = res[1].link[0]
             healthNewsButtonLink3.href = res[2].link[0]
             healthNewsButtonLink4.href = res[3].link[0]
+
+            healthNewsButtonLink1.textContent = 'Read More'
+            healthNewsButtonLink1.classList.add('button__read-more', 'button__read-more--section-story')
+
+            healthNewsButtonLink2.textContent = 'Read More'
+            healthNewsButtonLink2.classList.add('button__read-more', 'button__read-more--section-story')
+
+            healthNewsButtonLink3.textContent = 'Read More'
+            healthNewsButtonLink3.classList.add('button__read-more', 'button__read-more--section-story')
+
+            healthNewsButtonLink4.textContent = 'Read More'
+            healthNewsButtonLink4.classList.add('button__read-more', 'button__read-more--section-story')
         }
     )
-    .catch(
-        err => console.log(err)
-    )
+    .catch(err => {
+        console.log(err)
+        sectionWrapperStories.innerHTML = ' '
+    })

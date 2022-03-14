@@ -1,4 +1,6 @@
 // DOM Elements
+const sectionWrapperStories = document.querySelector('.section__wrapper--stories')
+
 const educationHeadline1 = document.querySelector('#education__headline-1')
 const educationHeadline2 = document.querySelector('#education__headline-2')
 const educationHeadline3 = document.querySelector('#education__headline-3')
@@ -53,8 +55,22 @@ getEducation()
             educationButtonLink2.href = res[1].link[0]
             educationButtonLink3.href = res[2].link[0]
             educationButtonLink4.href = res[3].link[0]
+
+            educationButtonLink1.textContent = 'Read More'
+            educationButtonLink1.classList.add('button__read-more', 'button__read-more--section-story')
+
+            educationButtonLink2.textContent = 'Read More'
+            educationButtonLink2.classList.add('button__read-more', 'button__read-more--section-story')
+
+            educationButtonLink3.textContent = 'Read More'
+            educationButtonLink3.classList.add('button__read-more', 'button__read-more--section-story')
+
+            educationButtonLink4.textContent = 'Read More'
+            educationButtonLink4.classList.add('button__read-more', 'button__read-more--section-story')
         }
     )
     .catch(
-        err => console.log(err)
-    )
+        err => {
+            console.log(err)
+            sectionWrapperStories.innerHTML = ' '
+        })
