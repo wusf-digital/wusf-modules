@@ -7,18 +7,29 @@
     <title>Health News Florida</title>
     <style>
         button#newsletterButton {
-            background-color: #575757;
-            border-color: #575757;
+            background-color: #FB6522;
+            border-color: #FB6522;
+        }
+        .img-centered {
+            display: flex;
+            justify-content: center;
+            object-fit: cover;
+            min-width: 100%;
+            min-height: 100%;
+        }
+        .container-fluid {
+            background-color:#185640;
+            color: whitesmoke;
         }
     </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container">
-        <h3 class="text-center">Sign up for the Health News Florida newsletter</h3>
-        <div style="display: flex; justify-content: center;">
-            <img src="subscribe-hnf-newsletter.png">
+    <div class="container-fluid p-3">
+        <h3 class="text-center">Sign up for the<br/>Health News Florida<br/>newsletter</h3>
+        <div class="img-centered">
+            <img src="subscribe-hnf-newsletter.png" alt="Subscribe to Health News Florida newsletter">
         </div>
         <form id="signUp">
             <div class="mb-3">
