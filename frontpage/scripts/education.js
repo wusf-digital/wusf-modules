@@ -26,7 +26,7 @@ const educationButtonLink2 = document.querySelector('#education__headline-2--but
 const educationButtonLink3 = document.querySelector('#education__headline-3--button')
 const educationButtonLink4 = document.querySelector('#education__headline-4--button')
 
-getEducation()
+getData('https://api-dev.wusf.digital/grove/education')
     .then(
         res => {
             /* Stop the loading spinner */

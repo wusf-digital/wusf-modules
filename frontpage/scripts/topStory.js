@@ -6,7 +6,7 @@ const topStoryTeaser = document.querySelector('#top-story__headline--teaser')
 const topStoryButtonLink = document.querySelector('#top-story__button--link')
 const topStoryImage = document.querySelector('.top-story__image')
 
-getTopStory()
+getData('https://api-dev.wusf.digital/grove/topStory')
     .then(
         res => {
             /* Stop the loading spinner */

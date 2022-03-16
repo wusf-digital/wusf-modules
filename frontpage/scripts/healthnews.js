@@ -26,7 +26,7 @@ const healthNewsButtonLink2 = document.querySelector('#health-news__headline-2--
 const healthNewsButtonLink3 = document.querySelector('#health-news__headline-3--button')
 const healthNewsButtonLink4 = document.querySelector('#health-news__headline-4--button')
 
-getHealthNews()
+getData('https://api-dev.wusf.digital/grove/healthNewsFlorida')
     .then(
         res => {
             /* Stop the loading spinner */

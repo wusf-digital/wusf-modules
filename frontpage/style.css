@@ -3,16 +3,17 @@
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
 }
-
 .headline__link {
     color: #006747;
     text-decoration: none;
 }
-
 .headline__link :hover {
     color: #7b755e;
 }
-
+/* Remove gray outline before image loads */
+img:not([src]) {
+    content: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
+}
 .button__read-more {
     background-color: #006747;
     color: #ffffff;
@@ -23,9 +24,33 @@
     padding: 10px 20px;
     align-self: flex-start;
 }
-
 .button__read-more:hover {
     color: #9ccb3b;
+}
+.loading-container {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    position: relative;
+}
+.loading-spinner {
+    width: 5rem;
+    height: 5rem;
+    border: 5px solid #006747;
+    border-top: 5px solid #7b755e;
+    border-radius: 100%;
+    margin: auto;
+    animation: spin 1s infinite linear;
+}
+.loading-text {
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%)
+}
+.no-display {
+    display: none;
 }
 
 /* TOP STORY ELEMENTS ONLY */
@@ -36,23 +61,19 @@
     font-family: Arial, Helvetica, sans-serif;
     padding: 20px;
 }
-
 .top-story__image {
-    max-height: 350px;
+    max-height: 500px;
     object-fit: cover;
 }
-
 .responsive {
     width: 100%;
     height: auto;
 }
-
 .top-story__data {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-
 .top-story__data--divider {
     width: 10%;
     max-width: 100px;
@@ -82,43 +103,6 @@
     margin-top: 10px;
 }
 
-.loading-container {
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    position: relative;
-}
-
-.loading-spinner {
-    width: 5rem;
-    height: 5rem;
-    border: 5px solid #006747;
-    border-top: 5px solid #7b755e;
-    border-radius: 100%;
-    margin: auto;
-    animation: spin 1s infinite linear;
-}
-
-.loading-text {
-    font-family: Arial, Helvetica, sans-serif;
-    position: absolute; 
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%)
-}
-
-.no-display {
-    display: none;
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
 
 /*
 LAPTOPS, DESKTOPS AND LARGER SCREENS
