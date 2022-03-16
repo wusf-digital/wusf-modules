@@ -41,8 +41,9 @@
             min-height: 100%;
         }
         .hnf-container-fluid {
-            width: 100%;
-            padding: 5px 0;
+            width: 90%;
+            margin: auto;
+            padding: 5px 10px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -85,7 +86,7 @@
 
         async function submitToApi(data) {
             try {
-                document.getElementById('submitStatus').innerHTML = "Hold tight. We're signing you up."
+                document.getElementById('submitStatus').innerHTML = "We're signing you up."
                 const response = await fetch('https://api.wusf.digital/mailchimp/subscribeNewsletter', {
                 method: 'PUT',
                 headers: {
@@ -96,7 +97,7 @@
                 })
                 
                 if (response.ok) {
-                    document.getElementById('submitStatus').innerHTML = "Almost there! Check your email to confirm."
+                    document.getElementById('submitStatus').innerHTML = "Check your email to confirm."
                     form.reset()
                 } else {
                     document.getElementById('submitStatus').innerHTML = "Uh oh! We couldn't sign you up."
