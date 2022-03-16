@@ -31,6 +31,9 @@ const localStateButtonLink4 = document.querySelector('#localState__headline-4--b
 getLocalState()
     .then(
         res => {
+            /* Stop the loading spinner */
+            hideLoadingSpinner()
+            
             localStateHeadline1.innerHTML = res[0].title
             localStateHeadline2.innerHTML = res[1].title
             localStateHeadline3.innerHTML = res[2].title

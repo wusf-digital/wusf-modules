@@ -9,6 +9,8 @@ const topStoryImage = document.querySelector('.top-story__image')
 getTopStory()
     .then(
         res => {
+            /* Stop the loading spinner */
+            hideLoadingSpinner()
             /*
             Check to see if there are any top stories. The tag of the
             story must be WUSF. If there are no stories matching that tag,

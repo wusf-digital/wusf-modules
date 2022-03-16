@@ -29,6 +29,9 @@ const healthNewsButtonLink4 = document.querySelector('#health-news__headline-4--
 getHealthNews()
     .then(
         res => {
+            /* Stop the loading spinner */
+            hideLoadingSpinner()
+            
             healthNewsHeadline1.innerHTML = res[0].title
             healthNewsHeadline2.innerHTML = res[1].title
             healthNewsHeadline3.innerHTML = res[2].title

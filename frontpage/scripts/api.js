@@ -1,3 +1,14 @@
+// DOM Elements
+const loaderContainer = document.querySelector('.loading-container')
+const loaderSpinner = document.querySelector('.loading-spinner')
+const loaderText = document.querySelector('.loading-text')
+
+function hideLoadingSpinner() {
+    loaderContainer.classList.add('no-display')
+    loaderSpinner.classList.add('no-display')
+    loaderText.classList.add('no-display')
+}
+
 async function getTopStory() {
     try {
         let response = await fetch('https://api-dev.wusf.digital/grove/topStory')

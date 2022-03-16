@@ -29,6 +29,9 @@ const educationButtonLink4 = document.querySelector('#education__headline-4--but
 getEducation()
     .then(
         res => {
+            /* Stop the loading spinner */
+            hideLoadingSpinner()
+
             educationHeadline1.innerHTML = res[0].title
             educationHeadline2.innerHTML = res[1].title
             educationHeadline3.innerHTML = res[2].title
