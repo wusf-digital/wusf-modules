@@ -51,6 +51,7 @@ td {
 
 @media (max-width: 992px) {
     table {
+        border: none;
         margin: 15px;
         width: 95%;
     }
@@ -64,6 +65,7 @@ td {
         justify-content: center;
         /* align-items: center; */
         border-bottom: 1px solid white;
+        border-right: none;
     }
     td:first-child {
         text-align: center;
