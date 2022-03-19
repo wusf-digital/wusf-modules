@@ -1,6 +1,4 @@
 // DOM Elements
-const sectionWrapperStories = document.querySelector('.section__wrapper--stories')
-
 const educationHeadline1 = document.querySelector('#education__headline-1')
 const educationHeadline2 = document.querySelector('#education__headline-2')
 const educationHeadline3 = document.querySelector('#education__headline-3')

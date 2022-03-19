@@ -1,12 +1,11 @@
 // DOM Elements
-const loaderContainer = document.querySelector('.loading-container')
-const loaderSpinner = document.querySelector('.loading-spinner')
-const loaderText = document.querySelector('.loading-text')
+const sectionWrapperStories = document.querySelector('.section__wrapper--stories')
+const loaderContainer = document.querySelectorAll('.loading-container')
+const loaderSpinner = document.querySelectorAll('.loading-spinner')
+const loaderText = document.querySelectorAll('.loading-text')
 
 function hideLoadingSpinner() {
-    loaderContainer.classList.add('no-display')
-    loaderSpinner.classList.add('no-display')
-    loaderText.classList.add('no-display')
+    loaderContainer.forEach(loader => loader.classList.add('no-display'))
 }
 
 async function getData(url) {

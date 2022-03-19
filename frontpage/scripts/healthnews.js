@@ -1,6 +1,4 @@
 // DOM Elements
-const sectionWrapperStories = document.querySelector('.section__wrapper--stories')
-
 const healthNewsHeadline1 = document.querySelector('#health-news__headline-1')
 const healthNewsHeadline2 = document.querySelector('#health-news__headline-2')
 const healthNewsHeadline3 = document.querySelector('#health-news__headline-3')

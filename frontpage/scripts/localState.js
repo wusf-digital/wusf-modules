@@ -1,7 +1,4 @@
 // DOM Elements
-
-const sectionWrapperStories = document.querySelector('.section__wrapper--stories')
-
 const localStateHeadline1 = document.querySelector('#localState__headline-1')
 const localStateHeadline2 = document.querySelector('#localState__headline-2')
 const localStateHeadline3 = document.querySelector('#localState__headline-3')
