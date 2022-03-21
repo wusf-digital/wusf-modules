@@ -25,7 +25,7 @@ const localStateButtonLink3 = document.querySelector('#localState__headline-3--b
 const localStateButtonLink4 = document.querySelector('#localState__headline-4--button')
 
 
-getData('https://api-dev.wusf.digital/grove/localState')
+getData('https://api.wusf.digital/grove/localState')
     .then(
         res => {
             /* Stop the loading spinner */

@@ -6,7 +6,7 @@ const topStoryTeaser = document.querySelector('#top-story__headline--teaser')
 const topStoryButtonLink = document.querySelector('#top-story__button--link')
 const topStoryImage = document.querySelector('.top-story__image')
 
-getData('https://api-dev.wusf.digital/grove/topStory')
+getData('https://api.wusf.digital/grove/topStory')
     .then(
         res => {
             /* Stop the loading spinner */
@@ -17,7 +17,8 @@ getData('https://api-dev.wusf.digital/grove/topStory')
             display the latest headline from the local/state section.
             */
             if (Array.isArray(res) && res.length === 0) {
-                getLocalState(
+                getData('https://api.wusf.digital/grove/localState')
+                .then(
                     res => {
                         headline.innerHTML = res[0].title
                         headlineLink.href = res[0].link[0]
@@ -33,6 +34,7 @@ getData('https://api-dev.wusf.digital/grove/topStory')
                         headlineWrapper.innerHTML = ' '
                     }
                 )
+                return
             }
 
             /* 
