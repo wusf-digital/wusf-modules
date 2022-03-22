@@ -1,0 +1,14 @@
+button {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: green;
+    color: whitesmoke;
+    border: none;
+    cursor: pointer;
+    width: 300px;
+    height: 100px;
+    border-radius: 5px;
+    font-size: x-large;
+}
