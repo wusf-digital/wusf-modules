@@ -4,13 +4,13 @@ function ClassicalPlaylist() {
     const [ playlist, setPlaylist ] = React.useState([])
 
     React.useEffect(() => {
-       async function fetchPlaylist() {
+        async function fetchPlaylist() {
            let response = await fetch('playlist.json')
            response = await response.json()
            console.log(response)
            setPlaylist(response.reverse())
-       } 
-       fetchPlaylist()
+        } 
+        fetchPlaylist()
     }, [])
 
     return (
@@ -21,7 +21,7 @@ function ClassicalPlaylist() {
             <table className='table align-middle'>
                 <thead>
                     <tr className='playlist__headers'>
-                        <th>Time</th>
+                        <th><i className="fa-solid fa-clock"></i></th>
                         <th>Composer</th>
                         <th>Title</th>
                         <th>Soloist</th>
@@ -35,14 +35,14 @@ function ClassicalPlaylist() {
                     return (
                         <tr key={song.id} style={{ backgroundColor: rowNumber % 2 == 0 ? '#F2F2F1' : 'white' }}>
                             <td className='playlist__time'>{moment(Date.parse(song.extraInfo.AirStarttime)).format('LT')}</td>
-                            <td>{song.extraInfo.artist}</td>
-                            <td>{song.extraInfo.title}</td>
-                            <td>{song.extraInfo.Soloist}</td>
-                            <td>{song.extraInfo.Conductor}</td>
-                            <td>{song.extraInfo.Orchestra}</td>
+                            <td dangerouslySetInnerHTML={{__html: song.extraInfo.artist}}></td>
+                            <td dangerouslySetInnerHTML={{__html: song.extraInfo.title}}></td>
+                            <td dangerouslySetInnerHTML={{__html: song.extraInfo.Soloist}}></td>
+                            <td dangerouslySetInnerHTML={{__html: song.extraInfo.Conductor}}></td>
+                            <td dangerouslySetInnerHTML={{__html: song.extraInfo.Orchestra}}></td>
                             <td>
-                                <div>{song.extraInfo.Label}</div>
-                                <div>{song.extraInfo['Spine_Number']}</div>
+                                <div dangerouslySetInnerHTML={{__html: song.extraInfo.Label}}></div>
+                                <div dangerouslySetInnerHTML={{__html: song.extraInfo['Spine_Number']}}></div>
                             </td>
                         </tr>
                     )
