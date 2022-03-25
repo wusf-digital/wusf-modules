@@ -10,6 +10,26 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     width: 100%;
 }
+.playlist__dev-status {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+.playlist__dev-status--left {
+    background-color: #006484;
+    color: whitesmoke;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-weight: bold;
+}
+.playlist__dev-status--right {
+    background-color: lightgray; 
+    border-top-right-radius: 5px; 
+    border-bottom-right-radius: 5px;
+}
+.playlist__dev-status div {
+    padding: 5px;
+}
 .playlist__title {
     text-align: center;
     font-family: 'Share', cursive;
@@ -70,5 +90,16 @@ td {
     }
     td:first-child {
         text-align: center;
+    }
+    .playlist__dev-status--left {
+        background-color: #006484;
+        color: whitesmoke;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+    .playlist__dev-status--right {
+        background-color: lightgray; 
+        border-top-right-radius: 0px; 
+        border-bottom-right-radius: 0px;
     }
 }

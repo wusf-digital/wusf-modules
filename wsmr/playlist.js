@@ -14,6 +14,10 @@ function ClassicalPlaylist() {
 
     return (
         <div className='playlist__app-container'>
+            <div className='playlist__dev-status'>
+                <div  className='playlist__dev-status--left'>Additional Features Coming</div>
+                <div className='playlist__dev-status--right'>An expanded range of dates and times to see what has played on WSMR</div>
+            </div>
             <div className='playlist__title'>
                 Music Listings for {moment().format('dddd, MMMM Do, YYYY')}
             </div>
