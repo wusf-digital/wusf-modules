@@ -42,10 +42,10 @@ getData('https://api-dev.wusf.digital/grove/nprTray')
             nprNewsDescription3.innerHTML = res[2].description[0]
             nprNewsDescription4.innerHTML = res[3].description[0]
 
-            nprNewsImage1.src = res[0]['media:content'][0].$.url
-            nprNewsImage2.src = res[1]['media:content'][0].$.url
-            nprNewsImage3.src = res[2]['media:content'][0].$.url
-            nprNewsImage4.src = res[3]['media:content'][0].$.url
+            nprNewsImage1.style.backgroundImage=`url(${res[0]['media:content']?.[0].$.url ?? nprLogo})`
+            nprNewsImage2.style.backgroundImage=`url(${res[1]['media:content']?.[0].$.url ?? nprLogo})`
+            nprNewsImage3.style.backgroundImage=`url(${res[2]['media:content']?.[0].$.url ?? nprLogo})`
+            nprNewsImage4.style.backgroundImage=`url(${res[3]['media:content']?.[0].$.url ?? nprLogo})`
 
             nprNewsHeadlineLink1.href = res[0].link[0]
             nprNewsHeadlineLink2.href = res[1].link[0]

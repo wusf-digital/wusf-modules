@@ -108,9 +108,16 @@ img:not([src]) {
     flex-direction: column;
 }
 .article__image {
-    height: auto;
+    height: 300px; 
     width: 100%;
     object-fit: cover;
+}
+.article__image-div {
+    width: 100%;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: cover;
 }
 .button__read-more--section-story {
     margin-top: 10px;
@@ -128,9 +135,16 @@ LAPTOPS, DESKTOPS AND LARGER SCREENS
         align-items: stretch;
     }
     .article__image {
+        width: 100%;
         height: 200px;
-        max-width: 100%;
         object-fit: cover;
+    }
+    .article__image-div {
+        width: 100%;
+        height: 200px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
     }
     .section__story {
         width: 25%;
