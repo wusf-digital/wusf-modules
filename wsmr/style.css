@@ -30,6 +30,7 @@ td {
     padding: 8px;
     white-space: normal;
     height: 5rem;
+    vertical-align: middle;
 }
 td {
     font-size: 0.9rem;

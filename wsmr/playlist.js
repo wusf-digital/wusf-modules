@@ -7,7 +7,6 @@ function ClassicalPlaylist() {
         async function fetchPlaylist() {
            let response = await fetch('playlist.json')
            response = await response.json()
-           console.log(response)
            setPlaylist(response.reverse())
         } 
         fetchPlaylist()
