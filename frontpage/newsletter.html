@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="normalize.css">
+    <style>
+        #message {
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #newsletter__signup-wrapper {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: white;
+            position: fixed;
+            bottom: 0%;
+            width: 100%;
+            height: 250px;
+            box-shadow: 0 0 20px 0 rgb(0 0 0 / 30%);
+            animation: slideup 5s;
+            z-index: 1000;
+            padding-bottom: 10px;
+        }
+        @keyframes slideup {
+            0% {
+                bottom:-220px;
+                opacity:0
+            }
+	        100%{
+                bottom:0%;
+                opacity:1;
+            }
+        }
+        #newsletter__signup-inner {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 30px;
+        }
+        #newsletter__signup-content {
+            position: relative;
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+        }
+        #newsletter__signup-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            font-size: x-large;
+            font-weight: bold;
+        }
+        .newsletter__signup-text {
+            text-align: center;
+        }
+        .hnf-form-container {
+            display: flex;
+            width: 70%;
+        }
+        .hnf__form {
+            display: flex;
+            width: 100%;
+        }
+        button#newsletterButton {
+            background-color: #006747;;
+            border-color: #006747;;
+            color: whitesmoke;
+            text-transform: uppercase;
+            font-size: large;
+            box-shadow: none;
+            border: 0;
+        }
+        input[type=email] {
+            padding: 0.5rem 0.6rem;
+            border-radius: 0;
+            border: 1px solid #ccc;
+            box-shadow: inset 0 1px 3px #eee;
+            width: 100%;
+            font-size: 1.2rem;
+        }
+        .newsletter__signup-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .hnf-form-container {
+                width: 100%;
+            }
+        }
+    </style>
+    <title>Newsletter</title>
+</head>
+<body>
+    <h1 id="message">It's worth waiting for the "slide-up" at the bottom</h1>
+
+    <div id="newsletter__signup-wrapper">
+        <div id="newsletter__signup-inner">
+            <div class="newsletter__signup-content">
+                <img src="../assets/logos/wusf.jpeg" 
+                    alt="WUSF Logo"
+                    width="150px" />
+                <h2 class="newsletter__signup-text">Sign up for the Health News Florida newsletter</h2>
+                <form class="hnf-form-container" id="signUp">
+                    <div class="hnf__form">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Your email address" aria-describedby="emailHelp">
+                        <button id="newsletterButton" type="submit">Subscribe</button>
+                    </div>
+                </form>
+                <p id="submitStatus"></p>
+            </div>
+            <div id="newsletter__signup-close">X</div>
+        </div>
+    </div>
+
+    <script>
+        const signupClose = document.querySelector('#newsletter__signup-close')
+        const newsletterWrapper = document.querySelector('#newsletter__signup-wrapper')
+        signupClose.addEventListener('click', () => newsletterWrapper.style.display = 'none')
+    </script>
+</body>
+</html>
