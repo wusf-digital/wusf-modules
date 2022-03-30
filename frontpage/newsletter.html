@@ -121,7 +121,24 @@
     <script>
         const signupClose = document.querySelector('#newsletter__signup-close')
         const newsletterWrapper = document.querySelector('#newsletter__signup-wrapper')
-        signupClose.addEventListener('click', () => newsletterWrapper.style.display = 'none')
+        
+        // Check to see if sawSlideUp variable exists in the browser
+        // If it doesn't exist, create it and set it to false
+        if (!localStorage.sawSlideUp) localStorage.setItem('sawSlideUp', JSON.stringify({ sawItBefore: false, date: new Date() }))
+            
+        const getSawSlideUp = JSON.parse(localStorage.getItem('sawSlideUp'))
+
+        // If the user didn't see the newsletter slideup before, show it to them
+        if (getSawSlideUp.sawItBefore === false) {
+            newsletterWrapper.style.display = 'block'
+            signupClose.addEventListener('click', () => newsletterWrapper.style.display = 'none')
+            localStorage.setItem('sawSlideUp', JSON.stringify({ sawItBefore: true, date: new Date() }))
+        } 
+        
+        // If the user did see the newsletter slideup before, don't show it to them again
+        if (getSawSlideUp.sawItBefore === true) {
+            newsletterWrapper.style.display = 'none'
+        } 
     </script>
 </body>
 </html>
