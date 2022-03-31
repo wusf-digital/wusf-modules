@@ -6,11 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="normalize.css">
     <style>
+        /* MAIN STYLES */
+        .hnf-signup-text {
+            margin: auto; 
+            text-align: center;
+        }
+        .hnf-form-container {
+            padding-left: 10px;
+        }
+        .hnf-email-label {
+            margin-bottom: 5px;
+        }
+        #inputEmail {
+            height: 25px;
+            width: 250px;
+            font-size: 16px;
+        }
+        button#newsletterButton {
+            background-color: #FB6522;
+            border-color: #FB6522;
+            margin-top: 20px;
+            padding: 5px 10px;
+            color: whitesmoke;
+            text-transform: uppercase;
+            font-size: large;
+            border-radius: 5px;
+            box-shadow: none;
+            border: 0;
+        }
+        .img-centered {
+            display: flex;
+            justify-content: center;
+            object-fit: cover;
+            min-width: 100%;
+            min-height: 100%;
+        }
+        .hnf-container-fluid {
+            width: 90%;
+            margin: auto;
+            padding: 5px 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color:#185640;
+            color: whitesmoke;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* SLIDE-UP STYLES */
         #message {
             text-align: center;
             font-family: Arial, Helvetica, sans-serif;
         }
-        #newsletter__signup-wrapper {
+        #slideup__signup-wrapper {
             font-family: Arial, Helvetica, sans-serif;
             background-color: white;
             position: fixed;
@@ -32,20 +80,14 @@
                 opacity:1;
             }
         }
-        #newsletter__signup-inner {
+        #slideup__signup-inner {
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: center;
             padding: 30px;
         }
-        #newsletter__signup-content {
-            position: relative;
-            display: flex;
-            flex-flow: column nowrap;
-            align-items: center;
-        }
-        #newsletter__signup-close {
+        #slideup__signup-close {
             position: absolute;
             top: 20px;
             right: 20px;
@@ -53,18 +95,17 @@
             font-size: x-large;
             font-weight: bold;
         }
-        .newsletter__signup-text {
+        #slideup__signup-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .slideup__signup-text {
             text-align: center;
         }
-        .hnf-form-container {
-            display: flex;
-            width: 70%;
-        }
-        .hnf__form {
-            display: flex;
-            width: 100%;
-        }
-        button#newsletterButton {
+        #slideup__newsletterButton {
             background-color: #006747;;
             border-color: #006747;;
             color: whitesmoke;
@@ -73,7 +114,17 @@
             box-shadow: none;
             border: 0;
         }
-        input[type=email] {
+        .slideup__form-container {
+            display: flex;
+            width: 70%;
+        }
+        #slideup__form {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        input.slideup__form-control[type=email] {
+            flex: 1;
             padding: 0.5rem 0.6rem;
             border-radius: 0;
             border: 1px solid #ccc;
@@ -81,15 +132,9 @@
             width: 100%;
             font-size: 1.2rem;
         }
-        .newsletter__signup-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
+    
         @media (max-width: 768px) {
-            .hnf-form-container {
+            .slideup__form-container {
                 width: 100%;
             }
         }
@@ -97,30 +142,66 @@
     <title>Newsletter</title>
 </head>
 <body>
-    <h1 id="message">It's worth waiting for the "slide-up" at the bottom</h1>
+    <main>
+        <h1 id="message">Mock Web Site</h1>
 
-    <div id="newsletter__signup-wrapper">
-        <div id="newsletter__signup-inner">
-            <div class="newsletter__signup-content">
-                <img src="../assets/logos/wusf.jpeg" 
-                    alt="WUSF Logo"
-                    width="150px" />
-                <h2 class="newsletter__signup-text">Sign up for the Health News Florida newsletter</h2>
-                <form class="hnf-form-container" id="signUp">
-                    <div class="hnf__form">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Your email address" aria-describedby="emailHelp">
-                        <button id="newsletterButton" type="submit">Subscribe</button>
-                    </div>
-                </form>
-                <p id="submitStatus"></p>
+        <h1 id="message">Story 1</h1>
+        <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque adipisci, dolor aliquid tempora 
+            numquam alias architecto totam vel distinctio omnis. Accusamus alias magnam sequi officiis dolore, 
+            quo asperiores voluptas id cum, rerum excepturi quas provident est numquam dignissimos, cupiditate 
+            nam quaerat eum perferendis distinctio laboriosam! Earum nobis eaque atque eligendi explicabo cumque ex 
+            rerum soluta cupiditate aut quis excepturi et, magni laudantium praesentium ad numquam labore voluptatibus. 
+            Quaerat exercitationem, reiciendis amet quisquam numquam ex voluptas distinctio provident cum facilis 
+            repellendus dolore fuga sequi porro et consectetur. Eius culpa, pariatur nam optio architecto quae quia 
+            sint recusandae ut perspiciatis nobis accusamus.
+        </p>
+        <h1 id="message">Story 2</h1>
+        <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, suscipit. Voluptas totam aperiam quas quis magni sit, natus dolorem id quaerat, ipsum facilis minus consequatur consequuntur incidunt officiis? Culpa voluptatum eaque sapiente maiores corrupti ullam ipsam non sunt alias odio unde accusamus minima eius deleniti et repudiandae, temporibus nihil earum quaerat doloremque fugit dolor pariatur nemo adipisci. Nam culpa molestias natus blanditiis optio amet tenetur laudantium, pariatur hic tempore iusto dolore ad ullam aperiam veniam modi in, odit error explicabo quisquam minus! Labore iste dolores perferendis laboriosam sint commodi nihil suscipit tenetur asperiores architecto? Quaerat quos quibusdam vero facilis in quas ducimus tempora. Omnis distinctio a cum consequuntur officia ducimus eos, quasi ratione fugit. Consequatur nisi dolore aperiam ea ullam odio doloribus, tempora sapiente eligendi voluptatem fuga sint dolores quisquam et atque dicta impedit fugiat est. Maiores id quia voluptate iste labore, delectus et eveniet, dolores esse rem autem dignissimos corrupti hic quidem. Nostrum, alias, saepe dolor vitae nesciunt tempore unde quam labore nulla commodi deserunt reiciendis eos quas quibusdam, possimus qui consequatur modi quo sint? Sint maiores quaerat ullam recusandae accusamus nam repellendus unde magnam, consequuntur voluptas doloremque quae fugit molestias? Autem eos illo magnam! Reiciendis itaque quo delectus!
+        </p>
+        <h1 id="message">It's worth waiting for the "slide-up" at the bottom</h1>
+        <div class="hnf-container-fluid">
+            <h2 class="hnf-signup-text">Sign up for the<br/>Health News Florida<br/>newsletter</h2>
+            <div class="img-centered">
+                <img src="https://modules.wusf.digital/newsletters/hnf/subscribe-hnf-newsletter.png" alt="Subscribe to Health News Florida newsletter">
             </div>
-            <div id="newsletter__signup-close">X</div>
+            <form class="hnf-form-container" id="signUp">
+                <div>
+                    <label for="email" class="form-label"><h4 class="hnf-email-label">Email address</h4></label>
+                    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
+                </div>
+                <button id="newsletterButton" type="submit">Subscribe</button>
+            </form>
+            <p id="submitStatus"></p>
         </div>
-    </div>
+        <h1>Story 3</h1>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde ut rem voluptatem facere porro quis, vitae suscipit voluptates magnam culpa!</p>
+
+        <!-- NEWSLETTER SLIDE-UP -->
+        <div id="slideup__signup-wrapper">
+            <div id="slideup__signup-inner">
+                <div id="slideup__signup-content">
+                    <img src="../assets/logos/wusf.jpeg" 
+                        alt="WUSF Logo"
+                        width="150px" />
+                    <h2 class="slideup__signup-text">Sign up for the Health News Florida newsletter</h2>
+                    <form class="slideup__form-container" id="signUp">
+                        <div id="slideup__form">
+                            <input type="email" class="slideup__form-control" id="inputEmail" placeholder="Your email address" aria-describedby="emailHelp">
+                            <button id="slideup__newsletterButton" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                    <p id="slideup__submitStatus"></p>
+                </div>
+                <div id="slideup__signup-close">X</div>
+            </div>
+        </div>
+    </main>
 
     <script>
-        const signupClose = document.querySelector('#newsletter__signup-close')
-        const newsletterWrapper = document.querySelector('#newsletter__signup-wrapper')
+        const signupClose = document.querySelector('#slideup__signup-close')
+        const newsletterWrapper = document.querySelector('#slideup__signup-wrapper')
         
         // Check to see if sawSlideUp variable exists in the browser
         // If it doesn't exist, create it and set it to false
