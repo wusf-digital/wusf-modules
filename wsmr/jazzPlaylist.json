@@ -1,0 +1,731 @@
+[
+    {
+        "id": "1rphkl6cm3sn66nk2ncrt0o2ks",
+        "created": "2022-04-01T01:08:11.000Z",
+        "updated": "2022-04-01T01:08:11.967Z",
+        "summary": "Crosswind - Billy Cobham",
+        "description": "AssetTypeName: Song\ntitle: Crosswind\nartist: Billy Cobham\nUniversalIdentifier: c832c0e9-d994-4d3e-bd30-48e88f18f7dc\nDescription: Crosswind - Billy Cobham\nAirStarttime: 2022-04-01T01:08:09Z\nAirStoptime: 2022-04-01T01:11:51Z\nLabel: Atlantic\n",
+        "start": {
+            "dateTime": "2022-03-31T21:08:09-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T21:11:51-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Crosswind",
+            "artist": "Billy Cobham",
+            "UniversalIdentifier": "c832c0e9-d994-4d3e-bd30-48e88f18f7dc",
+            "Description": "Crosswind - Billy Cobham",
+            "AirStarttime": "2022-04-01T01:08:09Z",
+            "AirStoptime": "2022-04-01T01:11:51Z",
+            "Label": "Atlantic",
+            "Composer": "Billy Cobham"
+        }
+    },
+    {
+        "id": "q9cv6n2bhghs6f17ae5s5ml7hs",
+        "created": "2022-04-01T01:11:53.000Z",
+        "updated": "2022-04-01T01:11:53.941Z",
+        "summary": "Daahoud - Ali Ryerson Jazz Flute Big Band",
+        "description": "AssetTypeName: Song\ntitle: Daahoud\nartist: Ali Ryerson Jazz Flute Big Band\nUniversalIdentifier: 695d6c7d-021a-49b3-9723-81872f9062b1\nDescription: Daahoud - Ali Ryerson Jazz Flute Big Band\nAirStarttime: 2022-04-01T01:11:51Z\nAirStoptime: 2022-04-01T01:17:21Z\nLabel: Capri\n",
+        "start": {
+            "dateTime": "2022-03-31T21:11:51-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T21:17:21-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Daahoud",
+            "artist": "Ali Ryerson Jazz Flute Big Band",
+            "UniversalIdentifier": "695d6c7d-021a-49b3-9723-81872f9062b1",
+            "Description": "Daahoud - Ali Ryerson Jazz Flute Big Band",
+            "AirStarttime": "2022-04-01T01:11:51Z",
+            "AirStoptime": "2022-04-01T01:17:21Z",
+            "Label": "Capri",
+            "Composer": "Ali Ryerson Jazz Flute Big Band"
+        }
+    },
+    {
+        "id": "fuutt081v9tqf75r9u5utlt8p4",
+        "created": "2022-04-01T01:17:23.000Z",
+        "updated": "2022-04-01T01:17:23.740Z",
+        "summary": "Little Train Of Caipira - Blue Road Records Studio Sessions Band",
+        "description": "AssetTypeName: Song\ntitle: Little Train Of Caipira\nartist: Blue Road Records Studio Sessions Band\nUniversalIdentifier: 20c25f71-416b-4b84-be55-15faaa6cb847\nDescription: Little Train Of Caipira - Blue Road Records Studio Sessions Band\nAirStarttime: 2022-04-01T01:17:21Z\nAirStoptime: 2022-04-01T01:23:36Z\nLabel: Blue Road Records\n",
+        "start": {
+            "dateTime": "2022-03-31T21:17:21-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T21:23:36-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Little Train Of Caipira",
+            "artist": "Blue Road Records Studio Sessions Band",
+            "UniversalIdentifier": "20c25f71-416b-4b84-be55-15faaa6cb847",
+            "Description": "Little Train Of Caipira - Blue Road Records Studio Sessions Band",
+            "AirStarttime": "2022-04-01T01:17:21Z",
+            "AirStoptime": "2022-04-01T01:23:36Z",
+            "Label": "Blue Road Records",
+            "Composer": "Blue Road Records Studio Sessions Band"
+        }
+    },
+    {
+        "id": "1pj1pfc0fbrd39o61mahdvmq0g",
+        "created": "2022-04-01T01:25:42.000Z",
+        "updated": "2022-04-01T01:25:42.457Z",
+        "summary": "Groove Yard - Pat Martino",
+        "description": "AssetTypeName: Song\ntitle: Groove Yard\nartist: Pat Martino\nUniversalIdentifier: fae2d3aa-bc03-4430-8127-17c2a04be894\nDescription: Groove Yard - Pat Martino\nAirStarttime: 2022-04-01T01:25:40Z\nAirStoptime: 2022-04-01T01:31:34Z\nLabel: BlueNote\n",
+        "start": {
+            "dateTime": "2022-03-31T21:25:40-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T21:31:34-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Groove Yard",
+            "artist": "Pat Martino",
+            "UniversalIdentifier": "fae2d3aa-bc03-4430-8127-17c2a04be894",
+            "Description": "Groove Yard - Pat Martino",
+            "AirStarttime": "2022-04-01T01:25:40Z",
+            "AirStoptime": "2022-04-01T01:31:34Z",
+            "Label": "BlueNote",
+            "Composer": "Pat Martino"
+        }
+    },
+    {
+        "id": "3897k9qt3i4rp21avc6q17nu2k",
+        "created": "2022-04-01T01:31:37.000Z",
+        "updated": "2022-04-01T01:31:37.044Z",
+        "summary": "Can't Complain - Echo Park Project Latin Jazz Octet",
+        "description": "AssetTypeName: Song\ntitle: Can't Complain\nartist: Echo Park Project Latin Jazz Octet\nUniversalIdentifier: cba18f74-6b06-4a22-b65b-ef9db4741dc8\nDescription: Can't Complain - Echo Park Project Latin Jazz Octet\nAirStarttime: 2022-04-01T01:31:34Z\nAirStoptime: 2022-04-01T01:37:01Z\nLabel: Echo Park\n",
+        "start": {
+            "dateTime": "2022-03-31T21:31:34-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T21:37:01-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Can't Complain",
+            "artist": "Echo Park Project Latin Jazz Octet",
+            "UniversalIdentifier": "cba18f74-6b06-4a22-b65b-ef9db4741dc8",
+            "Description": "Can't Complain - Echo Park Project Latin Jazz Octet",
+            "AirStarttime": "2022-04-01T01:31:34Z",
+            "AirStoptime": "2022-04-01T01:37:01Z",
+            "Label": "Echo Park",
+            "Composer": "Echo Park Project Latin Jazz Octet"
+        }
+    },
+    {
+        "id": "5p3nui92d4gec6hg3fb8ip9np8",
+        "created": "2022-04-01T01:37:03.000Z",
+        "updated": "2022-04-01T01:37:03.247Z",
+        "summary": "Water Under Bridges - Gregory Porter",
+        "description": "AssetTypeName: Song\ntitle: Water Under Bridges\nartist: Gregory Porter\nUniversalIdentifier: 918a1731-5578-45b2-a348-b1ce7a5770b2\nDescription: Water Under Bridges - Gregory Porter\nAirStarttime: 2022-04-01T01:37:01Z\nAirStoptime: 2022-04-01T01:40:30Z\nLabel: Blue Note\n",
+        "start": {
+            "dateTime": "2022-03-31T21:37:01-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T21:40:30-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Water Under Bridges",
+            "artist": "Gregory Porter",
+            "UniversalIdentifier": "918a1731-5578-45b2-a348-b1ce7a5770b2",
+            "Description": "Water Under Bridges - Gregory Porter",
+            "AirStarttime": "2022-04-01T01:37:01Z",
+            "AirStoptime": "2022-04-01T01:40:30Z",
+            "Label": "Blue Note",
+            "Composer": "Gregory Porter"
+        }
+    },
+    {
+        "id": "r1efro7d0t52iu4tqjpij9oh24",
+        "created": "2022-04-01T01:41:35.000Z",
+        "updated": "2022-04-01T01:41:35.133Z",
+        "summary": "Where To Go - Joey DeFrancesco",
+        "description": "AssetTypeName: Song\ntitle: Where To Go\nartist: Joey DeFrancesco\nUniversalIdentifier: e3019a9f-e18f-4d6b-af24-a02dee3360c7\nDescription: Where To Go - Joey DeFrancesco\nAirStarttime: 2022-04-01T01:41:33Z\nAirStoptime: 2022-04-01T01:48:53Z\nLabel: Mack Avenue\n",
+        "start": {
+            "dateTime": "2022-03-31T21:41:33-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T21:48:53-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Where To Go",
+            "artist": "Joey DeFrancesco",
+            "UniversalIdentifier": "e3019a9f-e18f-4d6b-af24-a02dee3360c7",
+            "Description": "Where To Go - Joey DeFrancesco",
+            "AirStarttime": "2022-04-01T01:41:33Z",
+            "AirStoptime": "2022-04-01T01:48:53Z",
+            "Label": "Mack Avenue",
+            "Composer": "Joey DeFrancesco"
+        }
+    },
+    {
+        "id": "ro9k4n2tdle3jhlkvsl6eeuuv8",
+        "created": "2022-04-01T01:48:55.000Z",
+        "updated": "2022-04-01T01:48:55.896Z",
+        "summary": "Go Home - Rene Marie",
+        "description": "AssetTypeName: Song\ntitle: Go Home\nartist: Rene Marie\nUniversalIdentifier: 0f7c9468-c4c3-40e7-b89c-ed3909767eb4\nDescription: Go Home - Rene Marie\nAirStarttime: 2022-04-01T01:48:53Z\nAirStoptime: 2022-04-01T01:54:37Z\nLabel: Motema\n",
+        "start": {
+            "dateTime": "2022-03-31T21:48:53-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T21:54:37-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Go Home",
+            "artist": "Rene Marie",
+            "UniversalIdentifier": "0f7c9468-c4c3-40e7-b89c-ed3909767eb4",
+            "Description": "Go Home - Rene Marie",
+            "AirStarttime": "2022-04-01T01:48:53Z",
+            "AirStoptime": "2022-04-01T01:54:37Z",
+            "Label": "Motema",
+            "Composer": "Rene Marie"
+        }
+    },
+    {
+        "id": "n0vkjvi9cnqvrfhqm7t2df3c5k",
+        "created": "2022-04-01T01:54:39.000Z",
+        "updated": "2022-04-01T01:54:39.595Z",
+        "summary": "Cool on the Coast - Brubeck Brothers Quartet",
+        "description": "AssetTypeName: Song\ntitle: Cool on the Coast\nartist: Brubeck Brothers Quartet\nUniversalIdentifier: a83b4829-9152-46de-adf2-bef19277efbd\nDescription: Cool on the Coast - Brubeck Brothers Quartet\nAirStarttime: 2022-04-01T01:54:37Z\nAirStoptime: 2022-04-01T02:00:25Z\nLabel: KOCH\n",
+        "start": {
+            "dateTime": "2022-03-31T21:54:37-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T22:00:25-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Cool on the Coast",
+            "artist": "Brubeck Brothers Quartet",
+            "UniversalIdentifier": "a83b4829-9152-46de-adf2-bef19277efbd",
+            "Description": "Cool on the Coast - Brubeck Brothers Quartet",
+            "AirStarttime": "2022-04-01T01:54:37Z",
+            "AirStoptime": "2022-04-01T02:00:25Z",
+            "Label": "KOCH",
+            "Composer": "Brubeck Brothers Quartet"
+        }
+    },
+    {
+        "id": "585hg0e7h6000equ5ui6bjiul4",
+        "created": "2022-04-01T02:08:14.000Z",
+        "updated": "2022-04-01T02:08:14.969Z",
+        "summary": "Stranger In Paradise - Wes Montgomery",
+        "description": "AssetTypeName: Song\ntitle: Stranger In Paradise\nartist: Wes Montgomery\nUniversalIdentifier: 02ac1d21-473a-4b29-b267-1d97c5fe47b2\nDescription: Stranger In Paradise - Wes Montgomery\nAirStarttime: 2022-04-01T02:08:12Z\nAirStoptime: 2022-04-01T02:13:06Z\nLabel: Blue Note\n",
+        "start": {
+            "dateTime": "2022-03-31T22:08:12-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T22:13:06-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Stranger In Paradise",
+            "artist": "Wes Montgomery",
+            "UniversalIdentifier": "02ac1d21-473a-4b29-b267-1d97c5fe47b2",
+            "Description": "Stranger In Paradise - Wes Montgomery",
+            "AirStarttime": "2022-04-01T02:08:12Z",
+            "AirStoptime": "2022-04-01T02:13:06Z",
+            "Label": "Blue Note",
+            "Composer": "Wes Montgomery"
+        }
+    },
+    {
+        "id": "l6le3osobolv5fcjloagagc38g",
+        "created": "2022-04-01T02:13:08.000Z",
+        "updated": "2022-04-01T02:13:08.762Z",
+        "summary": "Pastime Paradise - Chick Corea",
+        "description": "AssetTypeName: Song\ntitle: Pastime Paradise\nartist: Chick Corea\nUniversalIdentifier: a783461a-a28f-48b9-9dc4-4044447376c3\nDescription: Pastime Paradise - Chick Corea\nAirStarttime: 2022-04-01T02:13:06Z\nAirStoptime: 2022-04-01T02:19:02Z\nLabel: Concord\n",
+        "start": {
+            "dateTime": "2022-03-31T22:13:06-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T22:19:02-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Pastime Paradise",
+            "artist": "Chick Corea",
+            "UniversalIdentifier": "a783461a-a28f-48b9-9dc4-4044447376c3",
+            "Description": "Pastime Paradise - Chick Corea",
+            "AirStarttime": "2022-04-01T02:13:06Z",
+            "AirStoptime": "2022-04-01T02:19:02Z",
+            "Label": "Concord",
+            "Composer": "Chick Corea"
+        }
+    },
+    {
+        "id": "lpgid32t2rk55q637aqh4ejnug",
+        "created": "2022-04-01T02:19:04.000Z",
+        "updated": "2022-04-01T02:19:04.814Z",
+        "summary": "Paradise Found - Christian Scott",
+        "description": "AssetTypeName: Song\ntitle: Paradise Found\nartist: Christian Scott\nUniversalIdentifier: 918864cd-da14-46fc-95d3-4e152f6366e6\nDescription: Paradise Found - Christian Scott\nAirStarttime: 2022-04-01T02:19:02Z\nAirStoptime: 2022-04-01T02:25:37Z\nLabel: Concord\n",
+        "start": {
+            "dateTime": "2022-03-31T22:19:02-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T22:25:37-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Paradise Found",
+            "artist": "Christian Scott",
+            "UniversalIdentifier": "918864cd-da14-46fc-95d3-4e152f6366e6",
+            "Description": "Paradise Found - Christian Scott",
+            "AirStarttime": "2022-04-01T02:19:02Z",
+            "AirStoptime": "2022-04-01T02:25:37Z",
+            "Label": "Concord",
+            "Composer": "Christian Scott"
+        }
+    },
+    {
+        "id": "i017k322gtpc1gb46mn64k06u8",
+        "created": "2022-04-01T02:27:09.000Z",
+        "updated": "2022-04-01T02:27:09.483Z",
+        "summary": "My Favorite Things - Al Jarreau",
+        "description": "AssetTypeName: Song\ntitle: My Favorite Things\nartist: Al Jarreau\nUniversalIdentifier: 8210f38b-cc1a-4918-a552-2ceb97267555\nDescription: My Favorite Things - Al Jarreau\nAirStarttime: 2022-04-01T02:27:07Z\nAirStoptime: 2022-04-01T02:32:26Z\nLabel: Reprise\n",
+        "start": {
+            "dateTime": "2022-03-31T22:27:07-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T22:32:26-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "My Favorite Things",
+            "artist": "Al Jarreau",
+            "UniversalIdentifier": "8210f38b-cc1a-4918-a552-2ceb97267555",
+            "Description": "My Favorite Things - Al Jarreau",
+            "AirStarttime": "2022-04-01T02:27:07Z",
+            "AirStoptime": "2022-04-01T02:32:26Z",
+            "Label": "Reprise",
+            "Composer": "Al Jarreau"
+        }
+    },
+    {
+        "id": "cadnnb40sv3juudqvmn8er01sk",
+        "created": "2022-04-01T02:32:28.000Z",
+        "updated": "2022-04-01T02:32:28.300Z",
+        "summary": "Moment's Notice - Turtle Island Quartet",
+        "description": "AssetTypeName: Song\ntitle: Moment's Notice\nartist: Turtle Island Quartet\nUniversalIdentifier: 51bfaec1-9faa-4f7f-857b-cfdffed3ad07\nDescription: Moment's Notice - Turtle Island Quartet\nAirStarttime: 2022-04-01T02:32:26Z\nAirStoptime: 2022-04-01T02:36:33Z\nLabel: Telarc\n",
+        "start": {
+            "dateTime": "2022-03-31T22:32:26-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T22:36:33-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Moment's Notice",
+            "artist": "Turtle Island Quartet",
+            "UniversalIdentifier": "51bfaec1-9faa-4f7f-857b-cfdffed3ad07",
+            "Description": "Moment's Notice - Turtle Island Quartet",
+            "AirStarttime": "2022-04-01T02:32:26Z",
+            "AirStoptime": "2022-04-01T02:36:33Z",
+            "Label": "Telarc",
+            "Composer": "Turtle Island Quartet"
+        }
+    },
+    {
+        "id": "5j0v4pd19g16e375pquk82tfgs",
+        "created": "2022-04-01T02:36:35.000Z",
+        "updated": "2022-04-01T02:36:35.484Z",
+        "summary": "Don't Blame Me - Bobby Hutcherson",
+        "description": "AssetTypeName: Song\ntitle: Don't Blame Me\nartist: Bobby Hutcherson\nUniversalIdentifier: e9bc49bd-c83f-493c-b91b-222d48e91c08\nDescription: Don't Blame Me - Bobby Hutcherson\nAirStarttime: 2022-04-01T02:36:33Z\nAirStoptime: 2022-04-01T02:40:39Z\nLabel: Kind Of Bl\n",
+        "start": {
+            "dateTime": "2022-03-31T22:36:33-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T22:40:39-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Don't Blame Me",
+            "artist": "Bobby Hutcherson",
+            "UniversalIdentifier": "e9bc49bd-c83f-493c-b91b-222d48e91c08",
+            "Description": "Don't Blame Me - Bobby Hutcherson",
+            "AirStarttime": "2022-04-01T02:36:33Z",
+            "AirStoptime": "2022-04-01T02:40:39Z",
+            "Label": "Kind Of Bl",
+            "Composer": "Bobby Hutcherson"
+        }
+    },
+    {
+        "id": "35prab8lmtiijhnck38p56d2so",
+        "created": "2022-04-01T02:41:47.000Z",
+        "updated": "2022-04-01T02:41:47.288Z",
+        "summary": "Honey Party - Madeleine Peyroux",
+        "description": "AssetTypeName: Song\ntitle: Honey Party\nartist: Madeleine Peyroux\nUniversalIdentifier: 9a0aa761-3664-4a1b-acff-b7074e4c9998\nDescription: Honey Party - Madeleine Peyroux\nAirStarttime: 2022-04-01T02:41:45Z\nAirStoptime: 2022-04-01T02:45:42Z\nLabel: Verve\n",
+        "start": {
+            "dateTime": "2022-03-31T22:41:45-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T22:45:42-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Honey Party",
+            "artist": "Madeleine Peyroux",
+            "UniversalIdentifier": "9a0aa761-3664-4a1b-acff-b7074e4c9998",
+            "Description": "Honey Party - Madeleine Peyroux",
+            "AirStarttime": "2022-04-01T02:41:45Z",
+            "AirStoptime": "2022-04-01T02:45:42Z",
+            "Label": "Verve",
+            "Composer": "Madeleine Peyroux"
+        }
+    },
+    {
+        "id": "540urha1mpjo4e6l2i3gc3p2es",
+        "created": "2022-04-01T02:45:44.000Z",
+        "updated": "2022-04-01T02:45:44.632Z",
+        "summary": "Back To The Wall - Ray Gallon",
+        "description": "AssetTypeName: Song\ntitle: Back To The Wall\nartist: Ray Gallon\nUniversalIdentifier: c2a7c918-248e-415d-97b0-c30a5f0500a7\nDescription: Back To The Wall - Ray Gallon\nAirStarttime: 2022-04-01T02:45:42Z\nAirStoptime: 2022-04-01T02:51:05Z\nLabel: Cellar Live\n",
+        "start": {
+            "dateTime": "2022-03-31T22:45:42-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T22:51:05-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Back To The Wall",
+            "artist": "Ray Gallon",
+            "UniversalIdentifier": "c2a7c918-248e-415d-97b0-c30a5f0500a7",
+            "Description": "Back To The Wall - Ray Gallon",
+            "AirStarttime": "2022-04-01T02:45:42Z",
+            "AirStoptime": "2022-04-01T02:51:05Z",
+            "Label": "Cellar Live",
+            "Composer": "Ray Gallon"
+        }
+    },
+    {
+        "id": "p46cvibdatnd8uvvhfdfhb16d0",
+        "created": "2022-04-01T02:51:07.000Z",
+        "updated": "2022-04-01T02:51:07.226Z",
+        "summary": "Sweet Sucker - Houston Person",
+        "description": "AssetTypeName: Song\ntitle: Sweet Sucker\nartist: Houston Person\nUniversalIdentifier: 5c5d0e02-528c-4c1c-8616-453ae10af13c\nDescription: Sweet Sucker - Houston Person\nAirStarttime: 2022-04-01T02:51:05Z\nAirStoptime: 2022-04-01T03:00:15Z\nLabel: High Note\n",
+        "start": {
+            "dateTime": "2022-03-31T22:51:05-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T23:00:15-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Sweet Sucker",
+            "artist": "Houston Person",
+            "UniversalIdentifier": "5c5d0e02-528c-4c1c-8616-453ae10af13c",
+            "Description": "Sweet Sucker - Houston Person",
+            "AirStarttime": "2022-04-01T02:51:05Z",
+            "AirStoptime": "2022-04-01T03:00:15Z",
+            "Label": "High Note",
+            "Composer": "Houston Person"
+        }
+    },
+    {
+        "id": "9078ase6qpe938ijn89o1on6e4",
+        "created": "2022-04-01T03:07:56.000Z",
+        "updated": "2022-04-01T03:07:56.660Z",
+        "summary": "Afro-Blue - Synia Carroll",
+        "description": "AssetTypeName: Song\ntitle: Afro-Blue\nartist: Synia Carroll\nUniversalIdentifier: 5b553734-e6df-442a-948f-69085cfff00c\nDescription: Afro-Blue - Synia Carroll\nAirStarttime: 2022-04-01T03:07:54Z\nAirStoptime: 2022-04-01T03:12:12Z\nLabel: Self-Relea\n",
+        "start": {
+            "dateTime": "2022-03-31T23:07:54-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T23:12:12-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Afro-Blue",
+            "artist": "Synia Carroll",
+            "UniversalIdentifier": "5b553734-e6df-442a-948f-69085cfff00c",
+            "Description": "Afro-Blue - Synia Carroll",
+            "AirStarttime": "2022-04-01T03:07:54Z",
+            "AirStoptime": "2022-04-01T03:12:12Z",
+            "Label": "Self-Relea",
+            "Composer": "Synia Carroll"
+        }
+    },
+    {
+        "id": "h4qsvlmdj46gjg0q8mam1jlrlg",
+        "created": "2022-04-01T03:12:13.000Z",
+        "updated": "2022-04-01T03:12:13.614Z",
+        "summary": "Softly as in a Morning Sunrise - Joe Farnsworth",
+        "description": "AssetTypeName: Song\ntitle: Softly as in a Morning Sunrise\nartist: Joe Farnsworth\nUniversalIdentifier: 097b8cc1-5b7e-4652-85ab-c0ae6b32134a\nDescription: Softly as in a Morning Sunrise - Joe Farnsworth\nAirStarttime: 2022-04-01T03:12:10Z\nAirStoptime: 2022-04-01T03:20:13Z\nLabel: Smoke Sessions\n",
+        "start": {
+            "dateTime": "2022-03-31T23:12:10-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T23:20:13-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Softly as in a Morning Sunrise",
+            "artist": "Joe Farnsworth",
+            "UniversalIdentifier": "097b8cc1-5b7e-4652-85ab-c0ae6b32134a",
+            "Description": "Softly as in a Morning Sunrise - Joe Farnsworth",
+            "AirStarttime": "2022-04-01T03:12:10Z",
+            "AirStoptime": "2022-04-01T03:20:13Z",
+            "Label": "Smoke Sessions",
+            "Composer": "Joe Farnsworth"
+        }
+    },
+    {
+        "id": "fjn0iutb0pfesdfr8ljljdk8vg",
+        "created": "2022-04-01T03:20:14.000Z",
+        "updated": "2022-04-01T03:20:14.385Z",
+        "summary": "Cool Eyes - Horace Silver",
+        "description": "AssetTypeName: Song\ntitle: Cool Eyes\nartist: Horace Silver\nUniversalIdentifier: b41d5674-60fe-4f12-84c2-158149a88360\nDescription: Cool Eyes - Horace Silver\nAirStarttime: 2022-04-01T03:20:10Z\nAirStoptime: 2022-04-01T03:26:07Z\nLabel: Blue Note\n",
+        "start": {
+            "dateTime": "2022-03-31T23:20:10-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T23:26:07-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Cool Eyes",
+            "artist": "Horace Silver",
+            "UniversalIdentifier": "b41d5674-60fe-4f12-84c2-158149a88360",
+            "Description": "Cool Eyes - Horace Silver",
+            "AirStarttime": "2022-04-01T03:20:10Z",
+            "AirStoptime": "2022-04-01T03:26:07Z",
+            "Label": "Blue Note",
+            "Composer": "Horace Silver"
+        }
+    },
+    {
+        "id": "j3f8qm2mt4ngo327bgbf4j54n8",
+        "created": "2022-04-01T03:27:32.000Z",
+        "updated": "2022-04-01T03:27:32.600Z",
+        "summary": "Delta City Blues - Michael Brecker",
+        "description": "AssetTypeName: Song\ntitle: Delta City Blues\nartist: Michael Brecker\nUniversalIdentifier: 3e8cceea-9d9e-4d6d-abba-0628e5822dc7\nDescription: Delta City Blues - Michael Brecker\nAirStarttime: 2022-04-01T03:27:30Z\nAirStoptime: 2022-04-01T03:33:08Z\nLabel: Impulse\n",
+        "start": {
+            "dateTime": "2022-03-31T23:27:30-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T23:33:08-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Delta City Blues",
+            "artist": "Michael Brecker",
+            "UniversalIdentifier": "3e8cceea-9d9e-4d6d-abba-0628e5822dc7",
+            "Description": "Delta City Blues - Michael Brecker",
+            "AirStarttime": "2022-04-01T03:27:30Z",
+            "AirStoptime": "2022-04-01T03:33:08Z",
+            "Label": "Impulse",
+            "Composer": "Michael Brecker"
+        }
+    },
+    {
+        "id": "gakbt2scnr47nsrksrmg7rt7s4",
+        "created": "2022-04-01T03:33:09.000Z",
+        "updated": "2022-04-01T03:33:09.058Z",
+        "summary": "Sight - Alex Sipiagin",
+        "description": "AssetTypeName: Song\ntitle: Sight\nartist: Alex Sipiagin\nUniversalIdentifier: 6101a850-d9ba-4beb-9c4d-f25a236a506c\nDescription: Sight - Alex Sipiagin\nAirStarttime: 2022-04-01T03:33:02Z\nAirStoptime: 2022-04-01T03:38:19Z\nLabel: Posi-Tone\n",
+        "start": {
+            "dateTime": "2022-03-31T23:33:02-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T23:38:19-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Sight",
+            "artist": "Alex Sipiagin",
+            "UniversalIdentifier": "6101a850-d9ba-4beb-9c4d-f25a236a506c",
+            "Description": "Sight - Alex Sipiagin",
+            "AirStarttime": "2022-04-01T03:33:02Z",
+            "AirStoptime": "2022-04-01T03:38:19Z",
+            "Label": "Posi-Tone",
+            "Composer": "Alex Sipiagin"
+        }
+    },
+    {
+        "id": "5enb7s3q8h7kdcl1jgm28i2g08",
+        "created": "2022-04-01T03:38:20.000Z",
+        "updated": "2022-04-01T03:38:20.664Z",
+        "summary": "Dawn - Alfredo Rodriguez",
+        "description": "AssetTypeName: Song\ntitle: Dawn\nartist: Alfredo Rodriguez\nUniversalIdentifier: 89e28f94-376a-452f-9541-6617767285e4\nDescription: Dawn - Alfredo Rodriguez\nAirStarttime: 2022-04-01T03:38:17Z\nAirStoptime: 2022-04-01T03:42:16Z\nLabel: QWest\n",
+        "start": {
+            "dateTime": "2022-03-31T23:38:17-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T23:42:16-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Dawn",
+            "artist": "Alfredo Rodriguez",
+            "UniversalIdentifier": "89e28f94-376a-452f-9541-6617767285e4",
+            "Description": "Dawn - Alfredo Rodriguez",
+            "AirStarttime": "2022-04-01T03:38:17Z",
+            "AirStoptime": "2022-04-01T03:42:16Z",
+            "Label": "QWest",
+            "Composer": "Alfredo Rodriguez"
+        }
+    },
+    {
+        "id": "8sdduoesdec81e3f8s61upts14",
+        "created": "2022-04-01T03:42:55.000Z",
+        "updated": "2022-04-01T03:42:55.483Z",
+        "summary": "Walk On By - The Baylor Project",
+        "description": "AssetTypeName: Song\ntitle: Walk On By\nartist: The Baylor Project\nUniversalIdentifier: 03207f3f-b04c-412a-bb3f-7ac62e9ba037\nDescription: Walk On By - The Baylor Project\nAirStarttime: 2022-04-01T03:42:53Z\nAirStoptime: 2022-04-01T03:49:11Z\nLabel: Be a Light Records\n",
+        "start": {
+            "dateTime": "2022-03-31T23:42:53-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T23:49:11-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Walk On By",
+            "artist": "The Baylor Project",
+            "UniversalIdentifier": "03207f3f-b04c-412a-bb3f-7ac62e9ba037",
+            "Description": "Walk On By - The Baylor Project",
+            "AirStarttime": "2022-04-01T03:42:53Z",
+            "AirStoptime": "2022-04-01T03:49:11Z",
+            "Label": "Be a Light Records",
+            "Composer": "The Baylor Project"
+        }
+    },
+    {
+        "id": "vi4gjsgsm20slv9r0ecgqc9pk4",
+        "created": "2022-04-01T03:49:13.000Z",
+        "updated": "2022-04-01T03:49:13.766Z",
+        "summary": "Work Song - Cannonball Adderley",
+        "description": "AssetTypeName: Song\ntitle: Work Song\nartist: Cannonball Adderley\nUniversalIdentifier: c67f78d3-7eaa-45da-bf30-a755e13ee5f8\nDescription: Work Song - Cannonball Adderley\nAirStarttime: 2022-04-01T03:49:11Z\nAirStoptime: 2022-04-01T03:54:19Z\nLabel: Capitol Ja\n",
+        "start": {
+            "dateTime": "2022-03-31T23:49:11-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T23:54:19-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Work Song",
+            "artist": "Cannonball Adderley",
+            "UniversalIdentifier": "c67f78d3-7eaa-45da-bf30-a755e13ee5f8",
+            "Description": "Work Song - Cannonball Adderley",
+            "AirStarttime": "2022-04-01T03:49:11Z",
+            "AirStoptime": "2022-04-01T03:54:19Z",
+            "Label": "Capitol Ja",
+            "Composer": "Cannonball Adderley"
+        }
+    },
+    {
+        "id": "jjmf9nmu5vcb0ehlad58njqcq4",
+        "created": "2022-04-01T03:54:21.000Z",
+        "updated": "2022-04-01T03:54:21.306Z",
+        "summary": "Brothers Under The Sun - Steve Nelson",
+        "description": "AssetTypeName: Song\ntitle: Brothers Under The Sun\nartist: Steve Nelson\nUniversalIdentifier: 0b9d7ddd-16d8-4c53-9a47-8fbd369d8c51\nDescription: Brothers Under The Sun - Steve Nelson\nAirStarttime: 2022-04-01T03:54:19Z\nAirStoptime: 2022-04-01T03:59:10Z\nLabel: High Note\n",
+        "start": {
+            "dateTime": "2022-03-31T23:54:19-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-03-31T23:59:10-04:00",
+            "timeZone": "America/New_York"
+        },
+        "eventType": "default",
+        "extraInfo": {
+            "AssetTypeName": "Song",
+            "title": "Brothers Under The Sun",
+            "artist": "Steve Nelson",
+            "UniversalIdentifier": "0b9d7ddd-16d8-4c53-9a47-8fbd369d8c51",
+            "Description": "Brothers Under The Sun - Steve Nelson",
+            "AirStarttime": "2022-04-01T03:54:19Z",
+            "AirStoptime": "2022-04-01T03:59:10Z",
+            "Label": "High Note",
+            "Composer": "Steve Nelson"
+        }
+    }
+]
