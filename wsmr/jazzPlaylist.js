@@ -22,9 +22,8 @@ function JazzPlaylist() {
                     <tr className='playlist__headers'>
                         <th><i className="fa-solid fa-clock"></i></th>
                         <th>Artist</th>
-                        <th>Title</th>
+                        <th>Song Title</th>
                         <th>Label</th>
-                        <th>Composer</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,7 +34,6 @@ function JazzPlaylist() {
                             <td dangerouslySetInnerHTML={{__html: song.extraInfo.artist}}></td>
                             <td dangerouslySetInnerHTML={{__html: song.extraInfo.title}}></td>
                             <td dangerouslySetInnerHTML={{__html: song.extraInfo.Label}}></td>
-                            <td dangerouslySetInnerHTML={{__html: song.extraInfo.Composer}}></td>
                         </tr>
                     )
                 })}

@@ -1,0 +1,105 @@
+html {
+    line-height: 1.5;
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    width: 100%;
+}
+.playlist__app-container {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+}
+.playlist__dev-status {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+.playlist__dev-status--left {
+    background-color: #5e3653;
+    color: whitesmoke;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-weight: bold;
+}
+.playlist__dev-status--right {
+    background-color: lightgray; 
+    border-top-right-radius: 5px; 
+    border-bottom-right-radius: 5px;
+}
+.playlist__dev-status div {
+    padding: 5px;
+}
+.playlist__title {
+    text-align: center;
+    font-family: 'Share', cursive;
+    font-weight: 700;
+    font-size: x-large;
+    color: #5e3653;
+}
+table {
+    border-collapse: collapse;
+    border-top: 1px solid darkgray;
+    border-bottom: 1px solid darkgray;
+    margin: 15px 5%;
+}
+th,
+td {
+    border-right: 1px solid darkgray;
+    text-align: left;
+    padding: 8px;
+    white-space: normal;
+    height: 5rem;
+    vertical-align: middle;
+}
+td {
+    font-size: 0.9rem;
+}
+.playlist__time {
+    font-weight: bold;
+    white-space: nowrap;
+}
+.playlist__headers {
+    font-family: 'Share', cursive;
+    font-size: large;
+    text-transform: uppercase;
+    background-color: #5e3653;
+    color: whitesmoke;
+}
+.playlist__label-spine {
+    column-span: 2;
+}
+
+@media (max-width: 992px) {
+    table {
+        border: none;
+        margin: 15px;
+        width: 95%;
+    }
+    thead {
+        display: none;
+    }
+    td {
+        height: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* align-items: center; */
+        border-bottom: 1px solid white;
+        border-right: none;
+    }
+    td:first-child {
+        text-align: center;
+    }
+    .playlist__dev-status--left {
+        background-color: #5e3653;
+        color: whitesmoke;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+    .playlist__dev-status--right {
+        background-color: lightgray; 
+        border-top-right-radius: 0px; 
+        border-bottom-right-radius: 0px;
+    }
+}
