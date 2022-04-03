@@ -2,21 +2,47 @@
 
 function JazzPlaylist() {
     const [ playlist, setPlaylist ] = React.useState([])
+    const [ date, setDate ] = React.useState(moment().format('YYYY-MM-DD'))
+    const [ displayDate, setDisplayDate ] = React.useState('')
 
     React.useEffect(() => {
-        async function fetchPlaylist() {
-           let response = await fetch('jazzPlaylist.json')
-           response = await response.json()
-           setPlaylist(response.reverse())
-        } 
-        fetchPlaylist()
-    }, [])
+        async function fetchPlaylist(date) {
+            try {
+                // let response = await fetch(`https://api.wusf.org/v2/songs/WUSF/day?date=${date}`)
+                let response = await fetch(`jazzPlaylist_2022-03-31.json`)
+                response = await response.json()
+
+                // Reverse the playlist array so the latest is displayed first
+                setPlaylist(response.reverse())
+
+                // Check to see if there are song data for current date. If not, subtract one day
+                if (Array.isArray(response) && !response.length) {
+                    setDate(moment().subtract(1, 'days').format('YYYY-MM-DD'))
+                }
+
+                // Set the date displayed to user based on first song returned from the server
+                if (typeof response !== undefined && response[0]) {
+                    const serverDate = response[0].start.dateTime
+                    setDisplayDate(moment(serverDate).format('dddd, MMMM Do, YYYY'))
+                }
+                
+            } catch (error) {
+                console.error(error)
+            }
+            
+        }
+        fetchPlaylist(date)
+    }, [ date ])
+
+    
 
     return (
         <div className='playlist__app-container'>
-            <div className='playlist__title'>
-                Jazz Listings for {moment().format('dddd, MMMM Do, YYYY')}
-            </div>
+            { displayDate && 
+                <p className='playlist__title'>
+                    Jazz Listings for {displayDate}
+                </p>
+            }
             <table className='table align-middle'>
                 <thead>
                     <tr className='playlist__headers'>
