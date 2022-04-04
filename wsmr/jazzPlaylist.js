@@ -31,10 +31,19 @@ function JazzPlaylist() {
                 }
 
                 /* 
-                If the date displayed to user is at least one day old,
-                change the 'Next' button to be enabled. Otherwise, leave it disabled.
+                From 9 o'clock until midnight, we show today's playlist. Thus, the
+                'Next' button would be disabled (since we have no data yet for tomorrow)
+
+                At all other times, the date displayed to user is typically yesterday's date. 
+                Thus, the 'Next' button needs to be enabled so the user can navigate forward in time
+                for dates before yesterday's date.
                 */
-                moment().diff(displayDate, 'd') >= 1 ? setDisabled(false) : setDisabled(true)
+                if (moment().hour() >= 21) {
+                    moment().isSame(displayDate, 'd') ? setDisabled(true) : setDisabled(false)
+                }
+                else {
+                    moment().diff(displayDate, 'd') >= 1 ? setDisabled(false) : setDisabled(true)
+                }
                 
             } catch (error) {
                 console.error(error)
@@ -53,16 +62,16 @@ function JazzPlaylist() {
     }
 
     return (
-        <div className='playlist__app-container'>
+        <section className='playlist__app-container'>
             { displayDate && 
-                <p className='playlist__title'>
+                <header className='playlist__title'>
                     Jazz Listings for {moment(displayDate).format('dddd, MMMM Do, YYYY')}
-                </p>
+                </header>
             }
-            <section className='playlist__button-group'>
+            <nav className='playlist__button-group'>
                 <button className='playlist__button--previous' onClick={previousDate}>Previous</button>
                 <button className='playlist__button--next' disabled={disabled} onClick={nextDate}>Next</button>
-            </section>
+            </nav>
             <table className='table align-middle'>
                 <thead>
                     <tr className='playlist__headers'>
@@ -85,6 +94,6 @@ function JazzPlaylist() {
                 })}
                 </tbody>
             </table>
-        </div>
+        </section>
     )
 }

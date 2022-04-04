@@ -108,6 +108,9 @@ td {
 }
 
 @media (max-width: 992px) {
+    .playlist__title {
+        font-size: x-large;
+    }
     .playlist__button--previous, .playlist__button--next {
         padding: 10px 0;
         font-size: large;
