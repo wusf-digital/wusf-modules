@@ -9,8 +9,8 @@ function JazzPlaylist() {
     React.useEffect(() => {
         async function fetchPlaylist(date) {
             try {
-                //let response = await fetch(`https://api.wusf.org/v2/songs/WUSF/day?date=${date}`)
-                let response = await fetch(`jazzPlaylist_2022-03-31.json`)
+                let response = await fetch(`https://api.wusf.org/v2/songs/WUSF/day?date=${date}`)
+                //let response = await fetch(`jazzPlaylist_2022-03-31.json`)
                 response = await response.json()
 
                 // Reverse the playlist array so the latest is displayed first
