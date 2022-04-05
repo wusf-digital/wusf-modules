@@ -9,8 +9,7 @@ function ClassicalPlaylist() {
     React.useEffect(() => {
         async function fetchPlaylist(date) {
             try {
-                let response = await fetch('playlist.json')
-                //let response = await fetch(`https://api.wsmr.org/v2/songs/WSMR/day?date=${date}`)
+                let response = await fetch(`https://api.wsmr.org/v2/songs/WSMR/day?date=${date}`)
                 response = await response.json()
 
                 // Reverse the playlist array so the latest is displayed first
@@ -46,10 +45,6 @@ function ClassicalPlaylist() {
 
     return (
         <section className='playlist__app-container'>
-            <aside className='playlist__dev-status'>
-                <p className='playlist__dev-status--left'>Additional Features Coming</p>
-                <p className='playlist__dev-status--right'>Including more search options and visual enhancements</p>
-            </aside>
             { displayDate && 
                 <header className='playlist__title'>
                     Music Listings for {moment(displayDate).format('dddd, MMMM Do, YYYY')}
