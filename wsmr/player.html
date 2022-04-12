@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//widgets.listenlive.co/1.0/tdwidgets.min.js" defer></script>
+    <title>WUSF Streaming Player</title>
+</head>
+<body>
+    <td-player
+        id="td-player"
+        type="classic"
+        geotargeting="false"
+        defaultcoverart="https://wsmr.org/wp-content/uploads/2019/05/WSMR_logo.png"
+        autostart="true"
+        primarycolor="#016484"
+        secondarycolor="#FFF"
+        buybtnvisible="false"
+        station="WSMRFM">
+    </td-player>
+    <td-adplayer id="td-adplayer"
+        client="tap"
+        host="cmod.live.streamtheworld.com"
+        stationid="153903"
+        type="preroll"
+        mode="player"
+        playerid="td-player">
+    </td-adplayer>
+    <td-songhistory
+        id="td-songhistory"
+        station="WSMRFM"
+        songsdisplayed="5"
+        title="Recently played"
+        buybtnvisible="false"
+        primarycolor="#016484"
+        headerbgcolor= "white"
+        secondarycolor="white">  
+    </td-songhistory>
+</body>
+</html>
