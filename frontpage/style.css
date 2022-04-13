@@ -103,7 +103,7 @@ img:not([src]) {
     gap: 20px;
     font-family: Arial, Helvetica, sans-serif;
 }
-.section__story {
+.section__story, .section__story--localState {
     display: flex;
     flex-direction: column;
 }
@@ -133,6 +133,7 @@ LAPTOPS, DESKTOPS AND LARGER SCREENS
     .section__wrapper--stories {
         flex-direction: row;
         align-items: stretch;
+        justify-content: center;
     }
     .article__image {
         width: 100%;
@@ -148,6 +149,9 @@ LAPTOPS, DESKTOPS AND LARGER SCREENS
     }
     .section__story {
         width: 25%;
+    }
+    .section__story--localState {
+        width: 33%;
     }
     .article__description {
         margin-bottom: auto;
