@@ -1,5 +1,5 @@
 /* COMMON ELEMENTS */
-.section__wrapeer {
+.section__wrapper {
     background-color: white;
 }
 .section__wrapper--title {
@@ -64,7 +64,6 @@ img:not([src]) {
     }
 }
 
-
 /* TOP STORY ELEMENTS ONLY */
 .top-story__wrapper {
     display: flex;
@@ -72,7 +71,6 @@ img:not([src]) {
     gap: 20px;
     font-family: Arial, Helvetica, sans-serif;
     background-color: white;
-    padding: 20px;
 }
 .top-story__image {
     max-height: 500px;
@@ -86,11 +84,6 @@ img:not([src]) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-.top-story__data--divider {
-    width: 10%;
-    max-width: 100px;
-    margin: 15px 0;
 }
 
 /* STORY SECTION-ONLY ELEMENTS (Health News, Education, Local-State) */
@@ -134,6 +127,9 @@ LAPTOPS, DESKTOPS AND LARGER SCREENS
         flex-direction: row;
         align-items: stretch;
         justify-content: center;
+    }
+    .responsive--topStory {
+        max-width: 50%;
     }
     .article__image {
         width: 100%;
