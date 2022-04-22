@@ -250,7 +250,7 @@
         async function slideupSubmitToApi(data) {
             try {
                 document.getElementById('slideup__submitStatus').innerHTML = "We're signing you up."
-                const response = await fetch('https://api.wusf.digital/mailchimp/subscribeNewsletter', {
+                const response = await fetch('https://api.wusf.digital/mailchimp/subscribeNewsletter?useCase=slideup', {
                 method: 'PUT',
                 headers: {
                     'Accept': 'application/json',
