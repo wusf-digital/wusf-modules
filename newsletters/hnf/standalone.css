@@ -1,0 +1,77 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    margin: 0; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    z-index: 1;
+}
+
+img.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    opacity: 0.6;
+    z-index: 2;
+}
+
+.hnf-container-fluid {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3;
+}
+
+.hnf-signup-text {
+    color: white;
+}
+
+form.hnf-form-container {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+}
+
+form.hnf-form-container > div {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+input[type=email] {
+    border-radius: 20px;
+    height: 3rem;
+    border-color: black;
+    border-width: 2px;
+    padding: 0 10px;
+    font-size: 1.4rem;
+}
+
+input::placeholder {
+    font-size: 1.4rem;
+}
+
+button#newsletterButton {
+    all: unset;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translate(-50%, -50%);
+}
+
+#submitStatus {
+    font-weight: bold;
+}

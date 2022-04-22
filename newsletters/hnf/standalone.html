@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="standalone.css">
+    <!-- FontAwesomeIcons -->
+    <script src="https://kit.fontawesome.com/1d3d662423.js" crossorigin="anonymous"></script>
+    <script src="standalone.js" defer></script>
+    <title>Sign up for Health News Florida</title>
+</head>
+<body>
+    <img class="background" src="background.jpg" alt="Background Image for Health News Florida" />
+    <div class="hnf-container-fluid">
+        <h1 class="hnf-signup-text">Sign up for the Health News Florida newsletter</h1>
+        <form class="hnf-form-container" id="signUp">
+            <div>
+                <input type="email" 
+                class="form-control" 
+                id="inputEmail" 
+                aria-describedby="emailHelp" 
+                autocomplete="off"
+                placeholder="Enter your email">
+                <button id="newsletterButton" type="submit">
+                    <i class="fas fa-arrow-right-long fa-2xl"></i>
+                </button>
+            </div>
+            
+        </form>
+        <p id="submitStatus"></p>
+    </div>
+</body>
+</html>
