@@ -6,7 +6,6 @@ html {
 body {
     position: relative;
     width: 100%;
-    height: 100vh;
     margin: 0; 
     display: flex;
     flex-direction: column;
@@ -18,6 +17,10 @@ body {
         rgba(0, 0, 0, 0.5)), 
         url(background.jpg);
     background-size: cover;
+}
+
+html, body {
+    height: 100%;
 }
 
 .hnf-container-fluid {
