@@ -13,20 +13,14 @@ body {
     justify-content: center;
     align-content: center;
     z-index: 1;
-}
-
-img.background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    opacity: 0.6;
-    z-index: 2;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)), 
+        url(background.jpg);
+    background-size: cover;
 }
 
 .hnf-container-fluid {
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,16 +29,18 @@ img.background {
 
 .hnf-signup-text {
     color: white;
+    text-align: center;
+    font-size: 1.5rem;
 }
 
 form.hnf-form-container {
     display: flex;
     justify-content: center;
-    width: 90%;
+    width: 95%;
 }
 
 form.hnf-form-container > div {
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -55,8 +51,10 @@ input[type=email] {
     height: 3rem;
     border-color: black;
     border-width: 2px;
+    border-style: solid;
     padding: 0 10px;
     font-size: 1.4rem;
+    padding-inline-end: 50px;
 }
 
 input::placeholder {
@@ -67,11 +65,21 @@ button#newsletterButton {
     all: unset;
     cursor: pointer;
     position: absolute;
-    top: 50%;
-    right: 0%;
+    inset-block-start: 50%;
+    inset-inline-end: 0%;
     transform: translate(-50%, -50%);
 }
 
 #submitStatus {
     font-weight: bold;
+}
+
+@media (min-width: 992px) {
+    form.hnf-form-container > div {
+        width: 50%;
+    }
+
+    .hnf-signup-text {
+        font-size: 2rem;
+    }
 }
