@@ -42,10 +42,10 @@ getData('https://api.wusf.digital/grove/healthNewsFlorida')
             healthNewsDescription3.innerHTML = res[2].description[0]
             healthNewsDescription4.innerHTML = res[3].description[0]
 
-            healthNewsImage1.src = res[0]['media:content'][0].$.url
-            healthNewsImage2.src = res[1]['media:content'][0].$.url
-            healthNewsImage3.src = res[2]['media:content'][0].$.url
-            healthNewsImage4.src = res[3]['media:content'][0].$.url
+            healthNewsImage1.src = res[0]['media:content']?.[0].$.url ?? 'https://www.radio.net/images/broadcasts/4a/85/29021/c300.png'
+            healthNewsImage2.src = res[1]['media:content']?.[0].$.url ?? 'https://www.radio.net/images/broadcasts/4a/85/29021/c300.png'
+            healthNewsImage3.src = res[2]['media:content']?.[0].$.url ?? 'https://www.radio.net/images/broadcasts/4a/85/29021/c300.png'
+            healthNewsImage4.src = res[3]['media:content']?.[0].$.url ?? 'https://www.radio.net/images/broadcasts/4a/85/29021/c300.png'
 
             healthNewsHeadlineLink1.href = res[0].link[0]
             healthNewsHeadlineLink2.href = res[1].link[0]

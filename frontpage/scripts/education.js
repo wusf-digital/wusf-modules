@@ -42,10 +42,10 @@ getData('https://api.wusf.digital/grove/education')
             educationDescription3.innerHTML = res[2].description[0]
             educationDescription4.innerHTML = res[3].description[0]
 
-            educationImage1.src = res[0]['media:content'][0].$.url
-            educationImage2.src = res[1]['media:content'][0].$.url
-            educationImage3.src = res[2]['media:content'][0].$.url
-            educationImage4.src = res[3]['media:content'][0].$.url
+            educationImage1.src = res[0]['media:content']?.[0].$.url ?? 'https://www.radio.net/images/broadcasts/4a/85/29021/c300.png'
+            educationImage2.src = res[1]['media:content']?.[0].$.url ?? 'https://www.radio.net/images/broadcasts/4a/85/29021/c300.png'
+            educationImage3.src = res[2]['media:content']?.[0].$.url ?? 'https://www.radio.net/images/broadcasts/4a/85/29021/c300.png'
+            educationImage4.src = res[3]['media:content']?.[0].$.url ?? 'https://www.radio.net/images/broadcasts/4a/85/29021/c300.png'
 
             educationHeadlineLink1.href = res[0].link[0]
             educationHeadlineLink2.href = res[1].link[0]

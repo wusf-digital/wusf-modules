@@ -26,7 +26,7 @@ getData('https://api.wusf.digital/grove/topStory')
                         topStoryButtonLink.href = res[0].link[0]
                         topStoryButtonLink.classList.add('button__read-more')
                         topStoryButtonLink.textContent = 'READ MORE'
-                        topStoryImage.src = res[0]['media:content'][0].$.url
+                        topStoryImage.src = res[0]['media:content']?.[0].$.url ?? 'https://www.radio.net/images/broadcasts/4a/85/29021/c300.png'
                     }
                 ).catch(
                     err => {
@@ -47,7 +47,7 @@ getData('https://api.wusf.digital/grove/topStory')
             topStoryButtonLink.href = res[0].link[0]['$text']
             topStoryButtonLink.classList.add('button__read-more')
             topStoryButtonLink.textContent = 'READ MORE'
-            topStoryImage.src = res[0].image[0].src
+            topStoryImage.src = res[0].image[0]?.src ?? 'https://www.radio.net/images/broadcasts/4a/85/29021/c300.png'
         }
     )
     .catch(

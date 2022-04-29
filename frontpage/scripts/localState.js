@@ -36,9 +36,9 @@ getData('https://api.wusf.digital/grove/localState')
             localStateDescription2.innerHTML = res[1].description[0]
             localStateDescription3.innerHTML = res[2].description[0]
 
-            localStateImage1.src = res[0]['media:content'][0].$.url
-            localStateImage2.src = res[1]['media:content'][0].$.url
-            localStateImage3.src = res[2]['media:content'][0].$.url
+            localStateImage1.src = res[0]['media:content']?.[0].$.url ?? 'https://www.radio.net/images/broadcasts/4a/85/29021/c300.png'
+            localStateImage2.src = res[1]['media:content']?.[0].$.url ?? 'https://www.radio.net/images/broadcasts/4a/85/29021/c300.png'
+            localStateImage3.src = res[2]['media:content']?.[0].$.url ?? 'https://www.radio.net/images/broadcasts/4a/85/29021/c300.png'
 
             localStateHeadlineLink1.href = res[0].link[0]
             localStateHeadlineLink2.href = res[1].link[0]
