@@ -1,0 +1,20 @@
+{
+  "name": "podcasts",
+  "source": ["src/zest.html"],
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lit": "^2.2.2",
+    "moment": "^2.29.3"
+  },
+  "devDependencies": {
+    "parcel": "^2.5.0",
+    "parcel-namer-hashless": "^1.0.3"
+  }
+}

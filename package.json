@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "lit": "^2.2.2",
+    "preact-custom-element": "^4.2.1",
     "stripe": "^8.210.0"
   }
 }
