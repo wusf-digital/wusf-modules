@@ -1,0 +1,21 @@
+{
+  "name": "weather",
+  "version": "1.0.0",
+  "source": [
+    "src/index.html"
+  ],
+  "description": "",
+  "scripts": {
+    "start": "parcel --dist-dir src/dist --open",
+    "build": "parcel build --public-url ./ --dist-dir ./ --no-content-hash"
+  },
+  "author": "Raymond Hawthorne",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.5.0"
+  },
+  "dependencies": {
+    "lit": "^2.2.3",
+    "moment": "^2.29.3"
+  }
+}
