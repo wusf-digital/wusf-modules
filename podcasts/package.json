@@ -1,6 +1,6 @@
 {
   "name": "podcasts",
-  "source": ["src/zest.html"],
+  "source": ["src/zest.html", "src/latestFrontPage.html"],
   "version": "1.0.0",
   "description": "",
   "scripts": {
