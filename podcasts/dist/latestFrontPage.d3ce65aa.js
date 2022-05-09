@@ -535,21 +535,21 @@ var _moment = require("moment");
 var _momentDefault = parcelHelpers.interopDefault(_moment);
 class ZestFrontPageLatest extends _lit.LitElement {
     static properties = {
-        data: {
+        _data: {
             type: Object,
             state: true
         },
-        slug: {
-            type: String,
-            state: true
+        _episodeId: {
+            type: String
         },
-        episodeId: {
-            type: String,
-            state: true
+        _audioIFrame: {
+            type: String
         },
-        audioIFrame: {
-            type: String,
-            state: true
+        _listenLink: {
+            type: String
+        },
+        episodePage: {
+            type: String
         }
     };
     static styles = _lit.css`
@@ -557,7 +557,6 @@ class ZestFrontPageLatest extends _lit.LitElement {
             font-family: 'Josefin Sans', sans-serif;
             font-weight: 200;
             font-size: 20px;
-            font-style: normal;
             line-height: 22px;
             color: #383838;
         }
@@ -583,6 +582,8 @@ class ZestFrontPageLatest extends _lit.LitElement {
             font-size: 60px;
             line-height: 1.4em;
             color: #f26522;
+            font-weight: normal;
+            text-align: center;
         }
         .podcast__button--container {
             text-align: center;
@@ -608,34 +609,35 @@ class ZestFrontPageLatest extends _lit.LitElement {
         let response = await fetch('https://api-dev.wusf.digital/simplecast/podcast/episodes?id=cdfdaf53-a865-42d5-9203-dfb29dda73f0');
         response = await response.json();
         const episodeId = response[0].id;
+        const slug = response[0].slug;
         this._episodeId = episodeId;
         this._audioIframe = `https://player.simplecast.com/${episodeId}?dark=false`;
-        this._slug = response[0].slug;
+        this.episodePage = `https://thezestpodcast.com/${slug}`;
         let episodeResponse = await fetch(`https://api-dev.wusf.digital/simplecast/episode?id=${episodeId}`);
         episodeResponse = await episodeResponse.json();
-        this.data = episodeResponse;
+        this._data = episodeResponse;
     }
     constructor(){
         super();
-        this.data = {};
+        this._data = {};
         this._episodeId = '';
-        this._slug = '';
+        this.episodePage = '';
         this._audioIframe = '';
+        this._listenLink = 'https://thezestpodcast.com/how-to-listen-to-a-podcast/';
     }
     render() {
         return _lit.html`
             <section>
-                <h1 class="podcast__title">${this.data?.title}</h1>
+                <h1 class="podcast__title">
+                    <a .href=${this.episodePage} rel="noreferrer noopener">${this._data?.title}</a>
+                </h1>
                 <iframe data-tf-not-load="1" frameborder="no" scrolling="no" seamless="" .src=${this._audioIframe}></iframe>
-                <p><strong>${_momentDefault.default(this.data?.publishedDate).format('MMMM D, YYYY')}</strong></p>
+                <p><strong>${_momentDefault.default(this._data?.publishedDate).format('MMMM D, YYYY')}</strong></p>
                 <p class="podcast__button--container">
-                    <a class="podcast__button href="https://thezestpodcast.com/how-to-listen-to-a-podcast/">
-                        Subscribe To The Zest Podcast
-                    </a>
+                    <a class="podcast__button" href=${this._listenLink} rel="noreferrer noopener">Subscribe To The Zest Podcast</a>
                 </p>
                 <div class="divider"></div>
-                <p .innerHTML=${this.data?.descriptionLong}></p>
-            <p>${this._slug}</p>
+                <p .innerHTML=${this._data?.descriptionLong}></p>
             </section>
         `;
     }
