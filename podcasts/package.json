@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "parcel",
-    "build": "parcel build"
+    "start": "parcel --dist-dir src/dist --open",
+    "build": "parcel build --public-url ./ --dist-dir ./ --no-content-hash"
   },
   "author": "",
   "license": "ISC",
