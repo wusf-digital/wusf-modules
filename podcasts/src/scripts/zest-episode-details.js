@@ -1,13 +1,12 @@
 import { LitElement, html, css } from "lit"
 import moment from 'moment'
 
-export class ZestFrontPageLatest extends LitElement {
+export class ZestEpisodeDetails extends LitElement {
     static properties = {
         _data: { type: Object, state: true },
-        _episodeId: { type: String },
-        _audioIFrame: { type: String },
-        _listenLink: { type: String },
-        episodePage: { type: String },
+        _audioIFrame: { type: String, state: true },
+        listenLink: { type: String },
+        _episodePage: { type: String, state: true },
     }
 
     static styles = css`
@@ -17,6 +16,10 @@ export class ZestFrontPageLatest extends LitElement {
             font-size: 20px;
             line-height: 22px;
             color: #383838;
+        }
+        .episode__image {
+            width: 100%;
+            height: auto;
         }
         a {
             text-decoration: none;
@@ -65,13 +68,16 @@ export class ZestFrontPageLatest extends LitElement {
     `
 
     async firstUpdated() {
+        // Get slugs and episode IDs from the podcast
         let response = await fetch('https://api-dev.wusf.digital/simplecast/podcast/episodes?id=cdfdaf53-a865-42d5-9203-dfb29dda73f0')
         response = await response.json()
         const episodeId = response[0].id
         const slug = response[0].slug
         this._episodeId = episodeId
         this._audioIframe = `https://player.simplecast.com/${episodeId}?dark=false`
-        this.episodePage = `https://thezestpodcast.com/${slug}`
+        this._episodePage = `https://thezestpodcast.com/${slug}`
+
+        // Get episode-specific data
         let episodeResponse = await fetch(`https://api-dev.wusf.digital/simplecast/episode?id=${episodeId}`)
         episodeResponse = await episodeResponse.json()
         this._data = episodeResponse
@@ -80,28 +86,34 @@ export class ZestFrontPageLatest extends LitElement {
     constructor() {
         super()
         this._data = {}
-        this._episodeId = ''
-        this.episodePage = ''
+        this._episodePage = ''
         this._audioIframe = ''
-        this._listenLink = 'https://thezestpodcast.com/how-to-listen-to-a-podcast/'
+        this.listenLink = 'https://thezestpodcast.com/how-to-listen-to-a-podcast/'
     }
 
     render() {
-        return html`
+        return Object.keys(this._data).length > 0 ? 
+        html`
             <section>
+                <img 
+                    src=${this._data.episodeImageUrl ?? this._data.podcastImageUrl}
+                    class="episode__image"
+                    alt="The Zest Podcast Logo"
+
+                >
                 <h1 class="podcast__title">
-                    <a .href=${this.episodePage} rel="noreferrer noopener">${this._data?.title}</a>
+                    <a .href=${this.episodePage} rel="noreferrer noopener">${this._data.title}</a>
                 </h1>
                 <iframe data-tf-not-load="1" frameborder="no" scrolling="no" seamless="" .src=${this._audioIframe}></iframe>
-                <p><strong>${moment(this._data?.publishedDate).format('MMMM D, YYYY')}</strong></p>
+                <p><strong>${moment(this._data.publishedDate).format('MMMM D, YYYY')}</strong></p>
                 <p class="podcast__button--container">
-                    <a class="podcast__button" href=${this._listenLink} rel="noreferrer noopener">Subscribe To The Zest Podcast</a>
+                    <a class="podcast__button" href=${this.listenLink} rel="noreferrer noopener">Subscribe To The Zest Podcast</a>
                 </p>
                 <div class="divider"></div>
-                <p .innerHTML=${this._data?.descriptionLong}></p>
+                <p .innerHTML=${this._data.descriptionLong}></p>
             </section>
-        `
+        ` : html``
     }
 }
 
-customElements.define('zest-frontpage-latest', ZestFrontPageLatest)
+customElements.define('zest-episode-details', ZestEpisodeDetails)

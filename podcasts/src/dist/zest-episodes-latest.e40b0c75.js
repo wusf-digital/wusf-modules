@@ -142,13 +142,13 @@
       this[globalName] = mainExports;
     }
   }
-})({"iDw0C":[function(require,module,exports) {
+})({"4Ap4W":[function(require,module,exports) {
 "use strict";
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "a73632be26c66563";
+module.bundle.HMR_BUNDLE_ID = "02a22b68e40b0c75";
 function _toConsumableArray(arr) {
     return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
 }
@@ -525,7 +525,7 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"4SaXD":[function(require,module,exports) {
+},{}],"1dE8W":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ZestEpisodesLatest", ()=>ZestEpisodesLatest
@@ -535,7 +535,7 @@ var _moment = require("moment");
 var _momentDefault = parcelHelpers.interopDefault(_moment);
 class ZestEpisodesLatest extends _lit.LitElement {
     static properties = {
-        data: {
+        _data: {
             type: Array,
             state: true
         }
@@ -594,20 +594,20 @@ class ZestEpisodesLatest extends _lit.LitElement {
     async firstUpdated() {
         let response = await fetch('https://api-dev.wusf.digital/simplecast/podcast/episodes?id=cdfdaf53-a865-42d5-9203-dfb29dda73f0');
         response = await response.json();
-        this.data = response.slice(0, 6);
+        this._data = response.slice(0, 6);
     }
     constructor(){
         super();
-        this.data = [];
+        this._data = [];
     }
     render() {
-        return _lit.html`
+        return this._data.length > 0 ? _lit.html`
             <main>
                 <h1>Latest Episodes</h1>
-                ${this.data.map((podcast)=>{
+                ${this._data.map((podcast)=>{
             return _lit.html`
                         <article class="card">
-                            <img class="card__image" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png">
+                            <img class="card__image" src=${podcast.episodeImageUrl ?? "https://image.simplecastcdn.com/images/be36e542-b186-4b9b-a6bb-6896fd6492ae/9404af68-88bf-4ca3-a523-a5ec59058405/the-zest-logo.jpg"}>
                             <section class="card__container">
                                 <p class="card__container--title">${podcast.title}</p>
                                 <p class="card__container--date">${_momentDefault.default(podcast.publishedDate).format('MMMM D, YYYY')}</p>
@@ -616,7 +616,7 @@ class ZestEpisodesLatest extends _lit.LitElement {
                     `;
         })}
             </main>
-        `;
+        ` : _lit.html``;
     }
 }
 customElements.define('zest-episodes-latest', ZestEpisodesLatest);
@@ -5039,6 +5039,6 @@ const h = {
     return hooks;
 });
 
-},{}]},["iDw0C","4SaXD"], "4SaXD", "parcelRequirebbd5")
+},{}]},["4Ap4W","1dE8W"], "1dE8W", "parcelRequirebbd5")
 
-//# sourceMappingURL=zest.26c66563.js.map
+//# sourceMappingURL=zest-episodes-latest.e40b0c75.js.map

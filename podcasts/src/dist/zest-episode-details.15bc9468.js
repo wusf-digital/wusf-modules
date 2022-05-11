@@ -142,13 +142,13 @@
       this[globalName] = mainExports;
     }
   }
-})({"iDw0C":[function(require,module,exports) {
+})({"8M73e":[function(require,module,exports) {
 "use strict";
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "a73632be26c66563";
+module.bundle.HMR_BUNDLE_ID = "3ebce9e615bc9468";
 function _toConsumableArray(arr) {
     return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
 }
@@ -525,101 +525,134 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"4SaXD":[function(require,module,exports) {
+},{}],"3mcfA":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "ZestEpisodesLatest", ()=>ZestEpisodesLatest
+parcelHelpers.export(exports, "ZestEpisodeDetails", ()=>ZestEpisodeDetails
 );
 var _lit = require("lit");
 var _moment = require("moment");
 var _momentDefault = parcelHelpers.interopDefault(_moment);
-class ZestEpisodesLatest extends _lit.LitElement {
+class ZestEpisodeDetails extends _lit.LitElement {
     static properties = {
-        data: {
-            type: Array,
+        _data: {
+            type: Object,
+            state: true
+        },
+        _audioIFrame: {
+            type: String,
+            state: true
+        },
+        listenLink: {
+            type: String
+        },
+        _episodePage: {
+            type: String,
             state: true
         }
     };
     static styles = _lit.css`
-        main {
+        section {
             font-family: 'Josefin Sans', sans-serif;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 10px;
-            background-color: #D4F4ED;
-            border-top: 2px solid #3A7168;
-        }
-        h1 {
-            flex-basis: 100%;
-            font-size: 50px;
-            font-weight: 700;
-            color: #3A7168;
-        }
-        article.card {
-            flex: 1;
-            border-radius: 5px;
-            background-color: white;
-            display: flex;
-            flex-direction: column;
-        }
-        article.card {
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-            transition: 0.3s;
-        }
-        article.card:hover {
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-        }
-        img.card__image {
-            height: 350px;
-            border-start-start-radius: 5px;
-            border-start-end-radius: 5px;
-        }
-        section.card__container {
-            padding: 15px;
-        }
-        p.card__container--title {
-            font-weight: 400;
-            color: #F26522;
-            font-size: 25px;
-        }
-        p.card__container--date {
-            font-weight: 300;
-            font-size: 1.1rem;
+            font-weight: 200;
+            font-size: 20px;
+            line-height: 22px;
             color: #383838;
+        }
+        .episode__image {
+            width: 100%;
+            height: auto;
+        }
+        a {
+            text-decoration: none;
+            color: #f26522;
+        }
+        a:hover {
+            color: rgb(58, 113, 104);
+        } 
+        p {
+            margin-bottom: 1.3em;
+        }
+        li {
+            padding: 0;
+            margin-bottom: 1em;
+        }
+        iframe {
+            height: 200px;
+            width: 100%;
+        }
+        .podcast__title {
+            font-size: 60px;
+            line-height: 1.4em;
+            color: #f26522;
+            font-weight: normal;
             text-align: center;
+        }
+        .podcast__button--container {
+            text-align: center;
+            font-weight: bold;
+        }
+        .podcast__button {
+            cursor: pointer;
+            color: white;
+            background-color: #f26522;
+            padding: 0.625em 1.25em;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .podcast__button:hover {
+            color: white;
+        }
+        .divider {
+            border-bottom: 1px solid #f26522;
+            margin-top: 2em;
         }
     `;
     async firstUpdated() {
+        // Get slugs and episode IDs from the podcast
         let response = await fetch('https://api-dev.wusf.digital/simplecast/podcast/episodes?id=cdfdaf53-a865-42d5-9203-dfb29dda73f0');
         response = await response.json();
-        this.data = response.slice(0, 6);
+        const episodeId = response[0].id;
+        const slug = response[0].slug;
+        this._episodeId = episodeId;
+        this._audioIframe = `https://player.simplecast.com/${episodeId}?dark=false`;
+        this._episodePage = `https://thezestpodcast.com/${slug}`;
+        // Get episode-specific data
+        let episodeResponse = await fetch(`https://api-dev.wusf.digital/simplecast/episode?id=${episodeId}`);
+        episodeResponse = await episodeResponse.json();
+        this._data = episodeResponse;
     }
     constructor(){
         super();
-        this.data = [];
+        this._data = {};
+        this._episodePage = '';
+        this._audioIframe = '';
+        this.listenLink = 'https://thezestpodcast.com/how-to-listen-to-a-podcast/';
     }
     render() {
-        return _lit.html`
-            <main>
-                <h1>Latest Episodes</h1>
-                ${this.data.map((podcast)=>{
-            return _lit.html`
-                        <article class="card">
-                            <img class="card__image" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png">
-                            <section class="card__container">
-                                <p class="card__container--title">${podcast.title}</p>
-                                <p class="card__container--date">${_momentDefault.default(podcast.publishedDate).format('MMMM D, YYYY')}</p>
-                            </section>
-                        </article>
-                    `;
-        })}
-            </main>
-        `;
+        return Object.keys(this._data).length > 0 ? _lit.html`
+            <section>
+                <img 
+                    src=${this._data.episodeImageUrl ?? this._data.podcastImageUrl}
+                    class="episode__image"
+                    alt="The Zest Podcast Logo"
+
+                >
+                <h1 class="podcast__title">
+                    <a .href=${this.episodePage} rel="noreferrer noopener">${this._data.title}</a>
+                </h1>
+                <iframe data-tf-not-load="1" frameborder="no" scrolling="no" seamless="" .src=${this._audioIframe}></iframe>
+                <p><strong>${_momentDefault.default(this._data.publishedDate).format('MMMM D, YYYY')}</strong></p>
+                <p class="podcast__button--container">
+                    <a class="podcast__button" href=${this.listenLink} rel="noreferrer noopener">Subscribe To The Zest Podcast</a>
+                </p>
+                <div class="divider"></div>
+                <p .innerHTML=${this._data.descriptionLong}></p>
+            </section>
+        ` : _lit.html``;
     }
 }
-customElements.define('zest-episodes-latest', ZestEpisodesLatest);
+customElements.define('zest-episode-details', ZestEpisodeDetails);
 
 },{"lit":"4antt","moment":"jwcsj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4antt":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -5039,6 +5072,6 @@ const h = {
     return hooks;
 });
 
-},{}]},["iDw0C","4SaXD"], "4SaXD", "parcelRequirebbd5")
+},{}]},["8M73e","3mcfA"], "3mcfA", "parcelRequirebbd5")
 
-//# sourceMappingURL=zest.26c66563.js.map
+//# sourceMappingURL=zest-episode-details.15bc9468.js.map

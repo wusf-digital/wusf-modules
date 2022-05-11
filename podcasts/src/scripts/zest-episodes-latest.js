@@ -1,9 +1,9 @@
 import { LitElement, html, css } from 'lit';
 import moment from 'moment';
 
-export class WusfPodcasts extends LitElement {
+export class ZestEpisodesLatest extends LitElement {
     static properties = {
-        data: { type: Array, state: true }
+        _data: { type: Array, state: true }
     }
 
     static styles = css`
@@ -61,22 +61,23 @@ export class WusfPodcasts extends LitElement {
     async firstUpdated() {
         let response = await fetch('https://api-dev.wusf.digital/simplecast/podcast/episodes?id=cdfdaf53-a865-42d5-9203-dfb29dda73f0')
         response = await response.json()
-        this.data = response.slice(0, 6)
+        this._data = response.slice(0, 6)
     }
 
     constructor() {
         super()
-        this.data = []
+        this._data = []
     }
 
     render() {
-        return html`
+        return this._data.length > 0 ?
+        html`
             <main>
                 <h1>Latest Episodes</h1>
-                ${this.data.map(podcast => {
+                ${this._data.map(podcast => {
                     return html`
                         <article class="card">
-                            <img class="card__image" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png">
+                            <img class="card__image" src=${podcast.episodeImageUrl ?? "https://image.simplecastcdn.com/images/be36e542-b186-4b9b-a6bb-6896fd6492ae/9404af68-88bf-4ca3-a523-a5ec59058405/the-zest-logo.jpg"}>
                             <section class="card__container">
                                 <p class="card__container--title">${podcast.title}</p>
                                 <p class="card__container--date">${moment(podcast.publishedDate).format('MMMM D, YYYY')}</p>
@@ -85,8 +86,8 @@ export class WusfPodcasts extends LitElement {
                     `
                 })}
             </main>
-        `
+        ` : html``
     }
 }
 
-customElements.define('wusf-podcasts', WusfPodcasts)
+customElements.define('zest-episodes-latest', ZestEpisodesLatest)
