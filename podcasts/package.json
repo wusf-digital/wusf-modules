@@ -1,7 +1,7 @@
 {
   "name": "podcasts",
   "source": [
-    "src/zest-episodes-latest.html", 
+    "src/zest-episodes.html", 
     "src/zest-episode-details.html", 
     "src/zest-frontpage-latest.html"
   ],

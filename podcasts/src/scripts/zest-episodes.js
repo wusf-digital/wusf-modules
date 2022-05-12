@@ -1,4 +1,14 @@
-function e(e){return e&&e.__esModule?e.default:e}var t="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:{},a={},r={},i=t.parcelRequirebbd5;null==i&&((i=function(e){if(e in a)return a[e].exports;if(e in r){var t=r[e];delete r[e];var i={id:e,exports:{}};return a[e]=i,t.call(i.exports,i,i.exports),i.exports}var s=new Error("Cannot find module '"+e+"'");throw s.code="MODULE_NOT_FOUND",s}).register=function(e,t){r[e]=t},t.parcelRequirebbd5=i);var s=i("800sp"),o=i("45fvw");class d extends s.LitElement{static properties={data:{type:Array,state:!0}};static styles=s.css`
+import { LitElement, html, css } from 'lit';
+import moment from 'moment';
+
+export class ZestEpisodes extends LitElement {
+    static properties = {
+        _data: { type: Array, state: true },
+        number: { type: Number },
+        title: { type: String }
+    }
+
+    static styles = css`
         main {
             font-family: 'Josefin Sans', sans-serif;
             display: flex;
@@ -48,18 +58,41 @@ function e(e){return e&&e.__esModule?e.default:e}var t="undefined"!=typeof globa
             color: #383838;
             text-align: center;
         }
-    `;async firstUpdated(){let e=await fetch("https://api-dev.wusf.digital/simplecast/podcast/episodes?id=cdfdaf53-a865-42d5-9203-dfb29dda73f0");e=await e.json(),this.data=e.slice(0,6)}constructor(){super(),this.data=[]}render(){return s.html`
+    `
+
+    async firstUpdated() {
+        let response = await fetch(`https://api-dev.wusf.digital/simplecast/podcast/episodes?id=cdfdaf53-a865-42d5-9203-dfb29dda73f0&limit=${this.number}`)
+        response = await response.json()
+        //this._data = response.slice(0, 6)
+        this._data = response
+    }
+
+    constructor() {
+        super()
+        this._data = []
+        this.number = 0
+        this.title = ''
+    }
+
+    render() {
+        return this._data.length > 0 ?
+        html`
             <main>
-                <h1>Latest Episodes</h1>
-                ${this.data.map((t=>s.html`
+                <h1>${this.title}</h1>
+                ${this._data.map(podcast => {
+                    return html`
                         <article class="card">
-                            <img class="card__image" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png">
+                            <img class="card__image" src=${podcast.episodeImageUrl ?? "https://image.simplecastcdn.com/images/be36e542-b186-4b9b-a6bb-6896fd6492ae/9404af68-88bf-4ca3-a523-a5ec59058405/the-zest-logo.jpg"}>
                             <section class="card__container">
-                                <p class="card__container--title">${t.title}</p>
-                                <p class="card__container--date">${e(o)(t.publishedDate).format("MMMM D, YYYY")}</p>
+                                <p class="card__container--title">${podcast.title}</p>
+                                <p class="card__container--date">${moment(podcast.publishedDate).format('MMMM D, YYYY')}</p>
                             </section>
                         </article>
-                    `))}
+                    `
+                })}
             </main>
-        `}}customElements.define("wusf-podcasts",d);
-//# sourceMappingURL=zest.86a1d39c.js.map
+        ` : html``
+    }
+}
+
+customElements.define('zest-episodes', ZestEpisodes)
