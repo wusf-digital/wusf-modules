@@ -1,4 +1,4 @@
-var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:{},t={},i={},s=e.parcelRequirebbd5;null==s&&((s=function(e){if(e in t)return t[e].exports;if(e in i){var s=i[e];delete i[e];var a={id:e,exports:{}};return t[e]=a,s.call(a.exports,a,a.exports),a.exports}var o=new Error("Cannot find module '"+e+"'");throw o.code="MODULE_NOT_FOUND",o}).register=function(e,t){i[e]=t},e.parcelRequirebbd5=s);var a=s("800sp");class o extends a.LitElement{static properties={_data:{type:Object,state:!0},_episodePage:{type:String,state:!0}};static styles=a.css`
+var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:{},t={},i={},s=e.parcelRequirebbd5;null==s&&((s=function(e){if(e in t)return t[e].exports;if(e in i){var s=i[e];delete i[e];var a={id:e,exports:{}};return t[e]=a,s.call(a.exports,a,a.exports),a.exports}var o=new Error("Cannot find module '"+e+"'");throw o.code="MODULE_NOT_FOUND",o}).register=function(e,t){i[e]=t},e.parcelRequirebbd5=s);var a=s("dpiPf");class o extends a.LitElement{static properties={_data:{type:Object,state:!0},_episodePage:{type:String,state:!0}};static styles=a.css`
         section {
             font-family: 'Josefin Sans', sans-serif;
             font-weight: 200;
@@ -35,4 +35,3 @@ var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"u
                     alt="Episode Image">
             </section>
         `:a.html``}}customElements.define("zest-frontpage-latest",o);
-//# sourceMappingURL=zest-frontpage-latest.0e5751f3.js.map

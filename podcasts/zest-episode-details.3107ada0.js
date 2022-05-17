@@ -1,4 +1,4 @@
-function t(t){return t&&t.__esModule?t.default:t}var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:{},i={},o={},s=e.parcelRequirebbd5;null==s&&((s=function(t){if(t in i)return i[t].exports;if(t in o){var e=o[t];delete o[t];var s={id:t,exports:{}};return i[t]=s,e.call(s.exports,s,s.exports),s.exports}var a=new Error("Cannot find module '"+t+"'");throw a.code="MODULE_NOT_FOUND",a}).register=function(t,e){o[t]=e},e.parcelRequirebbd5=s);var a=s("800sp"),r=s("45fvw");class n extends a.LitElement{static properties={_data:{type:Object,state:!0},_audioIFrame:{type:String,state:!0},listenLink:{type:String},_episodePage:{type:String,state:!0}};static styles=a.css`
+function t(t){return t&&t.__esModule?t.default:t}var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:{},i={},o={},s=e.parcelRequirebbd5;null==s&&((s=function(t){if(t in i)return i[t].exports;if(t in o){var e=o[t];delete o[t];var s={id:t,exports:{}};return i[t]=s,e.call(s.exports,s,s.exports),s.exports}var a=new Error("Cannot find module '"+t+"'");throw a.code="MODULE_NOT_FOUND",a}).register=function(t,e){o[t]=e},e.parcelRequirebbd5=s);var a=s("dpiPf"),r=s("iwzak");class n extends a.LitElement{static properties={_data:{type:Object,state:!0},_audioIFrame:{type:String,state:!0},listenLink:{type:String},_episodePage:{type:String,state:!0}};static styles=a.css`
         section {
             font-family: 'Josefin Sans', sans-serif;
             font-weight: 200;
@@ -63,7 +63,7 @@ function t(t){return t&&t.__esModule?t.default:t}var e="undefined"!=typeof globa
 
                 >
                 <h1 class="podcast__title">
-                    <a .href=${this.episodePage} rel="noreferrer noopener">${this._data.title}</a>
+                    <a .href=${this._episodePage} rel="noreferrer noopener">${this._data.title}</a>
                 </h1>
                 <iframe data-tf-not-load="1" frameborder="no" scrolling="no" seamless="" .src=${this._audioIframe}></iframe>
                 <p><strong>${t(r)(this._data.publishedDate).format("MMMM D, YYYY")}</strong></p>
@@ -74,4 +74,3 @@ function t(t){return t&&t.__esModule?t.default:t}var e="undefined"!=typeof globa
                 <p .innerHTML=${this._data.descriptionLong}></p>
             </section>
         `:a.html``}}customElements.define("zest-episode-details",n);
-//# sourceMappingURL=zest-episode-details.5512cc07.js.map

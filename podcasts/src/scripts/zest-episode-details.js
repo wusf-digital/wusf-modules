@@ -102,7 +102,7 @@ export class ZestEpisodeDetails extends LitElement {
 
                 >
                 <h1 class="podcast__title">
-                    <a .href=${this.episodePage} rel="noreferrer noopener">${this._data.title}</a>
+                    <a .href=${this._episodePage} rel="noreferrer noopener">${this._data.title}</a>
                 </h1>
                 <iframe data-tf-not-load="1" frameborder="no" scrolling="no" seamless="" .src=${this._audioIframe}></iframe>
                 <p><strong>${moment(this._data.publishedDate).format('MMMM D, YYYY')}</strong></p>

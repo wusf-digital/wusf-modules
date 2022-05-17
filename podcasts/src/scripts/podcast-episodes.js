@@ -1,15 +1,17 @@
-import { LitElement, html, css } from 'lit';
-import moment from 'moment';
+import { LitElement, html, css } from 'lit'
+import moment from 'moment'
+import ApiRequest from '../../../utils/api.js'
 
-export class ZestEpisodes extends LitElement {
+export class PodcastEpisodes extends LitElement {
     static properties = {
         _data: { type: Array, state: true },
         number: { type: Number },
+        offset: { type: Number },
         title: { type: String }
     }
 
     static styles = css`
-        main {
+        section.episodes {
             font-family: 'Josefin Sans', sans-serif;
             display: flex;
             flex-direction: row;
@@ -18,6 +20,13 @@ export class ZestEpisodes extends LitElement {
             padding: 10px;
             background-color: #D4F4ED;
             border-top: 2px solid #3A7168;
+        }
+        a {
+            text-decoration: none;
+            color: #f26522;
+        }
+        a:hover {
+            color: rgb(58, 113, 104);
         }
         h1 {
             flex-basis: 100%;
@@ -44,7 +53,7 @@ export class ZestEpisodes extends LitElement {
             border-start-start-radius: 5px;
             border-start-end-radius: 5px;
         }
-        section.card__container {
+        .card__container {
             padding: 15px;
         }
         p.card__container--title {
@@ -60,39 +69,57 @@ export class ZestEpisodes extends LitElement {
         }
     `
 
-    async firstUpdated() {
-        let response = await fetch(`https://api-dev.wusf.digital/simplecast/podcast/episodes?id=cdfdaf53-a865-42d5-9203-dfb29dda73f0&limit=${this.number}`)
-        response = await response.json()
-        //this._data = response.slice(0, 6)
-        this._data = response
+    async getData() {
+        let response = new ApiRequest(`https://api-dev.wusf.digital/simplecast/podcast/episodes?id=cdfdaf53-a865-42d5-9203-dfb29dda73f0&limit=${this.number}&offset=${this.offset}`)
+        response = await response.get()
+
+        // Display the next multiple of 3 episodes
+        // (e.g. if 20 episodes are requested, we will load 21 episodes)
+        if (response.length % 3 !== 0) {
+            this.number = Math.ceil(response.length / 3) * 3
+        }
+        
+        this._data = response.slice(0, this.number)
+    }
+
+    updated(changed) {
+        if (changed.has('offset')) {
+            this.getData()
+            window.scrollTo(0,0)
+        }
     }
 
     constructor() {
         super()
         this._data = []
         this.number = 0
+        this.offset = 0
         this.title = ''
     }
 
     render() {
         return this._data.length > 0 ?
         html`
-            <main>
+            <section class="episodes">
                 <h1>${this.title}</h1>
                 ${this._data.map(podcast => {
                     return html`
                         <article class="card">
                             <img class="card__image" src=${podcast.episodeImageUrl ?? "https://image.simplecastcdn.com/images/be36e542-b186-4b9b-a6bb-6896fd6492ae/9404af68-88bf-4ca3-a523-a5ec59058405/the-zest-logo.jpg"}>
                             <section class="card__container">
-                                <p class="card__container--title">${podcast.title}</p>
+                                <p class="card__container--title">
+                                    <a .href="https://thezestpodcast.com/${podcast.slug}" rel="noreferrer noopener">
+                                        ${podcast.title}
+                                    </a>
+                                </p>
                                 <p class="card__container--date">${moment(podcast.publishedDate).format('MMMM D, YYYY')}</p>
                             </section>
                         </article>
                     `
                 })}
-            </main>
+            </section>
         ` : html``
     }
 }
 
-customElements.define('zest-episodes', ZestEpisodes)
+customElements.define('podcast-episodes', PodcastEpisodes)
