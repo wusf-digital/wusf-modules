@@ -1,15 +1,8 @@
-import { LitElement, html, css } from 'lit';
-import { range } from 'lit/directives/range.js';
-import { map } from 'lit/directives/map.js';
+import { LitElement, html, css } from "lit";
+import { map } from 'lit/directives/map.js'
+import { range } from 'lit/directives/range.js'
 
-import './podcast-episodes.js'
-
-export class ZestEpisodesAll extends LitElement {
-    static properties = {
-        limit: { type: Number },
-        offset: { type: Number }
-    }
-
+export class EpisodeSwitcher extends LitElement {
     static styles = css`
         ol {
             display: flex;
@@ -31,25 +24,25 @@ export class ZestEpisodesAll extends LitElement {
         ol li::before {
             content: counter(episode-counter);
             counter-reset: item;
-        }  
+        }
     `
 
-    constructor() {
-        super()
-        this.limit = 31
-        this.offset = 0
-    }
-
     _clickHandler(num) {
-        if (num === 1) { this.offset = 0 }
-        if (num === 2) { this.offset = 31 }
-        if (num === 3) { this.offset = 62 }
-        if (num === 4) { this.offset = 93 }
+        let offset
+        if (num === 1) { offset = 0 }
+        if (num === 2) { offset = 30 }
+        if (num === 3) { offset = 60 }
+        if (num === 4) { offset = 90 }
+
+        this.dispatchEvent(new CustomEvent('offset', { 
+            detail: offset, 
+            bubbles: true, 
+            composed: true 
+        }))
     }
 
     render() {
         return html`
-            <podcast-episodes number=${this.limit} offset=${this.offset} title="Episodes"></podcast-episodes>
             <ol>
                 ${map(range(4), num => html`<li @click=${() => this._clickHandler(num + 1)}></li>`)}
             </ol>
@@ -57,4 +50,4 @@ export class ZestEpisodesAll extends LitElement {
     }
 }
 
-customElements.define('zest-episodes-all', ZestEpisodesAll)
+customElements.define('episode-switcher', EpisodeSwitcher)

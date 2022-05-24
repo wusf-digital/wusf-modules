@@ -1,13 +1,19 @@
 import { LitElement, html, css } from "lit"
 
+import ApiRequest from '../../../utils/api.js'
+
 export class ZestFrontPageLatest extends LitElement {
     static properties = {
         _data: { type: Object, state: true },
         _episodePage: { type: String, state: true },
+        podcastId: { type: String }
     }
 
     static styles = css`
         section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             font-family: 'Josefin Sans', sans-serif;
             font-weight: 200;
             font-size: 20px;
@@ -35,23 +41,27 @@ export class ZestFrontPageLatest extends LitElement {
     `
 
     async firstUpdated() {
-        // Get slugs and episode IDs from the podcast
-        let response = await fetch('https://api-dev.wusf.digital/simplecast/podcast/episodes?id=cdfdaf53-a865-42d5-9203-dfb29dda73f0')
-        response = await response.json()
-        const episodeId = response[0].id
-        const slug = response[0].slug
-        this._episodePage = `https://thezestpodcast.com/${slug}`
+        if (this.podcastId) {
+            // Get slugs and episode IDs from the podcast
+            let response = new ApiRequest(`https://api-dev.wusf.digital/simplecast/podcast/episodes?id=${this.podcastId}`)
+            response = await response.get()
+            const episodeId = response[0].id
+            const slug = response[0].slug
+            this._episodePage = `https://thezestpodcast.com/${slug}`
 
-        // Get episode-specific data
-        let episodeResponse = await fetch(`https://api-dev.wusf.digital/simplecast/episode?id=${episodeId}`)
-        episodeResponse = await episodeResponse.json()
-        this._data = episodeResponse
+            // Get episode-specific data
+            let episodeResponse = new ApiRequest(`https://api-dev.wusf.digital/simplecast/episode?id=${episodeId}`)
+            episodeResponse = await episodeResponse.get()
+            this._data = episodeResponse
+        }
+        
     }
 
     constructor() {
         super()
         this._data = {}
         this._episodePage = ''
+        this.podcastId = ''
     }
 
     render() {

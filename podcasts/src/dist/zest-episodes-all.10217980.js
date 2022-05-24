@@ -531,9 +531,8 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ZestEpisodesAll", ()=>ZestEpisodesAll
 );
 var _lit = require("lit");
-var _rangeJs = require("lit/directives/range.js");
-var _mapJs = require("lit/directives/map.js");
 var _podcastEpisodesJs = require("./podcast-episodes.js");
+var _episodeSwitcherJs = require("./episode-switcher.js");
 class ZestEpisodesAll extends _lit.LitElement {
     static properties = {
         limit: {
@@ -541,56 +540,42 @@ class ZestEpisodesAll extends _lit.LitElement {
         },
         offset: {
             type: Number
+        },
+        podcastId: {
+            type: String
+        },
+        display: {
+            type: Boolean
         }
     };
     static styles = _lit.css`
-        ol {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 300;
-            list-style: none;
-            counter-reset: episode-counter;
-            padding: 0;
-        }
-        ol li {
-            display: inline;
-            counter-increment: episode-counter;
-            color: #F26522;
-            cursor: pointer;
-        }
-        ol li::before {
-            content: counter(episode-counter);
-            counter-reset: item;
-        }  
     `;
     constructor(){
         super();
-        this.limit = 31;
+        this.limit = 30;
         this.offset = 0;
-    }
-    _clickHandler(num) {
-        if (num === 1) this.offset = 0;
-        if (num === 2) this.offset = 31;
-        if (num === 3) this.offset = 62;
-        if (num === 4) this.offset = 93;
+        this.podcastId = '';
+        this.display = true;
     }
     render() {
         return _lit.html`
-            <podcast-episodes number=${this.limit} offset=${this.offset} title="Episodes"></podcast-episodes>
-            <ol>
-                ${_mapJs.map(_rangeJs.range(4), (num)=>_lit.html`<li @click=${()=>this._clickHandler(num + 1)
-            }></li>`
-        )}
-            </ol>
+            <podcast-episodes
+            podcastId=${this.podcastId}
+            number=${this.limit} 
+            offset=${this.offset}
+            @offset=${(e)=>this.offset = e.detail
+        }
+            title="Episodes"
+            @detailsPaneLoading=${()=>this.display = !this.display
+        }>
+                <episode-switcher ?hidden=${!this.display}></episode-switcher>
+            </podcast-episodes>
         `;
     }
 }
 customElements.define('zest-episodes-all', ZestEpisodesAll);
 
-},{"lit":"4antt","lit/directives/range.js":"bHK0i","lit/directives/map.js":"ejxgA","./podcast-episodes.js":"fPN4s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4antt":[function(require,module,exports) {
+},{"lit":"4antt","./podcast-episodes.js":"fPN4s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./episode-switcher.js":"67rG8"}],"4antt":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _reactiveElement = require("@lit/reactive-element");
@@ -1307,50 +1292,7 @@ const h = {
 };
 (null !== (o = globalThis.litElementVersions) && void 0 !== o ? o : globalThis.litElementVersions = []).push("3.2.0");
 
-},{"@lit/reactive-element":"hypet","lit-html":"1cmQt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bHK0i":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _rangeJs = require("lit-html/directives/range.js");
-parcelHelpers.exportAll(_rangeJs, exports);
-
-},{"lit-html/directives/range.js":"l9ILB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"l9ILB":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "range", ()=>o
-);
-/**
- * @license
- * Copyright 2021 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */ function* o(o2, l, n = 1) {
-    const t = void 0 === l ? 0 : o2;
-    null != l || (l = o2);
-    for(let o1 = t; n > 0 ? o1 < l : l < o1; o1 += n)yield o1;
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ejxgA":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _mapJs = require("lit-html/directives/map.js");
-parcelHelpers.exportAll(_mapJs, exports);
-
-},{"lit-html/directives/map.js":"7r7rb","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7r7rb":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "map", ()=>o
-);
-/**
- * @license
- * Copyright 2021 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */ function* o(o1, f) {
-    if (void 0 !== o1) {
-        let i = 0;
-        for (const t of o1)yield f(t, i++);
-    }
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fPN4s":[function(require,module,exports) {
+},{"@lit/reactive-element":"hypet","lit-html":"1cmQt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fPN4s":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "PodcastEpisodes", ()=>PodcastEpisodes
@@ -1360,6 +1302,7 @@ var _moment = require("moment");
 var _momentDefault = parcelHelpers.interopDefault(_moment);
 var _apiJs = require("../../../utils/api.js");
 var _apiJsDefault = parcelHelpers.interopDefault(_apiJs);
+var _episodeDetailsJs = require("./episode-details.js");
 class PodcastEpisodes extends _lit.LitElement {
     static properties = {
         _data: {
@@ -1372,12 +1315,31 @@ class PodcastEpisodes extends _lit.LitElement {
         offset: {
             type: Number
         },
+        podcastId: {
+            type: String
+        },
+        _podcastArtwork: {
+            type: String,
+            state: true
+        },
         title: {
             type: String
+        },
+        _episodeId: {
+            type: String,
+            state: true
+        },
+        _hideEpisodeDetails: {
+            type: Boolean,
+            state: true
+        },
+        _hideEpisodes: {
+            type: Boolean,
+            state: true
         }
     };
     static styles = _lit.css`
-        section.episodes {
+        .episodes {
             font-family: 'Josefin Sans', sans-serif;
             display: flex;
             flex-direction: row;
@@ -1386,6 +1348,7 @@ class PodcastEpisodes extends _lit.LitElement {
             padding: 10px;
             background-color: #D4F4ED;
             border-top: 2px solid #3A7168;
+            padding-block: 2em;
         }
         a {
             text-decoration: none;
@@ -1399,6 +1362,7 @@ class PodcastEpisodes extends _lit.LitElement {
             font-size: 50px;
             font-weight: 700;
             color: #3A7168;
+            margin: 0;
         }
         article.card {
             flex: 1;
@@ -1422,7 +1386,8 @@ class PodcastEpisodes extends _lit.LitElement {
         .card__container {
             padding: 15px;
         }
-        p.card__container--title {
+        .card__container--title {
+            cursor: pointer;
             font-weight: 400;
             color: #F26522;
             font-size: 25px;
@@ -1433,54 +1398,83 @@ class PodcastEpisodes extends _lit.LitElement {
             color: #383838;
             text-align: center;
         }
+        [hidden] { 
+            display: none !important; 
+        }
     `;
     async getData() {
-        let response = new _apiJsDefault.default(`https://api-dev.wusf.digital/simplecast/podcast/episodes?id=cdfdaf53-a865-42d5-9203-dfb29dda73f0&limit=${this.number}&offset=${this.offset}`);
-        response = await response.get();
-        // Display the next multiple of 3 episodes
-        // (e.g. if 20 episodes are requested, we will load 21 episodes)
-        if (response.length % 3 !== 0) this.number = Math.ceil(response.length / 3) * 3;
-        this._data = response.slice(0, this.number);
-    }
-    updated(changed) {
-        if (changed.has('offset')) {
-            this.getData();
-            window.scrollTo(0, 0);
+        if (this.podcastId) {
+            let response = new _apiJsDefault.default(`https://api-dev.wusf.digital/simplecast/podcast/episodes?id=${this.podcastId}&limit=${this.number}&offset=${this.offset}`);
+            response = await response.get();
+            this._data = response.slice(0, this.number);
         }
+    }
+    async firstUpdated() {
+        // Get show artwork
+        let response = new _apiJsDefault.default(`https://api-dev.wusf.digital/simplecast/podcasts`);
+        response = await response.get();
+        const [podcastArtwork] = response.filter((podcast)=>podcast.id === this.podcastId
+        ).map((podcast)=>podcast.imageUrl
+        );
+        this._podcastArtwork = podcastArtwork;
+    }
+    willUpdate(changed) {
+        // Forces the component to update when parent elements want to display more podcast episodes
+        if (changed.has('offset')) this.getData();
+    }
+    connectedCallback() {
+        super.connectedCallback();
+        addEventListener('popstate', (_)=>{
+            this._hideEpisodes = !this._hideEpisodes;
+            this._hideEpisodeDetails = !this._hideEpisodeDetails;
+        });
     }
     constructor(){
         super();
         this._data = [];
         this.number = 0;
         this.offset = 0;
+        this.podcastId = '';
         this.title = '';
+        this._episodeId = '';
+        this._hideEpisodeDetails = true;
+        this._hideEpisodes = false;
     }
     render() {
         return this._data.length > 0 ? _lit.html`
-            <section class="episodes">
+            <section class="episodes" ?hidden=${this._hideEpisodes}>
                 <h1>${this.title}</h1>
                 ${this._data.map((podcast)=>{
             return _lit.html`
                         <article class="card">
-                            <img class="card__image" src=${podcast.episodeImageUrl ?? "https://image.simplecastcdn.com/images/be36e542-b186-4b9b-a6bb-6896fd6492ae/9404af68-88bf-4ca3-a523-a5ec59058405/the-zest-logo.jpg"}>
+                            <img class="card__image" src=${podcast.episodeImageUrl ?? this._podcastArtwork} alt={podcast.title}>
                             <section class="card__container">
-                                <p class="card__container--title">
-                                    <a .href="https://thezestpodcast.com/${podcast.slug}" rel="noreferrer noopener">
-                                        ${podcast.title}
-                                    </a>
-                                </p>
+                                <a class="card__container--title" @click=${()=>this.showEpisodeDetails(podcast.id)
+            }>${podcast.title}</a>
                                 <p class="card__container--date">${_momentDefault.default(podcast.publishedDate).format('MMMM D, YYYY')}</p>
                             </section>
                         </article>
                     `;
-        })}
+        })}    
             </section>
+            <slot></slot>
+            <episode-details podcastId=${this.podcastId} episodeId=${this._episodeId} ?hidden=${this._hideEpisodeDetails}></episode-details>
         ` : _lit.html``;
+    }
+    showEpisodeDetails(id) {
+        this._episodeId = id;
+        this._hideEpisodes = !this._hideEpisodes;
+        this._hideEpisodeDetails = !this._hideEpisodeDetails;
+        history.pushState(null, null, 'test.html');
+        this.dispatchEvent(new CustomEvent('detailsPaneLoading', {
+            bubbles: true,
+            composed: true
+        }));
     }
 }
 customElements.define('podcast-episodes', PodcastEpisodes);
 
-},{"lit":"4antt","moment":"jwcsj","../../../utils/api.js":"18jzn","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jwcsj":[function(require,module,exports) {
+},{"lit":"4antt","moment":"jwcsj","../../../utils/api.js":"18jzn","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./episode-details.js":"cNReY"}],"jwcsj":[function(require,module,exports) {
 (function(global, factory) {
     module.exports = factory();
 })(this, function() {
@@ -5199,6 +5193,223 @@ class ApiRequest {
     }
 }
 exports.default = ApiRequest;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cNReY":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "EpisodeDetails", ()=>EpisodeDetails
+);
+var _lit = require("lit");
+var _moment = require("moment");
+var _momentDefault = parcelHelpers.interopDefault(_moment);
+var _apiJs = require("../../../utils/api.js");
+var _apiJsDefault = parcelHelpers.interopDefault(_apiJs);
+class EpisodeDetails extends _lit.LitElement {
+    static properties = {
+        _data: {
+            type: Object,
+            state: true
+        },
+        _audioIFrame: {
+            type: String,
+            state: true
+        },
+        listenLink: {
+            type: String
+        },
+        _episodePage: {
+            type: String,
+            state: true
+        },
+        podcastId: {
+            type: String
+        },
+        episodeId: {
+            type: String
+        }
+    };
+    static styles = _lit.css`
+        section {
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 200;
+            font-size: 20px;
+            line-height: 22px;
+            color: #383838;
+        }
+        .episode__image {
+            width: 100%;
+            height: auto;
+        }
+        a {
+            text-decoration: none;
+            color: #f26522;
+        }
+        a:hover {
+            color: rgb(58, 113, 104);
+        } 
+        p {
+            margin-bottom: 1.3em;
+        }
+        li {
+            padding: 0;
+            margin-bottom: 1em;
+        }
+        iframe {
+            height: 200px;
+            width: 100%;
+        }
+        .podcast__title {
+            font-size: 60px;
+            line-height: 1.4em;
+            color: #f26522;
+            font-weight: normal;
+            text-align: center;
+        }
+    `;
+    async getData() {
+        let response = new _apiJsDefault.default(`https://api-dev.wusf.digital/simplecast/podcast/episodes?id=${this.podcastId}`);
+        response = await response.get();
+        this._audioIframe = `https://player.simplecast.com/${this.episodeId}?dark=false`;
+        // Get episode-specific data
+        if (this.episodeId) {
+            let episodeResponse = new _apiJsDefault.default(`https://api-dev.wusf.digital/simplecast/episode?id=${this.episodeId}`);
+            episodeResponse = await episodeResponse.get();
+            this._data = episodeResponse;
+        }
+    }
+    willUpdate(changed) {
+        // Forces the component to update when parent elements want to display more podcast episodes
+        if (changed.has('episodeId')) {
+            this.getData();
+            window.scrollTo(0, 0);
+        }
+    }
+    constructor(){
+        super();
+        this._data = {};
+        this._episodePage = '';
+        this._audioIframe = '';
+        this.podcastId = '';
+        this.episodeId = '';
+    }
+    render() {
+        return Object.keys(this._data).length > 0 ? _lit.html`
+            <section>
+                <img 
+                    src=${this._data.episodeImageUrl ?? this._data.podcastImageUrl}
+                    class="episode__image"
+                    alt="The Zest Podcast Logo"
+                >
+                <h1 class="podcast__title">
+                    ${this._data.title}
+                </h1>
+                <iframe data-tf-not-load="1" frameborder="no" scrolling="no" seamless="" .src=${this._audioIframe}></iframe>
+                <p><strong>${_momentDefault.default(this._data.publishedDate).format('MMMM D, YYYY')}</strong></p>
+                <p .innerHTML=${this._data.descriptionLong}></p>
+            </section>
+        ` : _lit.html``;
+    }
+}
+customElements.define('episode-details', EpisodeDetails);
+
+},{"lit":"4antt","moment":"jwcsj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../../../utils/api.js":"18jzn"}],"67rG8":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "EpisodeSwitcher", ()=>EpisodeSwitcher
+);
+var _lit = require("lit");
+var _mapJs = require("lit/directives/map.js");
+var _rangeJs = require("lit/directives/range.js");
+class EpisodeSwitcher extends _lit.LitElement {
+    static styles = _lit.css`
+        ol {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 300;
+            list-style: none;
+            counter-reset: episode-counter;
+            padding: 0;
+        }
+        ol li {
+            display: inline;
+            counter-increment: episode-counter;
+            color: #F26522;
+            cursor: pointer;
+        }
+        ol li::before {
+            content: counter(episode-counter);
+            counter-reset: item;
+        }
+    `;
+    _clickHandler(num) {
+        let offset;
+        if (num === 1) offset = 0;
+        if (num === 2) offset = 30;
+        if (num === 3) offset = 60;
+        if (num === 4) offset = 90;
+        this.dispatchEvent(new CustomEvent('offset', {
+            detail: offset,
+            bubbles: true,
+            composed: true
+        }));
+    }
+    render() {
+        return _lit.html`
+            <ol>
+                ${_mapJs.map(_rangeJs.range(4), (num)=>_lit.html`<li @click=${()=>this._clickHandler(num + 1)
+            }></li>`
+        )}
+            </ol>
+        `;
+    }
+}
+customElements.define('episode-switcher', EpisodeSwitcher);
+
+},{"lit":"4antt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","lit/directives/map.js":"ejxgA","lit/directives/range.js":"bHK0i"}],"ejxgA":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _mapJs = require("lit-html/directives/map.js");
+parcelHelpers.exportAll(_mapJs, exports);
+
+},{"lit-html/directives/map.js":"7r7rb","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7r7rb":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "map", ()=>o
+);
+/**
+ * @license
+ * Copyright 2021 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */ function* o(o1, f) {
+    if (void 0 !== o1) {
+        let i = 0;
+        for (const t of o1)yield f(t, i++);
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bHK0i":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _rangeJs = require("lit-html/directives/range.js");
+parcelHelpers.exportAll(_rangeJs, exports);
+
+},{"lit-html/directives/range.js":"l9ILB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"l9ILB":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "range", ()=>o
+);
+/**
+ * @license
+ * Copyright 2021 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */ function* o(o2, l, n = 1) {
+    const t = void 0 === l ? 0 : o2;
+    null != l || (l = o2);
+    for(let o1 = t; n > 0 ? o1 < l : l < o1; o1 += n)yield o1;
+}
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["2swhZ","bkyFN"], "bkyFN", "parcelRequirebbd5")
 

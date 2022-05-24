@@ -531,6 +531,8 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ZestFrontPageLatest", ()=>ZestFrontPageLatest
 );
 var _lit = require("lit");
+var _apiJs = require("../../../utils/api.js");
+var _apiJsDefault = parcelHelpers.interopDefault(_apiJs);
 class ZestFrontPageLatest extends _lit.LitElement {
     static properties = {
         _data: {
@@ -540,10 +542,16 @@ class ZestFrontPageLatest extends _lit.LitElement {
         _episodePage: {
             type: String,
             state: true
+        },
+        podcastId: {
+            type: String
         }
     };
     static styles = _lit.css`
         section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             font-family: 'Josefin Sans', sans-serif;
             font-weight: 200;
             font-size: 20px;
@@ -570,21 +578,24 @@ class ZestFrontPageLatest extends _lit.LitElement {
         }
     `;
     async firstUpdated() {
-        // Get slugs and episode IDs from the podcast
-        let response = await fetch('https://api-dev.wusf.digital/simplecast/podcast/episodes?id=cdfdaf53-a865-42d5-9203-dfb29dda73f0');
-        response = await response.json();
-        const episodeId = response[0].id;
-        const slug = response[0].slug;
-        this._episodePage = `https://thezestpodcast.com/${slug}`;
-        // Get episode-specific data
-        let episodeResponse = await fetch(`https://api-dev.wusf.digital/simplecast/episode?id=${episodeId}`);
-        episodeResponse = await episodeResponse.json();
-        this._data = episodeResponse;
+        if (this.podcastId) {
+            // Get slugs and episode IDs from the podcast
+            let response = new _apiJsDefault.default(`https://api-dev.wusf.digital/simplecast/podcast/episodes?id=${this.podcastId}`);
+            response = await response.get();
+            const episodeId = response[0].id;
+            const slug = response[0].slug;
+            this._episodePage = `https://thezestpodcast.com/${slug}`;
+            // Get episode-specific data
+            let episodeResponse = new _apiJsDefault.default(`https://api-dev.wusf.digital/simplecast/episode?id=${episodeId}`);
+            episodeResponse = await episodeResponse.get();
+            this._data = episodeResponse;
+        }
     }
     constructor(){
         super();
         this._data = {};
         this._episodePage = '';
+        this.podcastId = '';
     }
     render() {
         return Object.keys(this._data).length > 0 ? _lit.html`
@@ -602,7 +613,7 @@ class ZestFrontPageLatest extends _lit.LitElement {
 }
 customElements.define('zest-frontpage-latest', ZestFrontPageLatest);
 
-},{"lit":"4antt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4antt":[function(require,module,exports) {
+},{"lit":"4antt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../../../utils/api.js":"18jzn"}],"4antt":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _reactiveElement = require("@lit/reactive-element");
@@ -1319,6 +1330,25 @@ const h = {
 };
 (null !== (o = globalThis.litElementVersions) && void 0 !== o ? o : globalThis.litElementVersions = []).push("3.2.0");
 
-},{"@lit/reactive-element":"hypet","lit-html":"1cmQt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["fmzlh","15DMk"], "15DMk", "parcelRequirebbd5")
+},{"@lit/reactive-element":"hypet","lit-html":"1cmQt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"18jzn":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class ApiRequest {
+    constructor(url){
+        this.url = url;
+    }
+    async get() {
+        try {
+            let response = await fetch(this.url);
+            response = response.json();
+            return response;
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+}
+exports.default = ApiRequest;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["fmzlh","15DMk"], "15DMk", "parcelRequirebbd5")
 
 //# sourceMappingURL=zest-frontpage-latest.ebeb8360.js.map

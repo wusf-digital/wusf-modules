@@ -142,13 +142,13 @@
       this[globalName] = mainExports;
     }
   }
-})({"8M73e":[function(require,module,exports) {
+})({"fqQIa":[function(require,module,exports) {
 "use strict";
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "3ebce9e615bc9468";
+module.bundle.HMR_BUNDLE_ID = "98f9d30e33a7b5c0";
 function _toConsumableArray(arr) {
     return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
 }
@@ -525,123 +525,55 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"3mcfA":[function(require,module,exports) {
+},{}],"56ZHx":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "ZestEpisodeDetails", ()=>ZestEpisodeDetails
+parcelHelpers.export(exports, "EpisodesAll", ()=>EpisodesAll
 );
 var _lit = require("lit");
-var _moment = require("moment");
-var _momentDefault = parcelHelpers.interopDefault(_moment);
-class ZestEpisodeDetails extends _lit.LitElement {
+var _podcastEpisodesJs = require("./podcast-episodes.js");
+var _episodeSwitcherJs = require("./episode-switcher.js");
+class EpisodesAll extends _lit.LitElement {
     static properties = {
-        _data: {
-            type: Object,
-            state: true
+        limit: {
+            type: Number
         },
-        _audioIFrame: {
-            type: String,
-            state: true
-        },
-        listenLink: {
-            type: String
-        },
-        _episodePage: {
-            type: String,
-            state: true
+        offset: {
+            type: Number
         },
         podcastId: {
             type: String
         },
-        episodeId: {
-            type: String
+        display: {
+            type: Boolean
         }
     };
-    static styles = _lit.css`
-        section {
-            font-family: 'Josefin Sans', sans-serif;
-            font-weight: 200;
-            font-size: 20px;
-            line-height: 22px;
-            color: #383838;
-        }
-        .episode__image {
-            width: 100%;
-            height: auto;
-        }
-        a {
-            text-decoration: none;
-            color: #f26522;
-        }
-        a:hover {
-            color: rgb(58, 113, 104);
-        } 
-        p {
-            margin-bottom: 1.3em;
-        }
-        li {
-            padding: 0;
-            margin-bottom: 1em;
-        }
-        iframe {
-            height: 200px;
-            width: 100%;
-        }
-        .podcast__title {
-            font-size: 60px;
-            line-height: 1.4em;
-            color: #f26522;
-            font-weight: normal;
-            text-align: center;
-        }
-    `;
-    async getData() {
-        let response = await fetch(`https://api-dev.wusf.digital/simplecast/podcast/episodes?id=${this.podcastId}`);
-        response = await response.json();
-        this._audioIframe = `https://player.simplecast.com/${this.episodeId}?dark=false`;
-        // Get episode-specific data
-        if (this.episodeId) {
-            let episodeResponse = await fetch(`https://api-dev.wusf.digital/simplecast/episode?id=${this.episodeId}`);
-            episodeResponse = await episodeResponse.json();
-            this._data = episodeResponse;
-        }
-    }
-    willUpdate(changed) {
-        // Forces the component to update when parent elements want to display more podcast episodes
-        if (changed.has('episodeId')) {
-            this.getData();
-            window.scrollTo(0, 0);
-        }
-    }
     constructor(){
         super();
-        this._data = {};
-        this._episodePage = '';
-        this._audioIframe = '';
-        this.podcastId = 'cdfdaf53-a865-42d5-9203-dfb29dda73f0';
-        this.episodeId = '';
+        this.limit = 30;
+        this.offset = 0;
+        this.podcastId = '';
+        this.display = true;
     }
     render() {
-        return Object.keys(this._data).length > 0 ? _lit.html`
-            <section>
-                <img 
-                    src=${this._data.episodeImageUrl ?? this._data.podcastImageUrl}
-                    class="episode__image"
-                    alt="The Zest Podcast Logo"
-                >
-                <h1 class="podcast__title">
-                    ${this._data.title}
-                </h1>
-                <iframe data-tf-not-load="1" frameborder="no" scrolling="no" seamless="" .src=${this._audioIframe}></iframe>
-                <p><strong>${_momentDefault.default(this._data.publishedDate).format('MMMM D, YYYY')}</strong></p>
-                <p .innerHTML=${this._data.descriptionLong}></p>
-            </section>
-        ` : _lit.html``;
+        return _lit.html`
+            <podcast-episodes
+            podcastId=${this.podcastId}
+            number=${this.limit} 
+            offset=${this.offset}
+            @offset=${(e)=>this.offset = e.detail
+        }
+            title="Episodes"
+            @detailsPaneLoading=${()=>this.display = !this.display
+        }>
+                <episode-switcher ?hidden=${!this.display}></episode-switcher>
+            </podcast-episodes>
+        `;
     }
 }
-customElements.define('zest-episode-details', ZestEpisodeDetails);
+customElements.define('episodes-all', EpisodesAll);
 
-},{"lit":"4antt","moment":"jwcsj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4antt":[function(require,module,exports) {
+},{"lit":"4antt","./podcast-episodes.js":"fPN4s","./episode-switcher.js":"67rG8","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4antt":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _reactiveElement = require("@lit/reactive-element");
@@ -1358,7 +1290,190 @@ const h = {
 };
 (null !== (o = globalThis.litElementVersions) && void 0 !== o ? o : globalThis.litElementVersions = []).push("3.2.0");
 
-},{"@lit/reactive-element":"hypet","lit-html":"1cmQt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jwcsj":[function(require,module,exports) {
+},{"@lit/reactive-element":"hypet","lit-html":"1cmQt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fPN4s":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "PodcastEpisodes", ()=>PodcastEpisodes
+);
+var _lit = require("lit");
+var _moment = require("moment");
+var _momentDefault = parcelHelpers.interopDefault(_moment);
+var _apiJs = require("../../../utils/api.js");
+var _apiJsDefault = parcelHelpers.interopDefault(_apiJs);
+var _episodeDetailsJs = require("./episode-details.js");
+class PodcastEpisodes extends _lit.LitElement {
+    static properties = {
+        _data: {
+            type: Array,
+            state: true
+        },
+        number: {
+            type: Number
+        },
+        offset: {
+            type: Number
+        },
+        podcastId: {
+            type: String
+        },
+        _podcastArtwork: {
+            type: String,
+            state: true
+        },
+        title: {
+            type: String
+        },
+        _episodeId: {
+            type: String,
+            state: true
+        },
+        _episodeDetailsHidden: {
+            type: Boolean,
+            state: true
+        },
+        _episodesHidden: {
+            type: Boolean,
+            state: true
+        }
+    };
+    static styles = _lit.css`
+        .episodes {
+            font-family: 'Josefin Sans', sans-serif;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 10px;
+            background-color: #D4F4ED;
+            border-top: 2px solid #3A7168;
+            padding-block: 2em;
+        }
+        a {
+            text-decoration: none;
+            color: #f26522;
+        }
+        a:hover {
+            color: rgb(58, 113, 104);
+        }
+        h1 {
+            flex-basis: 100%;
+            font-size: 50px;
+            font-weight: 700;
+            color: #3A7168;
+            margin: 0;
+        }
+        article.card {
+            flex: 1;
+            border-radius: 5px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            max-width: calc(33% - 20px);
+        }
+        article.card {
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+        article.card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+        img.card__image {
+            height: 350px;
+            border-start-start-radius: 5px;
+            border-start-end-radius: 5px;
+        }
+        .card__container {
+            padding: 15px;
+        }
+        .card__container--title {
+            cursor: pointer;
+            font-weight: 400;
+            color: #F26522;
+            font-size: 25px;
+        }
+        p.card__container--date {
+            font-weight: 300;
+            font-size: 1.1rem;
+            color: #383838;
+            text-align: center;
+        }
+        [hidden] {
+            display: none !important;
+        }
+    `;
+    async getData() {
+        let response = new _apiJsDefault.default(`https://api-dev.wusf.digital/simplecast/podcast/episodes?id=${this.podcastId}&limit=${this.number}&offset=${this.offset}`);
+        response = await response.get();
+        this._data = response.slice(0, this.number);
+    }
+    async firstUpdated() {
+        // Get show artwork
+        let response = new _apiJsDefault.default(`https://api-dev.wusf.digital/simplecast/podcasts`);
+        response = await response.get();
+        const [podcastArtwork] = response.filter((podcast)=>podcast.id === this.podcastId
+        ).map((podcast)=>podcast.imageUrl
+        );
+        this._podcastArtwork = podcastArtwork;
+    }
+    willUpdate(changed) {
+        // Forces the component to update when parent elements want to display more podcast episodes
+        if (changed.has('offset')) this.getData();
+    }
+    connectedCallback() {
+        super.connectedCallback();
+        addEventListener('popstate', (_)=>{
+            this._episodesHidden = !this._episodesHidden;
+            this._episodeDetailsHidden = !this._episodeDetailsHidden;
+        });
+    }
+    constructor(){
+        super();
+        this._data = [];
+        this.number = 0;
+        this.offset = 0;
+        this.podcastId = '';
+        this.title = '';
+        this._episodeId = '';
+        this._episodeDetailsHidden = true;
+        this._episodesHidden = false;
+    }
+    render() {
+        return this._data.length > 0 ? _lit.html`
+            <section ?hidden=${this._episodesHidden} class="episodes">
+                <h1>${this.title}</h1>
+                ${this._data.map((podcast)=>{
+            return _lit.html`
+                        <article class="card">
+                            <img class="card__image" src=${podcast.episodeImageUrl ?? this._podcastArtwork} alt={podcast.title}>
+                            <section class="card__container">
+                                <a class="card__container--title" @click=${()=>this.showEpisodeDetails(podcast.id)
+            }>${podcast.title}</a>
+                                <p class="card__container--date">${_momentDefault.default(podcast.publishedDate).format('MMMM D, YYYY')}</p>
+                            </section>
+                        </article>
+                    `;
+        })}    
+            </section>
+            <slot></slot>
+            <episode-details podcastId=${this.podcastId} episodeId=${this._episodeId} ?hidden=${this._episodeDetailsHidden}></episode-details>
+        ` : _lit.html``;
+    }
+    showEpisodeDetails(id) {
+        this._episodeId = id;
+        this._episodesHidden = !this._episodesHidden;
+        this._episodeDetailsHidden = !this._episodeDetailsHidden;
+        const url = new URL(window.location);
+        url.searchParams.set('episodeId', this._episodeId);
+        history.pushState(null, null, url);
+        this.dispatchEvent(new CustomEvent('detailsPaneLoading', {
+            bubbles: true,
+            composed: true
+        }));
+    }
+}
+customElements.define('podcast-episodes', PodcastEpisodes);
+
+},{"lit":"4antt","moment":"jwcsj","../../../utils/api.js":"18jzn","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./episode-details.js":"cNReY"}],"jwcsj":[function(require,module,exports) {
 (function(global, factory) {
     module.exports = factory();
 })(this, function() {
@@ -5059,6 +5174,242 @@ const h = {
     return hooks;
 });
 
-},{}]},["8M73e","3mcfA"], "3mcfA", "parcelRequirebbd5")
+},{}],"18jzn":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class ApiRequest {
+    constructor(url){
+        this.url = url;
+    }
+    async get() {
+        try {
+            let response = await fetch(this.url);
+            response = response.json();
+            return response;
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+}
+exports.default = ApiRequest;
 
-//# sourceMappingURL=zest-episode-details.15bc9468.js.map
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cNReY":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "EpisodeDetails", ()=>EpisodeDetails
+);
+var _lit = require("lit");
+var _moment = require("moment");
+var _momentDefault = parcelHelpers.interopDefault(_moment);
+var _apiJs = require("../../../utils/api.js");
+var _apiJsDefault = parcelHelpers.interopDefault(_apiJs);
+class EpisodeDetails extends _lit.LitElement {
+    static properties = {
+        _data: {
+            type: Object,
+            state: true
+        },
+        _audioIFrame: {
+            type: String,
+            state: true
+        },
+        listenLink: {
+            type: String
+        },
+        _episodePage: {
+            type: String,
+            state: true
+        },
+        podcastId: {
+            type: String
+        },
+        episodeId: {
+            type: String
+        }
+    };
+    static styles = _lit.css`
+        section {
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 200;
+            font-size: 20px;
+            line-height: 22px;
+            color: #383838;
+        }
+        .episode__image {
+            width: 100%;
+            height: auto;
+        }
+        a {
+            text-decoration: none;
+            color: #f26522;
+        }
+        a:hover {
+            color: rgb(58, 113, 104);
+        } 
+        p {
+            margin-bottom: 1.3em;
+        }
+        li {
+            padding: 0;
+            margin-bottom: 1em;
+        }
+        iframe {
+            height: 200px;
+            width: 100%;
+        }
+        .podcast__title {
+            font-size: 60px;
+            line-height: 1.4em;
+            color: #f26522;
+            font-weight: normal;
+            text-align: center;
+        }
+    `;
+    async getData() {
+        let response = new _apiJsDefault.default(`https://api-dev.wusf.digital/simplecast/podcast/episodes?id=${this.podcastId}`);
+        response = await response.get();
+        this._audioIframe = `https://player.simplecast.com/${this.episodeId}?dark=false`;
+        // Get episode-specific data
+        if (this.episodeId) {
+            let episodeResponse = new _apiJsDefault.default(`https://api-dev.wusf.digital/simplecast/episode?id=${this.episodeId}`);
+            episodeResponse = await episodeResponse.get();
+            this._data = episodeResponse;
+        }
+    }
+    willUpdate(changed) {
+        // Forces the component to update when parent elements want to display more podcast episodes
+        if (changed.has('episodeId')) {
+            this.getData();
+            window.scrollTo(0, 0);
+        }
+    }
+    constructor(){
+        super();
+        this._data = {};
+        this._episodePage = '';
+        this._audioIframe = '';
+        this.podcastId = '';
+        this.episodeId = '';
+    }
+    render() {
+        return Object.keys(this._data).length > 0 ? _lit.html`
+            <section>
+                <img 
+                    src=${this._data.episodeImageUrl ?? this._data.podcastImageUrl}
+                    class="episode__image"
+                    alt="The Zest Podcast Logo"
+                >
+                <h1 class="podcast__title">
+                    ${this._data.title}
+                </h1>
+                <iframe data-tf-not-load="1" frameborder="no" scrolling="no" seamless="" .src=${this._audioIframe}></iframe>
+                <p><strong>${_momentDefault.default(this._data.publishedDate).format('MMMM D, YYYY')}</strong></p>
+                <p .innerHTML=${this._data.descriptionLong}></p>
+            </section>
+        ` : _lit.html``;
+    }
+}
+customElements.define('episode-details', EpisodeDetails);
+
+},{"lit":"4antt","moment":"jwcsj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../../../utils/api.js":"18jzn"}],"67rG8":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "EpisodeSwitcher", ()=>EpisodeSwitcher
+);
+var _lit = require("lit");
+var _mapJs = require("lit/directives/map.js");
+var _rangeJs = require("lit/directives/range.js");
+class EpisodeSwitcher extends _lit.LitElement {
+    static styles = _lit.css`
+        ol {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 300;
+            list-style: none;
+            counter-reset: episode-counter;
+            padding: 0;
+        }
+        ol li {
+            display: inline;
+            counter-increment: episode-counter;
+            color: #F26522;
+            cursor: pointer;
+        }
+        ol li::before {
+            content: counter(episode-counter);
+            counter-reset: item;
+        }
+    `;
+    _clickHandler(num) {
+        let offset;
+        if (num === 1) offset = 0;
+        if (num === 2) offset = 30;
+        if (num === 3) offset = 60;
+        if (num === 4) offset = 90;
+        this.dispatchEvent(new CustomEvent('offset', {
+            detail: offset,
+            bubbles: true,
+            composed: true
+        }));
+    }
+    render() {
+        return _lit.html`
+            <ol>
+                ${_mapJs.map(_rangeJs.range(4), (num)=>_lit.html`<li @click=${()=>this._clickHandler(num + 1)
+            }></li>`
+        )}
+            </ol>
+        `;
+    }
+}
+customElements.define('episode-switcher', EpisodeSwitcher);
+
+},{"lit":"4antt","lit/directives/map.js":"ejxgA","lit/directives/range.js":"bHK0i","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ejxgA":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _mapJs = require("lit-html/directives/map.js");
+parcelHelpers.exportAll(_mapJs, exports);
+
+},{"lit-html/directives/map.js":"7r7rb","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7r7rb":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "map", ()=>o
+);
+/**
+ * @license
+ * Copyright 2021 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */ function* o(o1, f) {
+    if (void 0 !== o1) {
+        let i = 0;
+        for (const t of o1)yield f(t, i++);
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bHK0i":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _rangeJs = require("lit-html/directives/range.js");
+parcelHelpers.exportAll(_rangeJs, exports);
+
+},{"lit-html/directives/range.js":"l9ILB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"l9ILB":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "range", ()=>o
+);
+/**
+ * @license
+ * Copyright 2021 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */ function* o(o2, l, n = 1) {
+    const t = void 0 === l ? 0 : o2;
+    null != l || (l = o2);
+    for(let o1 = t; n > 0 ? o1 < l : l < o1; o1 += n)yield o1;
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["fqQIa","56ZHx"], "56ZHx", "parcelRequirebbd5")
+
+//# sourceMappingURL=episodes-all.33a7b5c0.js.map
