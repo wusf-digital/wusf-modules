@@ -4,19 +4,13 @@
     --WSMR-tertiary: rgb(77, 67, 131);
 }
 
+/* Donate Button Styles */
 .Page-header-donate-button.gtm_donate {
     background-color: var(--WSMR-secondary);
 }
 
+/* Persistent Streaming Player Styles */
 .BrightspotPersistentPlayer {
-    background: var(--WSMR-primary);
-}
-
-.BrightspotPersistentPlayer-drawer {
-    background: var(--WSMR-primary);
-}
-
-.Stream-iconWrapper {
     background: var(--WSMR-primary);
 }
 
@@ -24,6 +18,16 @@
     background: var(--WSMR-secondary);
 }
 
+/* Persistent Player Drawer Styles */
+.BrightspotPersistentPlayer-drawer {
+    background: var(--WSMR-primary);
+}
+
+.Stream-iconWrapper {
+    background: var(--WSMR-secondary);
+}
+
+/* Footer Styles */
 footer.Page-footer {
     background: var(--WSMR-primary);
 }
