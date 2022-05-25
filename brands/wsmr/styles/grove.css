@@ -8,10 +8,22 @@
     background-color: var(--WSMR-secondary);
 }
 
+.BrightspotPersistentPlayer {
+    background: var(--WSMR-primary);
+}
+
 .BrightspotPersistentPlayer-drawer {
+    background: var(--WSMR-primary);
+}
+
+.Stream-iconWrapper {
     background: var(--WSMR-primary);
 }
 
 .BrightspotPersistentPlayer-playerControls {
     background: var(--WSMR-secondary);
+}
+
+footer.Page-footer {
+    background: var(--WSMR-primary);
 }
