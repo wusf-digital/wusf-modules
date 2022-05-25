@@ -1,0 +1,17 @@
+:root {
+    --WSMR-primary: rgb(0, 99, 132);
+    --WSMR-secondary: rgb(98, 204, 220);
+    --WSMR-tertiary: rgb(77, 67, 131);
+}
+
+.Page-header-donate-button.gtm_donate {
+    background-color: var(--WSMR-secondary);
+}
+
+.BrightspotPersistentPlayer-drawer {
+    background: var(--WSMR-primary);
+}
+
+.BrightspotPersistentPlayer-playerControls {
+    background: var(--WSMR-secondary);
+}
