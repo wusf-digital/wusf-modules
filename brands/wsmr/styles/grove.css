@@ -4,6 +4,11 @@
     --WSMR-tertiary: rgb(77, 67, 131);
 }
 
+/* Hamburger Menu */
+.Page-header-menu-trigger .burger-menu {
+    fill: var(--WSMR-primary);
+}
+
 /* Tagline next to the header logo 
 (i.e. Florida's Classical Music Station */
 .Page-header-tagline {
