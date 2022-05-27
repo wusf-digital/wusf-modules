@@ -45,11 +45,12 @@
 
 /* Links and Buttons */
 a.Link:hover {
-    color: var(--WSMR-secondary);
+    color: var(--WSMR-primary);
 }
 
-.StreamPill {
-    color: var(--WSMR-primary);
+button.StreamPill {
+    background-color: var(--WSMR-primary);
+    border-color: var(--WSMR-primary);
 }
 
 /* Footer Styles */
