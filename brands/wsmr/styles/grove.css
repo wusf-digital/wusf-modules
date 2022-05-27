@@ -12,7 +12,7 @@
 /* Tagline next to the header logo 
 (i.e. Florida's Classical Music Station */
 .Page-header-tagline {
-    background: var(--WSMR-primary);
+    color: var(--WSMR-primary);
     font-weight: bold;
 }  
 
