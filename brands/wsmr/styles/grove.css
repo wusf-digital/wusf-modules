@@ -4,9 +4,16 @@
     --WSMR-tertiary: rgb(77, 67, 131);
 }
 
+/* Tagline next to the header logo 
+(i.e. Florida's Classical Music Station */
+.Page-header-tagline {
+    background: var(--WSMR-primary);
+    font-weight: bold;
+}  
+
 /* Donate Button Styles */
 .Page-header-donate-button.gtm_donate {
-    background-color: var(--WSMR-secondary);
+    background: var(--WSMR-secondary);
 }
 
 /* Persistent Streaming Player Styles */
