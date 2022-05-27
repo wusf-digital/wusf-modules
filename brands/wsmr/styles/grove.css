@@ -22,6 +22,10 @@
 }
 
 /* Persistent Streaming Player Styles */
+.Page-header-persistent-player {
+    background: var(--WSMR-primary);
+}
+
 .BrightspotPersistentPlayer {
     background: var(--WSMR-primary);
 }
