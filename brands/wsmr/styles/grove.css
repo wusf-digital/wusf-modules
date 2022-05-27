@@ -2,7 +2,6 @@
     --WSMR-primary: rgb(0, 99, 132);
     --WSMR-secondary: rgb(98, 204, 220);
     --WSMR-tertiary: rgb(77, 67, 131);
-    --linkHoverColor: (var(--WSMR-primary));
 }
 
 /* Hamburger Menu */
@@ -42,6 +41,15 @@
 
 .Stream-iconWrapper {
     background: var(--WSMR-secondary);
+}
+
+/* Links and Buttons */
+a.Link:hover {
+    color: var(--WSMR-secondary);
+}
+
+.StreamPill {
+    color: var(--WSMR-primary);
 }
 
 /* Footer Styles */
