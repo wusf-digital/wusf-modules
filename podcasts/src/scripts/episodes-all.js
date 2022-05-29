@@ -27,7 +27,7 @@ export class EpisodesAll extends LitElement {
             offset=${this.offset}
             @offset=${(e) => this.offset = e.detail}
             title="Episodes"
-            @detailsPaneLoading=${() => this.display = !this.display}>
+            @toggleEpisodeSwitcher=${() => this.display = !this.display}>
                 <episode-switcher ?hidden=${!this.display}></episode-switcher>
             </podcast-episodes>
         `

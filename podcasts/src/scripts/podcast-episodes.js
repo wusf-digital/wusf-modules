@@ -1,6 +1,7 @@
-import { LitElement, html, css } from 'lit'
+import { LitElement, html } from 'lit'
 import moment from 'moment'
 
+import { podcastEpisodesStyles } from '../styles/podcast-episodes-styles.js'
 import ApiRequest from '../../../utils/api.js'
 import './episode-details.js'
 
@@ -13,75 +14,10 @@ export class PodcastEpisodes extends LitElement {
         _podcastArtwork: { type: String, state: true },
         title: { type: String },
         _episodeId: { type: String, state: true },
-        _episodeDetailsHidden: { type: Boolean, state: true },
-        _episodesHidden: { type: Boolean, state: true }
+        _sectionEpisodes: { type: String, state: true }
     }
 
-    static styles = css`
-        .episodes {
-            font-family: 'Josefin Sans', sans-serif;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 10px;
-            background-color: #D4F4ED;
-            border-top: 2px solid #3A7168;
-            padding-block: 2em;
-        }
-        a {
-            text-decoration: none;
-            color: #f26522;
-        }
-        a:hover {
-            color: rgb(58, 113, 104);
-        }
-        h1 {
-            flex-basis: 100%;
-            font-size: 50px;
-            font-weight: 700;
-            color: #3A7168;
-            margin: 0;
-        }
-        article.card {
-            flex: 1;
-            border-radius: 5px;
-            background-color: white;
-            display: flex;
-            flex-direction: column;
-            max-width: calc(33% - 20px);
-        }
-        article.card {
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-            transition: 0.3s;
-        }
-        article.card:hover {
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-        }
-        img.card__image {
-            height: 350px;
-            border-start-start-radius: 5px;
-            border-start-end-radius: 5px;
-        }
-        .card__container {
-            padding: 15px;
-        }
-        .card__container--title {
-            cursor: pointer;
-            font-weight: 400;
-            color: #F26522;
-            font-size: 25px;
-        }
-        p.card__container--date {
-            font-weight: 300;
-            font-size: 1.1rem;
-            color: #383838;
-            text-align: center;
-        }
-        [hidden] {
-            display: none !important;
-        }
-    `
+    static styles = [ podcastEpisodesStyles ]
 
     async getData() {
         let response = new ApiRequest(`https://api-dev.wusf.digital/simplecast/podcast/episodes?id=${this.podcastId}&limit=${this.number}&offset=${this.offset}`)
@@ -105,8 +41,14 @@ export class PodcastEpisodes extends LitElement {
     connectedCallback() {
         super.connectedCallback()
         addEventListener('popstate', _ => {
-            this._episodesHidden = !this._episodesHidden
-            this._episodeDetailsHidden = !this._episodeDetailsHidden
+            const episodeDetailsExists = !!this.renderRoot.querySelector('episode-details')
+            const sectionEpisodesExists = !!this.renderRoot.querySelector('section.episodes')
+
+            // Handles going back to showing all section episodes
+            if (episodeDetailsExists) this._showEpisodes()
+            
+            // Handles going forward to showing the episode details
+            if (sectionEpisodesExists) this._showEpisodeDetails()
         })
     }
 
@@ -118,40 +60,57 @@ export class PodcastEpisodes extends LitElement {
         this.podcastId = ''
         this.title = ''
         this._episodeId = ''
-        this._episodeDetailsHidden = true
-        this._episodesHidden = false
+        this._sectionEpisodes = ''
     }
 
     render() {
         return this._data.length > 0 ?
         html`
-            <section ?hidden=${this._episodesHidden} class="episodes">
-                <h1>${this.title}</h1>
-                ${this._data.map(podcast => {
-                    return html`
-                        <article class="card">
-                            <img class="card__image" src=${podcast.episodeImageUrl ?? this._podcastArtwork} alt={podcast.title}>
-                            <section class="card__container">
-                                <a class="card__container--title" @click=${() => this.showEpisodeDetails(podcast.id)}>${podcast.title}</a>
-                                <p class="card__container--date">${moment(podcast.publishedDate).format('MMMM D, YYYY')}</p>
-                            </section>
-                        </article>
-                    `
-                })}    
-            </section>
-            <slot></slot>
-            <episode-details podcastId=${this.podcastId} episodeId=${this._episodeId} ?hidden=${this._episodeDetailsHidden}></episode-details>
+            <main>
+                <section class="episodes">
+                    <h1>${this.title}</h1>
+                    ${this._data.map(podcast => {
+                        return html`
+                            <article class="card">
+                                <img class="card__image" src=${podcast.episodeImageUrl ?? this._podcastArtwork} alt={podcast.title}>
+                                <section class="card__container">
+                                    <a class="card__container--title" @click=${() => this._handleRouting(podcast.id)}>${podcast.title}</a>
+                                    <p class="card__container--date">${moment(podcast.publishedDate).format('MMMM D, YYYY')}</p>
+                                </section>
+                            </article>
+                        `
+                    })}    
+                </section>
+                <slot></slot>
+            </main>
         ` : html``
     }
 
-    showEpisodeDetails(id) {
+    _handleRouting(id) {
         this._episodeId = id
-        this._episodesHidden = !this._episodesHidden
-        this._episodeDetailsHidden = !this._episodeDetailsHidden
-        const url = new URL(window.location);
-        url.searchParams.set('episodeId', this._episodeId);
+        const url = new URL(window.location)
+        url.searchParams.set('episodeId', this._episodeId)
         history.pushState(null, null, url)
-        this.dispatchEvent(new CustomEvent('detailsPaneLoading', { bubbles: true, composed: true }))
+        this._showEpisodeDetails()
+    }
+
+    _showEpisodeDetails() {
+        this.dispatchEvent(new CustomEvent('toggleEpisodeSwitcher', { bubbles: true, composed: true }))
+
+        this._sectionEpisodes = this.renderRoot.querySelector('section.episodes')
+        this._sectionEpisodes.remove()
+
+        const episodeDetails = document.createElement('episode-details')
+        episodeDetails.setAttribute('podcastId', this.podcastId)
+        episodeDetails.setAttribute('episodeId', this._episodeId)
+        this.renderRoot.appendChild(episodeDetails)
+    }
+
+    _showEpisodes() {
+        this.dispatchEvent(new CustomEvent('toggleEpisodeSwitcher', { bubbles: true, composed: true }))
+        this.renderRoot.querySelector('episode-details').remove()
+        const main = this.renderRoot.querySelector('main')
+        main.insertAdjacentElement('afterbegin', this._sectionEpisodes)
     }
 }
 

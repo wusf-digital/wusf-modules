@@ -41,7 +41,7 @@ var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"u
             offset=${this.offset}
             @offset=${e=>this.offset=e.detail}
             title="Episodes"
-            @detailsPaneLoading=${()=>this.display=!this.display}>
+            @toggleEpisodeSwitcher=${()=>this.display=!this.display}>
                 <episode-switcher ?hidden=${!this.display}></episode-switcher>
             </podcast-episodes>
         `}}customElements.define("episodes-all",l);
