@@ -1,0 +1,10 @@
+.pas__alerts-banner {
+    --PMA__ALERTS-BANNER--title-background: rgb(1, 103, 7);
+    --PMA__ALERTS-BANNER--title-text: white;
+    --PMA__ALERTS-BANNER--alerts-background: rgb(181, 164, 104);
+    --PMA__ALERTS-BANNER--alerts-text: black;
+}
+.pas__alerts-module {
+    --PMA__ALERTS-MODULE--header-background: rgb(1, 103, 7);
+    --PMA__ALERTS-MODULE--header-text: white;
+}

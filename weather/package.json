@@ -1,13 +1,10 @@
 {
   "name": "weather",
   "version": "1.0.0",
-  "source": [
-    "src/index.html"
-  ],
   "description": "",
   "scripts": {
-    "start": "parcel --dist-dir src/dist --open",
-    "build": "parcel build --public-url ./ --dist-dir ./ --no-content-hash"
+    "start": "parcel 'src/*.html' --dist-dir src/dist",
+    "build": "parcel build 'src/*.html' --public-url ./ --dist-dir ./ --no-content-hash --no-source-maps"
   },
   "author": "Raymond Hawthorne",
   "license": "ISC",

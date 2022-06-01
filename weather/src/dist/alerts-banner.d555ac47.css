@@ -1,0 +1,12 @@
+.pas__alerts-banner {
+  --PMA__ALERTS-BANNER--title-background: #016707;
+  --PMA__ALERTS-BANNER--title-text: white;
+  --PMA__ALERTS-BANNER--alerts-background: #b5a468;
+  --PMA__ALERTS-BANNER--alerts-text: black;
+}
+
+#pas__alerts-banner--link {
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=alerts-banner.d555ac47.css.map */
