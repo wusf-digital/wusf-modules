@@ -22,13 +22,19 @@ export class EpisodesAll extends LitElement {
     render() {
         return html`
             <podcast-episodes
-            podcastId=${this.podcastId}
-            number=${this.limit} 
-            offset=${this.offset}
-            @offset=${(e) => this.offset = e.detail}
-            title="Episodes"
-            @toggleEpisodeSwitcher=${() => this.display = !this.display}>
-                <episode-switcher ?hidden=${!this.display}></episode-switcher>
+                podcastId=${this.podcastId}
+                number=${this.limit} 
+                offset=${this.offset}
+                @offset=${(e) => this.offset = e.detail}
+                title="Episodes"
+                @toggleEpisodeSwitcher=${() => this.display = !this.display}
+            >
+                <episode-switcher 
+                    ?hidden=${!this.display}
+                    podcastId=${this.podcastId}
+                    podcastsDisplayed=${this.limit - this.offset}
+                >
+                </episode-switcher>
             </podcast-episodes>
         `
     }

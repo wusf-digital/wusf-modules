@@ -1,0 +1,1 @@
+addEventListener("install",(e=>{e.waitUntil(caches.open("static").then((e=>e.addAll(["/episodes-all.html"]).catch((e=>console.log(e))))))})),addEventListener("fetch",(e=>{e.respondWith(caches.match(e.request).then((t=>t||fetch(e.request))))}));

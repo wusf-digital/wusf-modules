@@ -6,6 +6,7 @@ export const podcastEpisodesStyles = css`
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        justify-content: space-evenly;
         gap: 20px;
         padding: 10px;
         background-color: #D4F4ED;
@@ -32,6 +33,7 @@ export const podcastEpisodesStyles = css`
         background-color: white;
         display: flex;
         flex-direction: column;
+        max-width: 100%;
     }
     article.card {
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);

@@ -2,7 +2,16 @@ import { LitElement, html, css } from "lit";
 import { map } from 'lit/directives/map.js'
 import { range } from 'lit/directives/range.js'
 
+import ApiRequest from '../../../utils/api.js'
+
 export class EpisodeSwitcher extends LitElement {
+    static properties = {
+        podcastsDisplayed: { type: Number },
+        podcastId: { type: String },
+        _numberOfPages: { type: Number, state: true },
+        _numberOfEpisodes: { type: Number, state: true },
+    }
+
     static styles = css`
         ol {
             display: flex;
@@ -26,6 +35,19 @@ export class EpisodeSwitcher extends LitElement {
             counter-reset: item;
         }
     `
+
+    async firstUpdated() {
+        let response = new ApiRequest(`https://api-dev.wusf.digital/simplecast/podcasts`)
+        response = await response.get()
+        const [ numberOfEpisodes ] = response.filter(podcast => podcast.id === this.podcastId).map(podcast => podcast.count)
+        this._numberOfEpisodes = numberOfEpisodes
+    }
+
+    constructor() {
+        super()
+        this.podcastsDisplayed = 0
+        this.podcastId = ''
+    }
 
     _clickHandler(num) {
         let offset

@@ -558,15 +558,21 @@ class EpisodesAll extends _lit.LitElement {
     render() {
         return _lit.html`
             <podcast-episodes
-            podcastId=${this.podcastId}
-            number=${this.limit} 
-            offset=${this.offset}
-            @offset=${(e)=>this.offset = e.detail
+                podcastId=${this.podcastId}
+                number=${this.limit} 
+                offset=${this.offset}
+                @offset=${(e)=>this.offset = e.detail
         }
-            title="Episodes"
-            @toggleEpisodeSwitcher=${()=>this.display = !this.display
-        }>
-                <episode-switcher ?hidden=${!this.display}></episode-switcher>
+                title="Episodes"
+                @toggleEpisodeSwitcher=${()=>this.display = !this.display
+        }
+            >
+                <episode-switcher 
+                    ?hidden=${!this.display}
+                    podcastId=${this.podcastId}
+                    podcastsDisplayed=${this.limit - this.offset}
+                >
+                </episode-switcher>
             </podcast-episodes>
         `;
     }
@@ -5278,6 +5284,7 @@ const podcastEpisodesStyles = _lit.css`
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        justify-content: space-evenly;
         gap: 20px;
         padding: 10px;
         background-color: #D4F4ED;
@@ -5304,6 +5311,7 @@ const podcastEpisodesStyles = _lit.css`
         background-color: white;
         display: flex;
         flex-direction: column;
+        max-width: 100%;
     }
     article.card {
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -5348,7 +5356,25 @@ parcelHelpers.export(exports, "EpisodeSwitcher", ()=>EpisodeSwitcher
 var _lit = require("lit");
 var _mapJs = require("lit/directives/map.js");
 var _rangeJs = require("lit/directives/range.js");
+var _apiJs = require("../../../utils/api.js");
+var _apiJsDefault = parcelHelpers.interopDefault(_apiJs);
 class EpisodeSwitcher extends _lit.LitElement {
+    static properties = {
+        podcastsDisplayed: {
+            type: Number
+        },
+        podcastId: {
+            type: String
+        },
+        _numberOfPages: {
+            type: Number,
+            state: true
+        },
+        _numberOfEpisodes: {
+            type: Number,
+            state: true
+        }
+    };
     static styles = _lit.css`
         ol {
             display: flex;
@@ -5372,6 +5398,19 @@ class EpisodeSwitcher extends _lit.LitElement {
             counter-reset: item;
         }
     `;
+    async firstUpdated() {
+        let response = new _apiJsDefault.default(`https://api-dev.wusf.digital/simplecast/podcasts`);
+        response = await response.get();
+        const [numberOfEpisodes] = response.filter((podcast)=>podcast.id === this.podcastId
+        ).map((podcast)=>podcast.count
+        );
+        this._numberOfEpisodes = numberOfEpisodes;
+    }
+    constructor(){
+        super();
+        this.podcastsDisplayed = 0;
+        this.podcastId = '';
+    }
     _clickHandler(num) {
         let offset;
         if (num === 1) offset = 0;
@@ -5396,7 +5435,7 @@ class EpisodeSwitcher extends _lit.LitElement {
 }
 customElements.define('episode-switcher', EpisodeSwitcher);
 
-},{"lit":"4antt","lit/directives/map.js":"ejxgA","lit/directives/range.js":"bHK0i","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ejxgA":[function(require,module,exports) {
+},{"lit":"4antt","lit/directives/map.js":"ejxgA","lit/directives/range.js":"bHK0i","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../../../utils/api.js":"18jzn"}],"ejxgA":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _mapJs = require("lit-html/directives/map.js");
