@@ -44,9 +44,7 @@ export class AlertsBanner extends LitElement {
 
     async firstUpdated() {
         try {
-            let alerts = await fetch(`https://api.weather.gov/alerts/active/area/${this.area.toUpperCase()}`, {
-                headers: new Headers({ "User-Agent": "frontogenesis@gmail.com" }) 
-            })
+            let alerts = await fetch(`https://api-dev.wusf.digital/weather/alerts`)
             alerts = await alerts.json()
             let dedupedAlerts = new Set(alerts.features.map(alert => alert.properties.event))
             dedupedAlerts = [...dedupedAlerts]

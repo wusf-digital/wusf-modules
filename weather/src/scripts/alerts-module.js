@@ -100,9 +100,7 @@ export class AlertsModule extends LitElement {
 
     async firstUpdated() {
         try {
-            let alerts = await fetch(`https://api.weather.gov/alerts/active/area/${this.area.toUpperCase()}`, {
-                headers: new Headers({ "User-Agent": "frontogenesis@gmail.com" }) 
-            })
+            let alerts = await fetch(`https://api-dev.wusf.digital/weather/alerts`)
             alerts = await alerts.json()
             this._data = alerts.features
             this._filteredData = alerts.features

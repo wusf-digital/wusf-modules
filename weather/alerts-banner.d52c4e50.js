@@ -1,4 +1,4 @@
-var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:{},t={},r={},a=e.parcelRequire8fb7;null==a&&((a=function(e){if(e in t)return t[e].exports;if(e in r){var a=r[e];delete r[e];var i={id:e,exports:{}};return t[e]=i,a.call(i.exports,i,i.exports),i.exports}var n=new Error("Cannot find module '"+e+"'");throw n.code="MODULE_NOT_FOUND",n}).register=function(e,t){r[e]=t},e.parcelRequire8fb7=a);var i=a("dpiPf");class n extends i.LitElement{static properties={area:{},_data:{state:!0}};static styles=i.css`
+var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:{},t={},r={},a=e.parcelRequire8fb7;null==a&&((a=function(e){if(e in t)return t[e].exports;if(e in r){var a=r[e];delete r[e];var i={id:e,exports:{}};return t[e]=i,a.call(i.exports,i,i.exports),i.exports}var l=new Error("Cannot find module '"+e+"'");throw l.code="MODULE_NOT_FOUND",l}).register=function(e,t){r[e]=t},e.parcelRequire8fb7=a);var i=a("dpiPf");class l extends i.LitElement{static properties={area:{},_data:{state:!0}};static styles=i.css`
         section {
             font-weight: bold;
             display: flex;
@@ -31,11 +31,11 @@ var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"u
             padding-block: 0.7rem;
             flex-shrink: 0;
         }
-    `;async firstUpdated(){try{let e=await fetch(`https://api.weather.gov/alerts/active/area/${this.area.toUpperCase()}`,{headers:new Headers({"User-Agent":"frontogenesis@gmail.com"})});e=await e.json();let t=new Set(e.features.map((e=>e.properties.event)));t=[...t],this._data=t}catch(e){console.error(e)}}constructor(){super(),this.area="FL",this._data=[]}render(){const e=i.html`
+    `;async firstUpdated(){try{let e=await fetch("https://api-dev.wusf.digital/weather/alerts");e=await e.json();let t=new Set(e.features.map((e=>e.properties.event)));t=[...t],this._data=t}catch(e){console.error(e)}}constructor(){super(),this.area="FL",this._data=[]}render(){const e=i.html`
             <section>
                 <p><slot></slot></p>
                 <ul>
                     ${this._data?.map((e=>i.html`<li>${e}</li>`))}
                 </ul>
             </section>
-        `;return i.html`${this._data.length>0?e:i.html` `}`}}customElements.define("alerts-banner",n);
+        `;return i.html`${this._data.length>0?e:i.html` `}`}}customElements.define("alerts-banner",l);
