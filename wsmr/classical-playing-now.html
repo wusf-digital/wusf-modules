@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        :root {
+            --WSMR-primary: rgb(0, 99, 132);
+            --WSMR-secondary: rgb(98, 204, 220);
+            --WSMR-tertiary: rgb(77, 67, 131);
+        }
+        section#playing-now-container {
+            display: flex;
+            width: 100%;
+            font-weight: bold;
+            align-items: center;
+            margin-block: 0;
+        }
+        #playing-now__summary {
+            border-start-start-radius: 10px;
+            border-end-start-radius: 10px;
+            color: whitesmoke;
+            background-color: var(--WSMR-primary);
+            font-size: 1em;
+            padding: 0.5em;
+            margin: 0;
+            align-items: center;
+        }
+        #playing-now__summary::before {
+            content: 'Playing Now: ';
+        }
+        #playlist__link--container {
+            align-self: flex-start;
+        }
+        a#playlist__link {
+            all: unset;
+            display: flex;
+            flex-shrink: 0;
+            background-color: var(--WSMR-secondary);
+            padding: 0.5em;
+            cursor: pointer;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease 0s;
+            border-start-end-radius: 10px;
+            border-end-end-radius: 10px;
+        }
+        a#playlist__link:hover {
+            background-color: var(--WSMR-tertiary);
+            box-shadow: 0px 15px 20px rgba(77, 67, 131, 0.4);
+            color: #fff;
+        }
+    </style>
+    <title>Playing Now</title>
+</head>
+<body>
+    <section id="playing-now-container">
+        <p id="playing-now__summary"></p>
+        <p id="playlist__link--container">
+            <a id="playlist__link" href="https://wsmr.org/classical-playlist02/">
+                View Classical Playlist &gt;
+            </a>
+        </p>
+    </section>
+    <script>
+        async function currentlyPlaying() {
+            try {
+                let response = await (await fetch(`https://api.wusf.org/v2/songs/WSMR/recent`)).json()
+                response = response.reverse()[0]
+                document.querySelector('#playing-now__summary').innerHTML = response.summary
+            } catch(error) {
+                console.error(error)
+            }
+        
+        } 
+
+        currentlyPlaying()
+    </script>
+</body>
+</html>

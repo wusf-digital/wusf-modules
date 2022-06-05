@@ -70,7 +70,7 @@ td {
     vertical-align: middle;
 }
 td {
-    font-size: 0.9rem;
+    font-size: 0.9em;
 }
 .playlist__time {
     font-weight: bold;
@@ -111,6 +111,7 @@ td {
         /* align-items: center; */
         border-bottom: 1px solid white;
         border-right: none;
+        font-size: 0.7em;
     }
     td:first-child {
         text-align: center;
