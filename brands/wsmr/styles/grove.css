@@ -9,10 +9,8 @@
     fill: var(--WSMR-primary);
 }
 
-.NavigationItem-text.gtm_nav_cat span:hover {
-    color: var(--WSMR-primary);
-}
-
+.NavigationItem-text.gtm_nav_cat span:hover,
+.NavigationItem-text.gtm_nav_cat a:hover,
 .NavigationItem-items-item.gtm_nav_subcat a:hover {
     color: var(--WSMR-primary);
 }
