@@ -54,6 +54,7 @@
             color: #fff;
         }
     </style>
+    <script src="classical-playing-now.js" defer></script>
     <title>Playing Now</title>
 </head>
 <body>
@@ -65,19 +66,5 @@
             </a>
         </p>
     </section>
-    <script>
-        async function currentlyPlaying() {
-            try {
-                let response = await (await fetch(`https://api.wusf.org/v2/songs/WSMR/recent`)).json()
-                response = response.reverse()[0]
-                document.querySelector('#playing-now__summary').innerHTML = response.summary
-            } catch(error) {
-                console.error(error)
-            }
-        
-        } 
-
-        currentlyPlaying()
-    </script>
 </body>
 </html>
