@@ -23,11 +23,22 @@
     font-size: 1.3em;
 }  
 
-/* Search bar text colors */
+/* Search bar text colors and button colors */
 .Page-header-search-input, 
 .Page-header-search-input-mobile,
 .Page-header-search-close svg {
     color: var(--WSMR-primary);
+    fill: var(--WSMR-primary);
+}
+
+.Page-header-search-button-mobile .close-x, 
+.Page-header-search-button .close-x {
+    color: var(--WSMR-primary);
+}
+
+.Page-header-search-button-mobile .icon-magnify, 
+.Page-header-search-button .icon-magnify {
+    fill: var(--WSMR-primary);
 }
 
 /* Donate Button Styles */
