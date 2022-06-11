@@ -23,6 +23,13 @@
     font-size: 1.3em;
 }  
 
+/* Search bar text colors */
+.Page-header-search-input, 
+.Page-header-search-input-mobile,
+.Page-header-search-close svg {
+    color: var(--WSMR-primary);
+}
+
 /* Donate Button Styles */
 .Page-header-donate-button.gtm_donate {
     background: var(--WSMR-secondary);
