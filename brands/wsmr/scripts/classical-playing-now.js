@@ -11,3 +11,7 @@ async function currentlyPlaying() {
         console.error(error)
     }
 } 
+
+if (location.pathname === '/classical-test' || location.pathname === '/classical') {
+    currentlyPlaying()
+}
