@@ -12,6 +12,8 @@ async function currentlyPlaying() {
     }
 } 
 
-if (location.pathname === /\/classical[^ ]*/) {
+const path = location.pathname
+const regex = /\/classical[^ ]*/
+if (path.match(regex)) {
     currentlyPlaying()
 }
