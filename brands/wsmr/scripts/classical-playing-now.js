@@ -13,6 +13,5 @@ async function currentlyPlaying() {
 } 
 
 if (location.pathname === '/classical-test' || location.pathname === '/classical') {
-    console.log('Path hit')
-    currentlyPlaying()
+    if (playingNowSummaryExists) currentlyPlaying()
 }
