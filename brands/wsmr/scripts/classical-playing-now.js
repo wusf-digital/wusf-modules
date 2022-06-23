@@ -12,6 +12,6 @@ async function currentlyPlaying() {
     }
 } 
 
-if (location.pathname === '/classical-test' || location.pathname === '/classical') {
+if (location.pathname === /\/classical[^ ]*/) {
     currentlyPlaying()
 }
