@@ -78,6 +78,16 @@ button.StreamPill {
     border-color: var(--WSMR-primary);
 }
 
+/* Links added through the Rich Text Editor */
+.RichTextBody>ol a, 
+.RichTextBody>ul a, 
+.RichTextBody p>ol a, 
+.RichTextBody p>ul a, 
+.RichTextBody p a {
+    color: var(--WSMR-primary);
+    text-decoration: underline;
+}
+
 /* Footer Styles */
 footer.Page-footer {
     background: var(--WSMR-primary);
