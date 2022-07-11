@@ -22,7 +22,6 @@
         }
         section#playing-now-container {
             display: flex;
-            align-items: center;
             font-weight: bold;
             margin: 0px;
         }
@@ -37,6 +36,8 @@
         }
         #playing-now__summary::before {
             content: 'Playing Now: ';
+            margin-inline-end: 10px;
+            text-align: center;
         }
         a#playlist-link {
             all: unset;
