@@ -22,9 +22,8 @@
         }
         section#playing-now-container {
             display: flex;
-            width: 100%;
-            font-weight: bold;
             align-items: center;
+            font-weight: bold;
             margin: 0px;
         }
         #playing-now__summary {
@@ -39,28 +38,27 @@
         #playing-now__summary::before {
             content: 'Playing Now: ';
         }
-        #playlist__link--container {
-            align-self: flex-start;
-        }
-        a#playlist__link {
+        a#playlist-link {
             all: unset;
-            display: flex;
-            flex-shrink: 0;
-            background-color: var(--WSMR-secondary);
-            padding: 0.5em;
-            cursor: pointer;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease 0s;
-            border-start-end-radius: 10px;
-            border-end-end-radius: 10px;
-        }
-        a#playlist__link:hover {
-            background-color: var(--WSMR-tertiary);
-            box-shadow: 0px 15px 20px rgba(77, 67, 131, 0.4);
-            color: #fff;
         }
         p {
             margin: 0;
+        }
+        #playlist-link-container {
+            display: flex;
+            align-items: center;
+            background-color: var(--WSMR-secondary);
+            padding: 0.5em;
+            border-start-end-radius: 10px;
+            border-end-end-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease 0s;
+        }
+        #playlist-link-container:hover {
+            background-color: var(--WSMR-tertiary);
+            box-shadow: 0px 15px 20px rgba(77, 67, 131, 0.4);
+            color: #fff;
         }
     </style>
     <script src="./scripts/classical-playing-now.js" defer></script>
@@ -69,11 +67,9 @@
 <body>
     <section id="playing-now-container">
         <p id="playing-now__summary"></p>
-        <p id="playlist__link--container">
-            <a id="playlist__link" href="https://wusfnews.wusf.usf.edu/classical/playlist" target="_top">
-                View Classical Playlist &gt;
-            </a>
-        </p>
+        <div id="playlist-link-container">
+            <a id="playlist-link" href="https://wusfnews.wusf.usf.edu/classical/playlist" target="_top">View Classical Playlist &gt;&gt;</a>
+        </div>
     </section>
 </body>
 </html>
