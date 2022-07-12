@@ -24,7 +24,7 @@
 /* Tagline next to the header logo 
 (i.e. Florida's Classical Music Station */
 .Page-header-tagline {
-    color: var(--WSMR-primary);
+    color: var(--WSMR-secondary);
     font-weight: bold;
     font-size: 1.3em;
 }  
