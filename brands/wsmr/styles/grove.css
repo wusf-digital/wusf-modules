@@ -41,9 +41,13 @@
     fill: var(--WSMR-primary);
 }
 
-/* Donate Button Styles */
-.Page-header-donate-button.gtm_donate {
+/* Donate and Search Button Styles */
+.Page-header-donate-button.gtm_donate, 
+[data-header-background=true][data-search-open=false] 
+.Page-header-search-button, [data-header-background=true][data-search-open=false] 
+.Page-header-search-button-mobile {
     background: var(--WSMR-secondary);
+    border-color: var(--WSMR-secondary);
 }
 
 /* Persistent Streaming Player Styles */
