@@ -9,6 +9,12 @@
     fill: var(--WSMR-primary);
 }
 
+/* Hamburger Menu when there is a background image */
+[data-header-background=true] .Page-header-menu-trigger {
+    background-color: var(--WSMR-secondary);
+    border-color: var(--WSMR-secondary);
+}
+
 .NavigationItem-text.gtm_nav_cat span:hover,
 .NavigationItem-text.gtm_nav_cat a:hover,
 .NavigationItem-items-item.gtm_nav_subcat a:hover {
