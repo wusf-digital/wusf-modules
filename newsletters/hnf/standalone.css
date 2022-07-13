@@ -4,12 +4,11 @@ html {
 }
 
 body {
-    position: relative;
+    /* position: relative; */
     width: 100%;
     margin: 0; 
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-content: center;
     z-index: 1;
     background: rgb(13,86,64);
@@ -23,6 +22,7 @@ body {
 
 html, body {
     height: 100%;
+    flex-direction: column;
 }
 
 .hnf-container-fluid {
@@ -84,11 +84,14 @@ button#newsletterButton {
 }
 
 @media (min-width: 992px) {
+    body {
+        flex-direction: row;
+    }
     .hnf-logos {
         width: 500px;
     }
     form.hnf-form-container > div {
-        width: 50%;
+        width: 100%;
     }
     .hnf-signup-text {
         font-size: 2rem;
