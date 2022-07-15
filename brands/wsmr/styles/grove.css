@@ -79,6 +79,9 @@
 }
 
 /* Links and Buttons */
+.ArticlePage-authorBy > a.Link {
+    color: black;
+}
 a.Link:hover {
     color: var(--WSMR-primary);
 }
@@ -96,6 +99,13 @@ button.StreamPill {
 .RichTextBody p a {
     color: var(--WSMR-primary);
     text-decoration: underline;
+}
+
+/* This code disables links */
+.PromoA-category > a.Link,
+.PromoC-category > a.Link,
+.ArticlePage-breadcrumbs > a.Link {
+    pointer-events: none;
 }
 
 /* Footer Styles */
