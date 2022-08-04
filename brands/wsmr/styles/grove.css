@@ -5,7 +5,7 @@
 }
 
 /* Header background image */
-ps-header.Page-header {
+.PH {
     background-image: url("https://npr-brightspot.s3.amazonaws.com/12/b6/eb7e62ab437c91ed43b87bc94b01/20220712-wsmr-grove-sand-header-banner-blk-overlay-1800x180.png");
     background-repeat: no-repeat;
     /* Do not repeat the image */
@@ -13,12 +13,12 @@ ps-header.Page-header {
 }
 
 /* Hamburger Menu */
-.Page-header-menu-trigger .burger-menu {
+.PH-menu-trigger .burger-menu {
     fill: var(--WSMR-primary);
 }
 
 /* Hamburger Menu when there is a background image */
-[data-header-background=true] .Page-header-menu-trigger {
+[data-header-background=true] .PH-menu-trigger {
     background-color: var(--WSMR-secondary);
     border-color: var(--WSMR-secondary);
 }
@@ -31,45 +31,44 @@ ps-header.Page-header {
 
 /* Tagline next to the header logo 
 (i.e. Florida's Classical Music Station */
-.Page-header-tagline {
+.PH-tagline {
     color: white;
     font-weight: bold;
     font-size: 1.3em;
 }  
 
 /* Search bar text colors and button colors */
-.Page-header-search-input, 
-.Page-header-search-input-mobile,
-.Page-header-search-close svg {
+.PH-search-input, 
+.PH-search-input-mobile,
+.PH-search-close svg {
     color: var(--WSMR-primary);
     fill: var(--WSMR-primary);
 }
 
-.Page-header-search-button-mobile .close-x, 
-.Page-header-search-button .close-x {
+.PH-search-button-mobile .close-x, 
+.PH-search-button .close-x {
     color: var(--WSMR-primary);
 }
 
-.Page-header-search-button-mobile .icon-magnify, 
-.Page-header-search-button .icon-magnify {
+.PH-search-button-mobile .icon-magnify, 
+.PH-search-button .icon-magnify {
     fill: var(--WSMR-primary);
 }
 
 /* Donate and Search Button Styles */
-.Page-header-donate-button.gtm_donate, 
+.PH-donate-button.gtm_donate, 
 [data-header-background=true][data-search-open=false] 
-.Page-header-search-button, [data-header-background=true][data-search-open=false] 
-.Page-header-search-button-mobile {
+.PH-search-button, [data-header-background=true][data-search-open=false] 
+.PH-search-button-mobile {
     background: var(--WSMR-secondary);
     border-color: var(--WSMR-secondary);
 }
 
 /* Persistent Streaming Player Styles */
-.Page-header-persistent-player {
+.BrightspotPersistentPlayer {
     background: var(--WSMR-primary);
 }
-
-.BrightspotPersistentPlayer {
+.PH-persistent-player {
     background: var(--WSMR-primary);
 }
 
@@ -87,7 +86,7 @@ ps-header.Page-header {
 }
 
 /* Links and Buttons */
-.ArticlePage-authorBy > a.Link {
+.ArtP-authorBy a, .ArtP-contributors a, .AuthorPage-authorBy a, .AuthorPage-contributors a, .BlogPage-authorBy a, .BlogPage-contributors a, .BlogPostPage-authorBy a, .BlogPostPage-contributors a, .EventPage-authorBy a, .EventPage-contributors a, .LiveBlogPage-authorBy a, .LiveBlogPage-contributors a, .LongFormPage-authorBy a, .LongFormPage-contributors a, .OneOffPage-authorBy a, .OneOffPage-contributors a, .PCEP-authorBy a, .PCEP-contributors a, .RSEP-authorBy a, .RSEP-contributors a, .SectionPage-authorBy a, .SectionPage-contributors a, .SeriesPage-authorBy a, .SeriesPage-contributors a, .TagPage-authorBy a, .TagPage-contributors a {
     color: black;
 }
 a.Link:hover {
