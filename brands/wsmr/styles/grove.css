@@ -35,6 +35,7 @@
     color: white;
     font-weight: bold;
     font-size: 1.3em;
+    pointer-events: none;
 }  
 
 /* Search bar text colors and button colors */
@@ -86,7 +87,15 @@
 }
 
 /* Links and Buttons */
-.ArtP-authorBy a, .ArtP-contributors a, .AuthorPage-authorBy a, .AuthorPage-contributors a, .BlogPage-authorBy a, .BlogPage-contributors a, .BlogPostPage-authorBy a, .BlogPostPage-contributors a, .EventPage-authorBy a, .EventPage-contributors a, .LiveBlogPage-authorBy a, .LiveBlogPage-contributors a, .LongFormPage-authorBy a, .LongFormPage-contributors a, .OneOffPage-authorBy a, .OneOffPage-contributors a, .PCEP-authorBy a, .PCEP-contributors a, .RSEP-authorBy a, .RSEP-contributors a, .SectionPage-authorBy a, .SectionPage-contributors a, .SeriesPage-authorBy a, .SeriesPage-contributors a, .TagPage-authorBy a, .TagPage-contributors a {
+.ArtP-authorBy a, .ArtP-contributors a, .AuthorPage-authorBy a, 
+.AuthorPage-contributors a, .BlogPage-authorBy a, .BlogPage-contributors a, 
+.BlogPostPage-authorBy a, .BlogPostPage-contributors a, .EventPage-authorBy a, 
+.EventPage-contributors a, .LiveBlogPage-authorBy a, .LiveBlogPage-contributors a, 
+.LongFormPage-authorBy a, .LongFormPage-contributors a, .OneOffPage-authorBy a, 
+.OneOffPage-contributors a, .PCEP-authorBy a, .PCEP-contributors a, .RSEP-authorBy a, 
+.RSEP-contributors a, .SectionPage-authorBy a, .SectionPage-contributors a, 
+.SeriesPage-authorBy a, .SeriesPage-contributors a, .TagPage-authorBy a, 
+.TagPage-contributors a {
     color: black;
 }
 a.Link:hover {
