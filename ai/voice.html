@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/polly.css">
+    <script src="scripts/polly.js" defer></script>
+    <title>AI - Neural-Network Voice</title>
+</head>
+<body>
+    <nav>
+        <p class="title">Artificial Intelligence Audio Engine</p>
+    </nav>
+    <main>
+        <label for="name">Enter Text That You Want To Hear</label>
+        <p class="max-characters">Max 1500 characters</p>
+        <form id="polly">
+            <textarea id="polly-text" name="polly-text" maxlength="1500" autocomplete="off" required></textarea>
+            <p>Select Voice Type:
+                <select id="select-voice">
+                    <option value="Matthew">Male</option>
+                    <option value="Joanna">Female</option>
+                </select>
+            </p>
+            <button id="polly-submit" type="submit">Create Audio Stream</button>
+        </form>
+    </main>
+</body>
+</html>
