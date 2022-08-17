@@ -19,7 +19,7 @@ async function authenticate() {
     const password = enterPassword()
 
     try {
-        const response = await fetch('http://localhost:3000/user/login', {
+        const response = await fetch('https://api-dev.wusf.digital/user/login', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -66,7 +66,7 @@ function collectFormData() {
 
 async function submitToApi(data) {
     try {
-        const response = await fetch('http://localhost:3000/polly', {
+        const response = await fetch('https://api-dev.wusf.digital/polly', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
