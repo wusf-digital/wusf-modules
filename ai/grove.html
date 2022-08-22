@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Neural Network - Grove</title>
+</head>
+<body>
+<div class="ArtP-articleBody">
+    Here is the Grove article body would be, but is not needed for this code sample.
+</div>
+    
+<script>
+    (function start() {
+
+        function insertAfter(newNode, referenceNode) {
+            referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+        }
+
+        function convertHtmlToText(html) {
+            return html.replace(/<[^>]+>/g, '')
+        }
+
+        async function getAIAudioStream() {
+            wusfAIStreamButton.disabled = true
+            wusfAIStreamButton.textContent = 'Please wait...'
+            audioObject.src = await getUrlStream()
+            insertAfter(audioObject, wusfAIStreamButton)
+            wusfAIStreamButton.remove()
+        }
+
+        async function getPageJSON() {
+            const response = await fetch(`renderer.json`)
+            const pageJSON = await response.json()
+            const article = pageJSON.articleBody
+
+            let combineText = []
+
+            article.forEach(p => {
+                if (p.items) {
+                    if (!p.items[0].hasOwnProperty('body')) {
+                        let [ html ] = p.items
+                        const articleText = convertHtmlToText(html)
+                        combineText.push(articleText)
+                    }
+                    
+                    if (p.items[0].body) {
+                        let html = p.items[0].body
+                        const articleText = convertHtmlToText(html)
+                        combineText.push(articleText)
+                    }
+                }
+                return 
+            })
+
+            let snippet = combineText.join('').slice(0, 1500)
+            let textToSend = "<speak><amazon:domain name='news'>"
+            textToSend += snippet
+            textToSend += "</amazon:domain></speak>"
+            
+            return textToSend
+        }
+
+        async function getUrlStream() {
+            const data = {}
+            data.data = {}
+            data.data.text = await getPageJSON()
+            data.data.voice = 'Joanna'
+            
+            try {
+                const response = await fetch('https://api-dev.wusf.digital/polly/grove', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                })
+                if (response.ok) {
+                    const audioStreamURL = await response.json()
+                    return audioStreamURL
+                }
+            } catch(error) {
+                console.error(error)
+                return
+            }
+        }
+
+        const articleBody = document.querySelector('.ArtP-articleBody')
+        const buttonObject = document.createElement('button')
+        buttonObject.classList.add('StreamPill', 'wusf-ai-stream')
+        buttonObject.textContent = 'Listen'
+        const audioObject = document.createElement('audio')
+        audioObject.setAttribute('controls', '')
+        
+        insertAfter(buttonObject, articleBody)
+        const wusfAIStreamButton = document.querySelector('.wusf-ai-stream')
+        wusfAIStreamButton.addEventListener('click', getAIAudioStream)
+
+    })()  
+
+</script>
+</body>
+</html>
