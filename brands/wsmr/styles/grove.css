@@ -128,3 +128,7 @@ button.StreamPill {
 footer.Page-footer {
     background: var(--WSMR-primary);
 }
+
+.AlertBar {
+    display: none;
+}
