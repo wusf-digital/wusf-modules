@@ -5,12 +5,11 @@
 }
 
 /* Header background image */
-.PH {
+/* .PH {
     background-image: url("https://npr-brightspot.s3.amazonaws.com/12/b6/eb7e62ab437c91ed43b87bc94b01/20220712-wsmr-grove-sand-header-banner-blk-overlay-1800x180.png");
     background-repeat: no-repeat;
-    /* Do not repeat the image */
     background-size: cover;
-}
+} */
 
 /* Hamburger Menu */
 .PH-menu-trigger .burger-menu {
@@ -32,7 +31,7 @@
 /* Tagline next to the header logo 
 (i.e. Florida's Classical Music Station */
 .PH-tagline {
-    color: white;
+    color: var(--WSMR-primary);
     font-weight: bold;
     font-size: 1.3em;
     pointer-events: none;
