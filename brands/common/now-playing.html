@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Now Playing</title>
+</head>
+<body>
+    <h2>What's Playing on WSMR</h2>
+    <p id="wsmr-title"></p>
+    <p id="wsmr-artist"></p>
+    <p id="wsmr-album"></p>
+    <p id="wsmr-startTime"></p>
+    <p id="wsmr-duration"></p>
+    <img alt="Image of artist now playing" id="wsmr-image" width="200px">
+    <hr />
+    <h2>What's Playing on WUSF</h2>
+    <p id="wusf-title"></p>
+    <p id="wusf-artist"></p>
+    <p id="wusf-album"></p>
+    <p id="wusf-startTime"></p>
+    <p id="wusf-duration"></p>
+    <img alt="Image of artist now playing" id="wusf-image" width="200px"
+    src="../../assets/logos/transparent_image.png">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script>
+    async function nowPlaying(station) {
+        try {
+            let response = await (await fetch(`https://api-dev.wusf.digital/nowPlaying/${station.toUpperCase()}`)).json()
+            
+            if (Array.isArray(response.nowPlaying) && !response.nowPlaying.length) return
+            document.querySelector(`#${station}-title`).innerHTML = '<b>Title:</b> ' + response.nowPlaying[0].title
+            document.querySelector(`#${station}-artist`).innerHTML = response.nowPlaying[0].artist
+            document.querySelector(`#${station}-album`).innerHTML = response.nowPlaying[0].album
+            document.querySelector(`#${station}-startTime`).innerHTML = '<b>Start Time: </b>' + moment(new Date(response.nowPlaying[0].startTime)).format('h:mm a')
+            document.querySelector(`#${station}-duration`).innerHTML = '<b>Duration: </b>' + response.nowPlaying[0].duration + ' minutes'
+
+            if (!response.nowPlaying[0].image) { 
+                document.querySelector(`#${station}-image`).src = '../../assets/logos/image_not_available.png'
+            }
+
+            if (response.nowPlaying[0].image) {
+                document.querySelector(`#${station}-image`).src = 'data:image/png;base64,' + response.nowPlaying[0].image
+            }
+
+        } catch(error) {
+            console.error(error)
+        }
+    }
+
+    nowPlaying('wsmr')
+    nowPlaying('wusf')
+    </script>
+</body>
+</html>
