@@ -9,7 +9,7 @@
 <body>
     <h2>What's Playing on WSMR</h2>
     <p id="wsmr-title"></p>
-    <p id="wsmr-artist"></p>
+    <p id="wsmr-artistOrDesc"></p>
     <p id="wsmr-album"></p>
     <p id="wsmr-startTime"></p>
     <p id="wsmr-duration"></p>
@@ -17,7 +17,7 @@
     <hr />
     <h2>What's Playing on WUSF</h2>
     <p id="wusf-title"></p>
-    <p id="wusf-artist"></p>
+    <p id="wusf-artistOrDesc"></p>
     <p id="wusf-album"></p>
     <p id="wusf-startTime"></p>
     <p id="wusf-duration"></p>
@@ -26,13 +26,14 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script>
-    async function nowPlaying(station) {
-        try {
-            let response = await (await fetch(`https://api-dev.wusf.digital/nowPlaying/${station.toUpperCase()}`)).json()
-            
-            if (Array.isArray(response.nowPlaying) && !response.nowPlaying.length) return
+
+        function isNowPlayingAvailable(data) {
+            return data.nowPlaying.length === 0 ? false : true
+        }
+
+        function displayNowPlaying(station, response) {
             document.querySelector(`#${station}-title`).innerHTML = '<b>Title:</b> ' + response.nowPlaying[0].title
-            document.querySelector(`#${station}-artist`).innerHTML = response.nowPlaying[0].artist
+            document.querySelector(`#${station}-artistOrDesc`).innerHTML = response.nowPlaying[0].artist
             document.querySelector(`#${station}-album`).innerHTML = response.nowPlaying[0].album
             document.querySelector(`#${station}-startTime`).innerHTML = '<b>Start Time: </b>' + moment(new Date(response.nowPlaying[0].startTime)).format('h:mm a')
             document.querySelector(`#${station}-duration`).innerHTML = '<b>Duration: </b>' + response.nowPlaying[0].duration + ' minutes'
@@ -44,11 +45,33 @@
             if (response.nowPlaying[0].image) {
                 document.querySelector(`#${station}-image`).src = 'data:image/png;base64,' + response.nowPlaying[0].image
             }
-
-        } catch(error) {
-            console.error(error)
         }
-    }
+
+        function displayOnAir(station, response) {
+            document.querySelector(`#${station}-title`).innerHTML = '<b>Title:</b> ' + response.onAir[0].title
+            document.querySelector(`#${station}-artistOrDesc`).innerHTML = response.onAir[0].description
+            document.querySelector(`#${station}-startTime`).innerHTML = '<b>Start Time: </b>' + moment(new Date(response.onAir[0].startTime)).format('h:mm a')
+            document.querySelector(`#${station}-duration`).innerHTML = '<b>Duration: </b>' + response.onAir[0].duration + ' minutes'
+
+            if (!response.onAir[0].images[0].image) { 
+                document.querySelector(`#${station}-image`).src = '../../assets/logos/image_not_available.png'
+            }
+
+            if (response.onAir[0].images[0].image) {
+                document.querySelector(`#${station}-image`).src = 'data:image/png;base64,' + response.onAir[0].images[0].image
+            }
+        }
+
+        async function nowPlaying(station) {
+            try {
+
+                let data = await (await fetch(`https://api-dev.wusf.digital/nowPlaying/${station.toUpperCase()}`)).json()
+                isNowPlayingAvailable(data) ? displayNowPlaying(station, data) : displayOnAir(station, data)
+
+            } catch(error) {
+                console.error(error)
+            }
+        }
 
     nowPlaying('wsmr')
     nowPlaying('wusf')
