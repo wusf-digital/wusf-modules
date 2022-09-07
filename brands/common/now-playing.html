@@ -39,7 +39,7 @@
             document.querySelector(`#${station}-duration`).innerHTML = '<b>Duration: </b>' + response.nowPlaying[0].duration + ' minutes'
 
             if (!response.nowPlaying[0].image) { 
-                document.querySelector(`#${station}-image`).src = '../../assets/logos/image_not_available.png'
+                document.querySelector(`#${station}-image`).src = `../../assets/logos/${station}_logo_600x600.png`
             }
 
             if (response.nowPlaying[0].image) {
@@ -54,7 +54,7 @@
             document.querySelector(`#${station}-duration`).innerHTML = '<b>Duration: </b>' + response.onAir[0].duration + ' minutes'
 
             if (!response.onAir[0].images[0].image) { 
-                document.querySelector(`#${station}-image`).src = '../../assets/logos/image_not_available.png'
+                document.querySelector(`#${station}-image`).src = `../../assets/logos/${station}_logo_600x600.png`
             }
 
             if (response.onAir[0].images[0].image) {
