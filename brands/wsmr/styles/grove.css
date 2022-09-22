@@ -143,10 +143,10 @@ We don't want this to display on the WSMR Page */
     margin: 10px 3px 0;
 }
 
-.SocialLink[data-social-service=twitter] {
+.SocialLink[data-social-service=twitter] {
     display: none;
 }
 
-.SocialLink[data-social-service=youtube] {
+.SocialLink[data-social-service=youtube] {
     display: none;
 }
