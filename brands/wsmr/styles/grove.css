@@ -97,6 +97,11 @@
 .TagPage-contributors a {
     color: black;
 }
+
+.RichTextModule a.Link {
+    color: var(--WSMR-primary);
+}
+
 a.Link:hover {
     color: var(--WSMR-primary);
 }
