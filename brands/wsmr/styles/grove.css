@@ -155,3 +155,10 @@ We don't want this to display on the WSMR Page */
 .SocialLink[data-social-service=youtube] {
     display: none;
 }
+
+/* CUSTOM PROMOS */
+
+/* Promo Highlight - FullWidth */
+.PromoH-fullwidth-title a.Link:hover {
+    color: white;
+}
