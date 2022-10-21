@@ -60,8 +60,8 @@
 [data-header-background=true][data-search-open=false] 
 .PH-search-button, [data-header-background=true][data-search-open=false] 
 .PH-search-button-mobile {
-    background: var(--WSMR-secondary);
-    border-color: var(--WSMR-secondary);
+    background: firebrick;
+    border-color: firebrick;
 }
 
 /* Persistent Streaming Player Styles */
