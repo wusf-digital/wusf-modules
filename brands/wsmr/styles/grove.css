@@ -64,6 +64,17 @@
     border-color: firebrick;
 }
 
+.PH-donate-button.gtm_donate, [data-header-background=true][data-search-open=false] 
+.PH-search-button, [data-header-background=true][data-search-open=false] 
+.PH-search-button-mobile {
+    background: firebrick;
+    border-color: firebrick;
+}
+
+.PH-donate-button.gtm_donate a:hover {
+    color: white;
+}
+
 /* Persistent Streaming Player Styles */
 .BrightspotPersistentPlayer {
     background: var(--WSMR-primary);
