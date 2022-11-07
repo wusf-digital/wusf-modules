@@ -14,8 +14,8 @@
         Try to access a new instance of SGPlayer right away
         There is an options object I'm leaving out for the moment
         */
-        const newSGInstance = new SGPlayer()
-        console.log(newSGInstance)
+        //const newSGInstance = new SGPlayer()
+        //console.log(newSGInstance)
 
         /* 
         Keep checking every 2 seconds until I get access
@@ -29,13 +29,12 @@
 
         const check = setInterval(() => {
             isSgPlayerAvailable() === false ? isSgPlayerAvailable() : run()
-        }, 2000)
+        }, 5000)
 
         function run() {
             sgApiAvailable = true
             clearInterval(check)
             console.log('Access to SGPlayer Instance')
-
         }
     </script>
 </body>
