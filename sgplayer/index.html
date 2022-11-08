@@ -3,38 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" id="sgplayerembed" src="https://player.streamguys.com/wusf/sgplayer/embed.min.js?v=3.2.7"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            gap: 20px;
+        }
+        body > * {
+            flex: 1
+        }
+    </style>
     <title>StreamGuys Test Player</title>
 </head>
 <body>
-    <div class="sgplayer-embed" style="height:700px;"></div>
+    <div class="sgplayer-embed" style="width:500px;height:700px;"></div>
+    <img id="img-test" style="width:500px;height:700px" />
+    
     <script>
-        /* 
-        Try to access a new instance of SGPlayer right away
-        There is an options object I'm leaving out for the moment
-        */
-        //const newSGInstance = new SGPlayer()
-        //console.log(newSGInstance)
-
-        /* 
-        Keep checking every 2 seconds until I get access
-        to the SGPlayer instance.
-        */
+        // Keep checking until I get access to the SGPlayer instance.
         let sgApiAvailable = false
+
+        const check = setInterval(() => {
+            isSgPlayerAvailable() === false ? isSgPlayerAvailable() : sgPlayerIsAvailable()
+        }, 2000)
+
+        setTimeout(() => clearInterval(check), 30000)
 
         function isSgPlayerAvailable() {
             return typeof(window._sgplayer) === 'undefined' ? false : true 
         }
 
-        const check = setInterval(() => {
-            isSgPlayerAvailable() === false ? isSgPlayerAvailable() : run()
-        }, 5000)
-
-        function run() {
+        function sgPlayerIsAvailable() {
             sgApiAvailable = true
             clearInterval(check)
-            console.log('Access to SGPlayer Instance')
+            run()
+        }
+
+        async function nowPlaying(station) {
+            try {
+                let data = await (await fetch(`https://api-dev.wusf.digital/nowPlaying/${station.toUpperCase()}`)).json()
+                const titleNowPlaying = data.nowPlaying[0]?.title ?? undefined
+                const artist = data.nowPlaying[0]?.artist ?? ''
+                const imgBase64NowPlaying = data.nowPlaying[0]?.image ?? undefined
+
+                const titleOnAir = data.onAir[0]?.title ?? ''
+                const imgBase64OnAir = data.onAir[0]?.images[0]?.image ?? undefined
+
+                const title = titleNowPlaying ?? titleOnAir
+                const imgBase64 = imgBase64NowPlaying ?? imgBase64OnAir
+
+                return { title, artist, imgBase64 }
+            } catch(error) {
+                console.error(error)
+                //document.querySelector(`#${station}-image`).src = `https://player.streamguys.com/wusf/sgplayer/include/image/${station}.png`
+            }
+        }
+
+        async function run() {
+            const { title, artist, imgBase64 } = await nowPlaying('wusf')
+            //const imgHolder = document.querySelector('#art.sg-video.sg-art')
+            const imgRapid = document.querySelector('#img-test')
+            imgRapid.src = `data:image/png;base64,${imgBase64}`
+            // imgRapid.setAttribute('id', 'art')
+            // imgRapid.classList.add('sg-video', 'sg-art')
+            // imgRapid.style.cssText = `background-image:url('data:image/png;base64,${imgBase64}')`
+            
+
+            const stream = { 
+                name: "WUSF Custom Player", 
+                title: `${title} - ${artist}`, 
+                fallbackArt: "https://player.streamguys.com/wusf/sgplayer/include/image/wusf.png", 
+                type: "audio", 
+                source: [{ 
+                    type: "audio/mpeg", 
+                    src: "https://streaming.wusf.fm/wusf-web"     
+                }], 
+                metaData: { 
+                    enabled: false, 
+                    autoScrollSong: true, 
+                    autoScrollPrev: false, 
+                    songArraySize: 6, 
+                    sgmd: { 
+                        source: "https://jetio.streamguys.com", 
+                        key: "bde4ce9b8e5f8db632bc31aa5f5d8877dd9360fa", 
+                        scraperId: "33e63f45-db1b-479b-ade5-7f8070883e14", 
+                        socketIO: { 
+                            forceNew: true 
+                        }         
+                    }, 
+                    delay: true, 
+                    delimiter: " - ", 
+                    albumOrder: 1, 
+                    artistOrder: 2, 
+                    trackOrder: 3     
+                } 
+            }
+
+            _sgplayer.loadStream(stream, success => { 
+                if (success) {
+                    _sgplayer.play()
+                }
+            })
         }
     </script>
 </body>
