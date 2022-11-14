@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" defer></script>
+    <title>WUSF Custom Player</title>
+    <style>
+        .player-container {
+            display: grid;
+            font-family: Arial, Helvetica, sans-serif;
+            border-radius: 10px;
+            gap: 20px;
+            grid-template-columns: 1fr 1fr;
+            background: linear-gradient(to bottom, rgb(31, 61, 85) 85%, rgb(26, 38, 44));
+            padding-block: 2em;
+            padding-inline: 2em;
+            color: white;
+            z-index: 1;
+            position: relative;
+        }
+        .player-container::after {
+            content: "";
+            height: 8px;
+            background: rgb(26, 103, 71);
+            border-radius: 0 0 6px 6px;
+            position: absolute;
+            width: 80%;
+            left: 50%;
+            bottom: -12px;
+            transform: translate(-50%, -50%);
+        }
+        img.show-img {
+            border-radius: 10px;
+            max-width: 80%;
+            height: 100%;
+            margin: auto;
+        }
+        span#live {
+            margin-inline-end: 1em;
+            background-color: red;
+            letter-spacing: 2px;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        h1.show-name {
+            margin-block-end: 1em;
+        }
+        button.audio-toggle {
+            background-color: rgb(26, 103, 71);
+            border: none;
+            color: white;
+            padding: 1em 2em;
+            border-radius: 40px;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 2.5vw;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="player-container">
+        <img class="show-img" alt="Program Live On-Air" />
+        <summary>
+            <p id="air-times">
+            <span id="live">Live</span><time></time>
+            </p>
+            <h1 class="show-name"></h1>
+            <button class="audio-toggle">&#9658;&nbsp;Listen Live</button>
+        </summary>
+    </div>
+    <script>
+        const timePlaying = document.querySelector('time')
+        const showName = document.querySelector('h1.show-name')
+        const showImage = document.querySelector('img.show-img')
+
+        class Player {
+            constructor(station) {
+                this.station = station.toLowerCase()
+            }
+        }
+
+        const wusfPlayer = new Player('wusf')
+
+        const audioStream = new Audio('https://streaming.wusf.fm/wusf')
+        const audioButton = document.querySelector('button.audio-toggle')
+        audioButton.addEventListener('click', e => {
+            audioStream.play()
+        })
+
+        function getEndTime(startTime, str) {
+            let duration = str.split(':').slice(1)
+            duration = duration.join(':')
+            duration = moment.duration(duration)
+            let endTime = moment(startTime).add(duration, 'milliseconds')
+            endTime = moment(new Date(endTime)).format('h:mm a')
+            return endTime
+        }
+
+        async function nowPlaying(station) {
+            try {
+                let data = await (await fetch(`https://api-dev.wusf.digital/nowPlaying/${station.toUpperCase()}`)).json()
+                const titleNowPlaying = data.nowPlaying[0]?.title ?? undefined
+                const startTimeNowPlaying = data.nowPlaying[0]?.startTime ?? undefined
+                const durationNowPlaying = data.nowPlaying[0]?.duration ?? undefined
+                const artist = data.nowPlaying[0]?.artist ?? ''
+                const imgBase64NowPlaying = data.nowPlaying[0]?.image ?? undefined
+
+                const titleOnAir = data.onAir[0]?.title ?? ''
+                const startTimeOnAir = data.onAir[0]?.startTime ?? undefined
+                const durationOnAir = data.onAir[0]?.duration ?? undefined
+                const imgBase64OnAir = data.onAir[0]?.images[0]?.image ?? undefined
+
+                const title = titleNowPlaying ?? titleOnAir
+                const imgBase64 = imgBase64NowPlaying ?? imgBase64OnAir
+                let startTime = startTimeNowPlaying ?? startTimeOnAir
+                const endTime = getEndTime(startTime, (durationNowPlaying ?? durationOnAir)) 
+                startTime = moment(new Date(startTime)).format('h:mm a')
+                 
+                return { title, artist, startTime, endTime, imgBase64 }
+            } catch(error) {
+                console.error(error)
+            }
+        }
+
+        async function start() {
+            const { title, artist, startTime, endTime, imgBase64 } = await nowPlaying('wusf')
+            showName.innerHTML = title
+            timePlaying.innerHTML = `${startTime} - ${endTime}`
+            showImage.src = `data:image/png;base64,${imgBase64}`
+        }
+
+        start()
+    </script>
+</body>
+</html>
