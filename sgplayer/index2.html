@@ -62,6 +62,9 @@
         h1.show-name {
             margin-block-end: 1em;
         }
+        h3.show-artist {
+            margin-block-end: 3em;
+        }
         button.audio-toggle {
             background-color: rgb(26, 103, 71);
             border: none;
@@ -95,8 +98,6 @@
             <h1 class="show-name"></h1>
             <h3 class="show-artist"></h3>
             <button class="audio-toggle"><span class="status"></span>&nbsp;&nbsp;Listen Live</button>
-            
-        
         </summary>
     </div>
     <script>
@@ -104,7 +105,7 @@
         const buttonStatus = document.querySelector('span.status')
         const timePlaying = document.querySelector('time')
         const showName = document.querySelector('h1.show-name')
-        const artist = document.querySelector('h3.show-artist')
+        const showArtist = document.querySelector('h3.show-artist')
         const showImage = document.querySelector('img.show-img')
         const audioButton = document.querySelector('button.audio-toggle')
 
@@ -193,7 +194,7 @@
         async function start() {
             const { title, artist, startTime, endTime, imgBase64 } = await whatIsPlaying('wusf')
             showName.innerHTML = title
-            artist ? artist.innerHTML = artist : null
+            artist ? showArtist.innerHTML = artist : null
             timePlaying.innerHTML = `${startTime} - ${endTime}`
             showImage.src = `data:image/png;base64,${imgBase64}`
         }
