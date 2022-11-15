@@ -13,7 +13,6 @@
                 grid-template-columns: 1fr 1fr;
             }
         }
-        
         img.wusf-logo {
             display: block;
             width: 40%;
@@ -144,7 +143,6 @@
             duration = moment.duration(duration)
             let endTime = moment(startTime).add(duration, 'milliseconds')
             return formatTime(endTime)
-            endTime
         }
 
         function getEndTimeFromNowPlaying(startTime, str) {
@@ -165,27 +163,50 @@
             return moment(new Date(iso8601)).format('h:mm a')
         }
 
+        function getNowPlaying(data) {
+            // Returns data from the "nowPlaying" array (if available)
+            // The "nowPlaying" array includes information about individual stories within a program
+            if (Array.isArray(data) && !data.length) return
+
+            let [ showData ] = data
+
+            return {
+                title: showData.title ?? undefined,
+                startTime: showData.startTime ?? undefined,
+                endTime: showData.duration ? getEndTimeFromNowPlaying(showData.startTime, showData.duration) : undefined,
+                artist: showData.artist ?? '',
+                imgBase64: showData.image ?? undefined
+            }
+        }
+
+        function getOnAir(data) {
+            // Returns data from the "onAir" array
+            // The "onAir" array includes information about the program playing
+            if (Array.isArray(data) && !data.length) return
+
+            let [ showData ] = data
+
+            return {
+                title: showData.title ?? '',
+                startTime: showData.startTime ?? undefined,
+                endTime: showData.duration ? getEndTimeFromOnAir(showData.startTime, showData.duration) : undefined,
+                imgBase64: showData.images[0]?.image ?? undefined
+            }
+        }
+
         async function whatIsPlaying(station) {
             try {
                 let data = await (await fetch(`https://api-dev.wusf.digital/nowPlaying/${station.toUpperCase()}`)).json()
-                
-                const titleNowPlaying = data.nowPlaying[0]?.title ?? undefined
-                const startTimeNowPlaying = data.nowPlaying[0]?.startTime ?? undefined
-                const endTimeNowPlaying = data.nowPlaying[0]?.duration ? getEndTimeFromNowPlaying(startTimeNowPlaying, data.nowPlaying[0].duration) : undefined
-                const artist = data.nowPlaying[0]?.artist ?? ''
-                const imgBase64NowPlaying = data.nowPlaying[0]?.image ?? undefined
 
-                const titleOnAir = data.onAir[0]?.title ?? ''
-                const startTimeOnAir = data.onAir[0]?.startTime ?? undefined
-                const endTimeOnAir = data.onAir[0]?.duration ? getEndTimeFromOnAir(startTimeOnAir, data.onAir[0].duration) : undefined
-                const imgBase64OnAir = data.onAir[0]?.images[0]?.image ?? undefined
-
-                const title = titleNowPlaying ?? titleOnAir
-                const imgBase64 = imgBase64NowPlaying ?? imgBase64OnAir
-                const startTime = formatTime(startTimeNowPlaying ?? startTimeOnAir)
-                const endTime = endTimeNowPlaying ?? endTimeOnAir
-                 
-                return { title, artist, startTime, endTime, imgBase64 }
+                const showData = getNowPlaying(data.nowPlaying) ?? getOnAir(data.onAir)
+  
+                return { 
+                    title: showData.title, 
+                    artist: showData.artist, 
+                    startTime: formatTime(showData.startTime ?? showData.startTime), 
+                    endTime: showData.endTime, 
+                    imgBase64: showData.imgBase64 
+                }
             } catch(error) {
                 console.error(error)
             }
@@ -199,7 +220,13 @@
             showImage.src = `data:image/png;base64,${imgBase64}`
         }
 
-        start()
+        // Generic polling function
+        const sleep = duration => new Promise(resolve => setTimeout(resolve, duration))
+        const poll = (promiseFn, duration) => promiseFn().then(
+             sleep(duration).then(() => poll(promiseFn, duration)))
+
+        // Update show player with new metadata every 5 minutes
+        poll(() => new Promise(() => start()), 5 * 60000)
     </script>
 </body>
 </html>
