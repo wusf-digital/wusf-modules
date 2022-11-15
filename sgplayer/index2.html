@@ -4,15 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" defer></script>
     <title>WUSF Custom Player</title>
     <style>
+        @media (min-width: 568px) {
+            .player-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        img.wusf-logo {
+            display: block;
+            width: 40%;
+            height: auto;
+            margin-inline-start: auto;
+            margin-inline-end: auto;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+        }
         .player-container {
             display: grid;
             font-family: Arial, Helvetica, sans-serif;
             border-radius: 10px;
             gap: 20px;
-            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
             background: linear-gradient(to bottom, rgb(31, 61, 85) 85%, rgb(26, 38, 44));
             padding-block: 2em;
             padding-inline: 2em;
@@ -34,10 +50,9 @@
         img.show-img {
             border-radius: 10px;
             max-width: 80%;
-            height: 100%;
             margin: auto;
         }
-        span#live {
+        span.live {
             margin-inline-end: 1em;
             background-color: red;
             letter-spacing: 2px;
@@ -59,67 +74,115 @@
             text-transform: uppercase;
             font-size: 2.5vw;
             letter-spacing: 2px;
+            box-shadow: 0 10px 10px rgb(0 0 0 / 0.2);
+        }
+        button.audio-toggle:hover {
+            box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.5);
+            transform: translateY(-3px);
+            transition: all .3s ease-in-out;
         }
     </style>
 </head>
 <body>
+    <img class="wusf-logo" src="./WUSF897_Logo_Horiz_2019_COLOR.png" alt="WUSF 89.7 Logo">
     <div class="player-container">
         <img class="show-img" alt="Program Live On-Air" />
         <summary>
             <p id="air-times">
-            <span id="live">Live</span><time></time>
+                <span class="live">Live</span>
+                <time></time>
             </p>
             <h1 class="show-name"></h1>
-            <button class="audio-toggle">&#9658;&nbsp;Listen Live</button>
+            <h3 class="show-artist"></h3>
+            <button class="audio-toggle"><span class="status"></span>&nbsp;&nbsp;Listen Live</button>
+            
+        
         </summary>
     </div>
     <script>
+        // Store important DOM elements
+        const buttonStatus = document.querySelector('span.status')
         const timePlaying = document.querySelector('time')
         const showName = document.querySelector('h1.show-name')
+        const artist = document.querySelector('h3.show-artist')
         const showImage = document.querySelector('img.show-img')
-
-        class Player {
-            constructor(station) {
-                this.station = station.toLowerCase()
-            }
-        }
-
-        const wusfPlayer = new Player('wusf')
-
-        const audioStream = new Audio('https://streaming.wusf.fm/wusf')
         const audioButton = document.querySelector('button.audio-toggle')
+
+        // Initialize player
+        let isPlaying = false
+        buttonStatus.innerHTML = '<i class="fa fa-play"></i>'
+
+        // Define audio stream
+        const audioStream = new Audio('https://streaming.wusf.fm/wusf')
+        
+        // Click event handler for the play/pause button
         audioButton.addEventListener('click', e => {
-            audioStream.play()
+            isPlaying = !isPlaying
+            if (isPlaying) {
+                audioStream.play()
+                buttonStatus.innerHTML = '<i class="fa fa-pause"></i>'
+            } else {
+                audioStream.pause()
+                audioStream.currentTime = 0
+                buttonStatus.innerHTML = '<i class="fa fa-play"></i>'
+            }
         })
 
-        function getEndTime(startTime, str) {
+        function getEndTimeFromOnAir(startTime, str) {
+            /*  
+            We calculate the show's endTime based on its start time and
+            duration and return it to the caller.
+
+            The "onAir" array has the duration defined in the following format:
+            0:01:00:00
+            The code below removes the first digit and semicolon to simplify
+            the duration calculation with the MomentJS library
+            */
             let duration = str.split(':').slice(1)
             duration = duration.join(':')
             duration = moment.duration(duration)
             let endTime = moment(startTime).add(duration, 'milliseconds')
-            endTime = moment(new Date(endTime)).format('h:mm a')
-            return endTime
+            return formatTime(endTime)
+            endTime
         }
 
-        async function nowPlaying(station) {
+        function getEndTimeFromNowPlaying(startTime, str) {
+            /*  
+            We calculate the show's endTime based on its start time and
+            duration and return it to the caller.
+
+            The "nowPlaying" array has the duration defined in the following format:
+            01:00:00
+            */
+            duration = moment.duration(str)
+            let endTime = moment(startTime).add(duration, 'milliseconds')
+            return formatTime(endTime)
+        }
+
+        function formatTime(iso8601) {
+            // Returns time in the format of "8:00 pm"
+            return moment(new Date(iso8601)).format('h:mm a')
+        }
+
+        async function whatIsPlaying(station) {
             try {
                 let data = await (await fetch(`https://api-dev.wusf.digital/nowPlaying/${station.toUpperCase()}`)).json()
+                
                 const titleNowPlaying = data.nowPlaying[0]?.title ?? undefined
                 const startTimeNowPlaying = data.nowPlaying[0]?.startTime ?? undefined
-                const durationNowPlaying = data.nowPlaying[0]?.duration ?? undefined
+                const endTimeNowPlaying = data.nowPlaying[0]?.duration ? getEndTimeFromNowPlaying(startTimeNowPlaying, data.nowPlaying[0].duration) : undefined
                 const artist = data.nowPlaying[0]?.artist ?? ''
                 const imgBase64NowPlaying = data.nowPlaying[0]?.image ?? undefined
 
                 const titleOnAir = data.onAir[0]?.title ?? ''
                 const startTimeOnAir = data.onAir[0]?.startTime ?? undefined
-                const durationOnAir = data.onAir[0]?.duration ?? undefined
+                const endTimeOnAir = data.onAir[0]?.duration ? getEndTimeFromOnAir(startTimeOnAir, data.onAir[0].duration) : undefined
                 const imgBase64OnAir = data.onAir[0]?.images[0]?.image ?? undefined
 
                 const title = titleNowPlaying ?? titleOnAir
                 const imgBase64 = imgBase64NowPlaying ?? imgBase64OnAir
-                let startTime = startTimeNowPlaying ?? startTimeOnAir
-                const endTime = getEndTime(startTime, (durationNowPlaying ?? durationOnAir)) 
-                startTime = moment(new Date(startTime)).format('h:mm a')
+                const startTime = formatTime(startTimeNowPlaying ?? startTimeOnAir)
+                const endTime = endTimeNowPlaying ?? endTimeOnAir
                  
                 return { title, artist, startTime, endTime, imgBase64 }
             } catch(error) {
@@ -128,8 +191,9 @@
         }
 
         async function start() {
-            const { title, artist, startTime, endTime, imgBase64 } = await nowPlaying('wusf')
+            const { title, artist, startTime, endTime, imgBase64 } = await whatIsPlaying('wusf')
             showName.innerHTML = title
+            artist ? artist.innerHTML = artist : null
             timePlaying.innerHTML = `${startTime} - ${endTime}`
             showImage.src = `data:image/png;base64,${imgBase64}`
         }
