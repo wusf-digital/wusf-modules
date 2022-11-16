@@ -119,6 +119,7 @@
         audioButton.addEventListener('click', e => {
             isPlaying = !isPlaying
             if (isPlaying) {
+                audioStream.load()
                 audioStream.play()
                 buttonStatus.innerHTML = '<i class="fa fa-pause"></i>'
             } else {
