@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script type="text/javascript" id="sgplayerembed" src="https://player.streamguys.com/wusf/sgplayer/embed.min.js?v=3.2.7"></script>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
@@ -20,7 +21,9 @@
     <div class="sgplayer-embed" style="width:500px;height:700px;"></div>
     <img id="img-test" style="width:500px;height:700px" />
     
-    <script>
+    <script type="module">
+        import config from './config.js'
+
         // Keep checking until I get access to the SGPlayer instance.
         let sgApiAvailable = false
 
@@ -56,55 +59,28 @@
                 return { title, artist, imgBase64 }
             } catch(error) {
                 console.error(error)
-                //document.querySelector(`#${station}-image`).src = `https://player.streamguys.com/wusf/sgplayer/include/image/${station}.png`
             }
         }
 
         async function run() {
             const { title, artist, imgBase64 } = await nowPlaying('wusf')
-            //const imgHolder = document.querySelector('#art.sg-video.sg-art')
+            config.streams[0].name = title
+            config.streams[0].fallbackArt = `data:image/png;base64,${imgBase64}`
+
+            const options = { 
+                query: [], 
+                activeStreamIndex: 0, 
+                mode: "standard", 
+                sourceOverride: null, 
+                noVideoPreroll: false, 
+                playerIsMobile: false, 
+                targetspotUid: null, 
+                config
+            }
+            window._sgplayerWUSF = new SGPlayer(options)
+            
             const imgRapid = document.querySelector('#img-test')
             imgRapid.src = `data:image/png;base64,${imgBase64}`
-            // imgRapid.setAttribute('id', 'art')
-            // imgRapid.classList.add('sg-video', 'sg-art')
-            // imgRapid.style.cssText = `background-image:url('data:image/png;base64,${imgBase64}')`
-            
-
-            const stream = { 
-                name: "WUSF Custom Player", 
-                title: `${title} - ${artist}`, 
-                fallbackArt: "https://player.streamguys.com/wusf/sgplayer/include/image/wusf.png", 
-                type: "audio", 
-                source: [{ 
-                    type: "audio/mpeg", 
-                    src: "https://streaming.wusf.fm/wusf-web"     
-                }], 
-                metaData: { 
-                    enabled: false, 
-                    autoScrollSong: true, 
-                    autoScrollPrev: false, 
-                    songArraySize: 6, 
-                    sgmd: { 
-                        source: "https://jetio.streamguys.com", 
-                        key: "bde4ce9b8e5f8db632bc31aa5f5d8877dd9360fa", 
-                        scraperId: "33e63f45-db1b-479b-ade5-7f8070883e14", 
-                        socketIO: { 
-                            forceNew: true 
-                        }         
-                    }, 
-                    delay: true, 
-                    delimiter: " - ", 
-                    albumOrder: 1, 
-                    artistOrder: 2, 
-                    trackOrder: 3     
-                } 
-            }
-
-            _sgplayer.loadStream(stream, success => { 
-                if (success) {
-                    _sgplayer.play()
-                }
-            })
         }
     </script>
 </body>
