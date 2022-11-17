@@ -197,7 +197,7 @@
 
         async function whatIsPlaying(station) {
             try {
-                let data = await (await fetch(`https://api-dev.wusf.digital/nowPlaying/${station.toUpperCase()}`)).json()
+                let data = await (await fetch(`https://api.wusf.digital/nowPlaying/${station.toUpperCase()}`)).json()
 
                 const showData = getNowPlaying(data.nowPlaying) ?? getOnAir(data.onAir)
   
