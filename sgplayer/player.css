@@ -1,0 +1,75 @@
+@media (min-width: 568px) {
+    .player-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+img.brand-logo {
+    display: block;
+    width: 40%;
+    height: auto;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+}
+.player-container {
+    display: grid;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10px;
+    gap: 20px;
+    grid-template-rows: 1fr;
+    background: linear-gradient(to bottom, rgb(31, 61, 85) 85%, rgb(26, 38, 44));
+    padding-block: 2em;
+    padding-inline: 2em;
+    color: white;
+    z-index: 1;
+    position: relative;
+}
+.player-container::after {
+    content: "";
+    height: 8px;
+    background: rgb(26, 103, 71);
+    border-radius: 0 0 6px 6px;
+    position: absolute;
+    width: 80%;
+    left: 50%;
+    bottom: -12px;
+    transform: translate(-50%, -50%);
+}
+img.show-img {
+    border-radius: 10px;
+    max-width: 80%;
+    margin: auto;
+}
+span.live {
+    margin-inline-end: 1em;
+    background-color: red;
+    letter-spacing: 2px;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+h1.show-name {
+    margin-block-end: 1em;
+}
+h3.show-artist {
+    margin-block-end: 3em;
+}
+button.audio-toggle {
+    background-color: rgb(26, 103, 71);
+    border: none;
+    color: white;
+    padding: 1em 2em;
+    border-radius: 40px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 2.5vw;
+    letter-spacing: 2px;
+    box-shadow: 0 10px 10px rgb(0 0 0 / 0.2);
+}
+button.audio-toggle:hover {
+    box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.5);
+    transform: translateY(-3px);
+    transition: all .3s ease-in-out;
+}

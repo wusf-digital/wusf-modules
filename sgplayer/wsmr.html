@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="player.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script type="module">
+        import Player from './player.js'
+        const wsmrPlayer = new Player('wsmr')
+        wsmrPlayer.hidePlayButton()
+        wsmrPlayer.hideBrandLogo()
+
+        const sleep = duration => new Promise(resolve => setTimeout(resolve, duration))
+        const poll = (promiseFn, duration) => promiseFn().then(
+            sleep(duration).then(() => poll(promiseFn, duration)))
+
+        // Update show player with new metadata every 5 minutes
+        poll(() => new Promise(() => wsmrPlayer.initialize()), 5 * 60000)
+    </script>
+    <title>WSMR Custom Player</title>
+</head>
+<body>
+    <img class="brand-logo" alt="Station Logo">
+    <div class="player-container">
+        <img class="show-img" alt="Program Live On-Air" />
+        <summary>
+            <p id="air-times">
+                <span class="live">Live</span>
+                <time></time>
+            </p>
+            <h1 class="show-name"></h1>
+            <h3 class="show-artist"></h3>
+            <button class="audio-toggle"><span class="status"></span>&nbsp;&nbsp;Listen Live</button>
+        </summary>
+    </div>
+</body>
+</html>
