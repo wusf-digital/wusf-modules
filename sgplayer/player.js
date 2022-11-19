@@ -1,4 +1,5 @@
 class Player {
+    isPlaying = false
     brandLogo = document.querySelector('img.brand-logo')
     buttonStatus = document.querySelector('span.status')
     timePlaying = document.querySelector('time')
@@ -9,7 +10,22 @@ class Player {
 
     constructor(station) {
         this.station = station
-        this.initialize()
+        this.buttonStatus.innerHTML = '<i class="fa fa-play"></i>'
+
+        // Click event handler for the play/pause button
+        const stationStream = this.getStationStream()
+        this.audioButton.addEventListener('click', e => {
+            this.isPlaying = !this.isPlaying
+            if (this.isPlaying) {
+                stationStream.load()
+                stationStream.play()
+                this.buttonStatus.innerHTML = '<i class="fa fa-pause"></i>'
+            } else {
+                stationStream.pause()
+                stationStream.currentTime = 0
+                this.buttonStatus.innerHTML = '<i class="fa fa-play"></i>'
+            }
+        })
     }
 
     hidePlayButton() {
@@ -121,29 +137,9 @@ class Player {
         }
     }
 
-    async initialize() {
-        let isPlaying = false
-
-        this.buttonStatus.innerHTML = '<i class="fa fa-play"></i>'
-
-        const stationStream = this.getStationStream()
-
-        // Click event handler for the play/pause button
-        this.audioButton.addEventListener('click', e => {
-            isPlaying = !isPlaying
-            if (isPlaying) {
-                stationStream.load()
-                stationStream.play()
-                this.buttonStatus.innerHTML = '<i class="fa fa-pause"></i>'
-            } else {
-                stationStream.pause()
-                stationStream.currentTime = 0
-                this.buttonStatus.innerHTML = '<i class="fa fa-play"></i>'
-            }
-        })
-
+    async render() {
         this.brandLogo.src = this.getStationLogo()
-        const { title, artist, startTime, endTime, imgBase64 } = await this.apiSignature('wusf')
+        const { title, artist, startTime, endTime, imgBase64 } = await this.apiSignature()
         this.showName.innerHTML = title
         artist ? this.showArtist.innerHTML = artist : null
         this.timePlaying.innerHTML = `${startTime} - ${endTime}`

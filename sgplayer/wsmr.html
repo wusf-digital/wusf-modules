@@ -18,7 +18,7 @@
             sleep(duration).then(() => poll(promiseFn, duration)))
 
         // Update show player with new metadata every 5 minutes
-        poll(() => new Promise(() => wsmrPlayer.initialize()), 5 * 60000)
+        poll(() => new Promise(() => wsmrPlayer.render()), 5 * 60000)
     </script>
     <title>WSMR Custom Player</title>
 </head>
