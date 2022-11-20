@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <script type="text/javascript" id="sgplayerembed" src="https://player.streamguys.com/wusf/sgplayer/embed.min.js?v=3.2.7"></script>
+    <script type="text/javascript" id="sgplayerembed" src="https://player.streamguys.com/wusf/sgplayer/embed.min.js?v=3.3.0"></script>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -78,6 +78,7 @@
                 config
             }
             window._sgplayerWUSF = new SGPlayer(options)
+            console.log(_sgplayerWUSF)
             
             const imgRapid = document.querySelector('#img-test')
             imgRapid.src = `data:image/png;base64,${imgBase64}`

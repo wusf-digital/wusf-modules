@@ -1,42 +1,46 @@
 class Player {
-    isPlaying = false
-    brandLogo = document.querySelector('img.brand-logo')
-    buttonStatus = document.querySelector('span.status')
-    timePlaying = document.querySelector('time')
-    showName = document.querySelector('h1.show-name')
-    showArtist = document.querySelector('h3.show-artist')
-    showImage = document.querySelector('img.show-img')
-    audioButton = document.querySelector('button.audio-toggle')
+    #isPlaying = false
+    #brandLogo = document.querySelector('img.brand-logo')
+    #liveButton = document.querySelector('span.live')
+    #buttonStatus = document.querySelector('span.status')
+    #timePlaying = document.querySelector('time')
+    #showName = document.querySelector('h1.show-name')
+    #showArtist = document.querySelector('h3.show-artist')
+    #showImage = document.querySelector('img.show-img')
+    #audioButton = document.querySelector('button.audio-toggle')
 
     constructor(station) {
         this.station = station
-        this.buttonStatus.innerHTML = '<i class="fa fa-play"></i>'
+
+        this.#showImage.style.display = 'none'
+        this.#liveButton.style.display = 'none'
+        this.#buttonStatus.innerHTML = '<i class="fa fa-play"></i>'
 
         // Click event handler for the play/pause button
-        const stationStream = this.getStationStream()
-        this.audioButton.addEventListener('click', e => {
-            this.isPlaying = !this.isPlaying
-            if (this.isPlaying) {
+        const stationStream = this.#getStationStream()
+        this.#audioButton.addEventListener('click', e => {
+            this.#isPlaying = !this.#isPlaying
+            if (this.#isPlaying) {
                 stationStream.load()
                 stationStream.play()
-                this.buttonStatus.innerHTML = '<i class="fa fa-pause"></i>'
+                this.#buttonStatus.innerHTML = '<i class="fa fa-pause"></i>'
             } else {
                 stationStream.pause()
                 stationStream.currentTime = 0
-                this.buttonStatus.innerHTML = '<i class="fa fa-play"></i>'
+                this.#buttonStatus.innerHTML = '<i class="fa fa-play"></i>'
             }
         })
     }
 
     hidePlayButton() {
-        this.audioButton.style.display = 'none'
+        this.#audioButton.style.display = 'none'
     }
 
     hideBrandLogo() {
-        this.brandLogo.style.display = 'none'
+        this.#brandLogo.style.display = 'none'
     }
 
-    getStationStream() {
+    #getStationStream() {
         const streams = {
             wusf: 'https://streaming.wusf.fm/wusf',
             wsmr: 'https://streaming.floridaclassicalstation.fm/wsmr'
@@ -45,7 +49,7 @@ class Player {
         return audioStream
     }
 
-    getStationLogo() {
+    #getStationLogo() {
         const logos = {
             wusf: 'WUSF897_Logo_Horiz_2019_COLOR.png',
             wsmr: 'wsmr_logo_600x600.png'
@@ -53,7 +57,7 @@ class Player {
         return logos[this.station]
     }
 
-    getEndTimeFromOnAir(startTime, str) {
+    #getEndTimeFromOnAir(startTime, str) {
         /*  
         We calculate the show's endTime based on its start time and
         duration and return it to the caller.
@@ -67,10 +71,10 @@ class Player {
         duration = duration.join(':')
         duration = moment.duration(duration)
         let endTime = moment(startTime).add(duration, 'milliseconds')
-        return this.formatTime(endTime)
+        return this.#formatTime(endTime)
     }
 
-    getEndTimeFromNowPlaying(startTime, str) {
+    #getEndTimeFromNowPlaying(startTime, str) {
         /*  
         We calculate the show's endTime based on its start time and
         duration and return it to the caller.
@@ -80,15 +84,15 @@ class Player {
         */
         let duration = moment.duration(str)
         let endTime = moment(startTime).add(duration, 'milliseconds')
-        return this.formatTime(endTime)
+        return this.#formatTime(endTime)
     }
 
-    formatTime(iso8601) {
+    #formatTime(iso8601) {
         // Returns time in the format of "8:00 pm"
         return moment(new Date(iso8601)).format('h:mm a')
     }
 
-    getNowPlaying(data) {
+    #getNowPlaying(data) {
         // Returns data from the "nowPlaying" array (if available)
         // The "nowPlaying" array includes information about individual stories within a program
         if (Array.isArray(data) && !data.length) return
@@ -98,13 +102,13 @@ class Player {
         return {
             title: showData.title ?? undefined,
             startTime: showData.startTime ?? undefined,
-            endTime: showData.duration ? this.getEndTimeFromNowPlaying(showData.startTime, showData.duration) : undefined,
+            endTime: showData.duration ? this.#getEndTimeFromNowPlaying(showData.startTime, showData.duration) : undefined,
             artist: showData.artist ?? '',
             imgBase64: showData.image ?? undefined
         }
     }
 
-    getOnAir(data) {
+    #getOnAir(data) {
         // Returns data from the "onAir" array
         // The "onAir" array includes information about the program playing
         if (Array.isArray(data) && !data.length) return
@@ -114,21 +118,21 @@ class Player {
         return {
             title: showData.title ?? '',
             startTime: showData.startTime ?? undefined,
-            endTime: showData.duration ? this.getEndTimeFromOnAir(showData.startTime, showData.duration) : undefined,
+            endTime: showData.duration ? this.#getEndTimeFromOnAir(showData.startTime, showData.duration) : undefined,
             imgBase64: showData.images[0]?.image ?? undefined
         }
     }
 
-    async apiSignature() {
+    async #apiSignature() {
         try {
             let data = await (await fetch(`https://api.wusf.digital/nowPlaying/${this.station.toUpperCase()}`)).json()
             
-            const showData = this.getNowPlaying(data.nowPlaying) ?? this.getOnAir(data.onAir)
+            const showData = this.#getNowPlaying(data.nowPlaying) ?? this.#getOnAir(data.onAir)
 
             return { 
                 title: showData.title, 
                 artist: showData.artist, 
-                startTime: this.formatTime(showData.startTime ?? showData.startTime), 
+                startTime: this.#formatTime(showData.startTime ?? showData.startTime), 
                 endTime: showData.endTime, 
                 imgBase64: showData.imgBase64
             }
@@ -138,12 +142,14 @@ class Player {
     }
 
     async render() {
-        this.brandLogo.src = this.getStationLogo()
-        const { title, artist, startTime, endTime, imgBase64 } = await this.apiSignature()
-        this.showName.innerHTML = title
-        artist ? this.showArtist.innerHTML = artist : null
-        this.timePlaying.innerHTML = `${startTime} - ${endTime}`
-        this.showImage.src = imgBase64 ? `data:image/png;base64,${imgBase64}` : this.getStationLogo()
+        this.#showImage.style.display = 'block'
+        this.#brandLogo.src = this.#getStationLogo()
+        const { title, artist, startTime, endTime, imgBase64 } = await this.#apiSignature()
+        this.#liveButton.style.display = 'inline'
+        this.#showName.innerHTML = title
+        artist ? this.#showArtist.innerHTML = artist : null
+        this.#timePlaying.innerHTML = `${startTime} - ${endTime}`
+        this.#showImage.src = imgBase64 ? `data:image/png;base64,${imgBase64}` : this.#getStationLogo()
     }
 }
 
