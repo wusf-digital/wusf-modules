@@ -39,6 +39,11 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
         }
+
+        iframe#embedPlayer {
+            margin: auto;
+            display: block;
+        }
     </style>
     <title>Spotify Player</title>
 </head>
@@ -90,7 +95,34 @@
     </div>
     <hr />
     <h1>Apple Podcast Player Example</h1>
-    <p>Coming soon to a theater near you! (Probably)</p>
+    <!-- Apple Player Embed Information
+    https://tools.applemediaservices.com/apple-podcasts -->
+    <iframe 
+        id="embedPlayer" 
+        src="https://embed.podcasts.apple.com/us/podcast/the-zest/id1458162352?itsct=podcast_box_player&amp;itscg=30200&amp;ls=1&amp;theme=auto" 
+        height="450px" 
+        frameborder="0" 
+        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" 
+        allow="autoplay *; encrypted-media *; clipboard-write" 
+        style="width: 100%; max-width: 660px; overflow: hidden; border-radius: 10px; transform: translateZ(0px); animation: 2s ease 0s 6 normal none running loading-indicator; background-color: rgb(228, 228, 228);">
+    </iframe>
+    <div class="proscons">
+        <div class="pros">
+            <h2>Advantages</h2>
+            <ul>
+                <li>Visually appealing</li>
+                <li>Easy to add the embed code</li>
+                <li>Latest episodes always appear; no manual update</li>
+            </ul>
+        </div>
+        <div class="cons">
+            <h2>Disadvantages</h2>
+            <ul>
+                <li>Very few options for player customization</li>
+                <li>Apple can make visual changes at anytime</li>
+            </ul>
+        </div>  
+    </div>
     
     <script>
         // Spotify iFrame API Reference
