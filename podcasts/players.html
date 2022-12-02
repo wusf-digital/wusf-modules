@@ -45,10 +45,10 @@
             display: block;
         }
     </style>
+    
     <title>Spotify Player</title>
 </head>
 <body>
-    <script src="https://open.spotify.com/embed-podcast/iframe-api/v1" async></script>
     <h1>Spotify iFrame API Example</h1>
     <div id="embed-iframe-zest"></div>
     <ul id="episodes">
@@ -86,7 +86,6 @@
         <div class="cons">
             <h2>Disadvantages</h2>
             <ul>
-                <li>Requires manual update of player when each episode is added</li>
                 <li>Some coding knowledge required to change look 'n feel of episode switcher</li>
                 <li>Few API options for player customization</li>
                 <li>Spotify can make visual changes and/or API changes at anytime</li>
@@ -123,18 +122,17 @@
             </ul>
         </div>  
     </div>
-    
+    <script src="https://open.spotify.com/embed-podcast/iframe-api/v1" async></script>
     <script>
-        // Spotify iFrame API Reference
-        // https://developer.spotify.com/documentation/embeds/references/iframe-api/
-        
+        /* Spotify Podcast IDs Reference
+        Florida Matters = 29odNMVw3byywQsA0YOZwi
+        Zest = 0QoL0KwFGMALcoBdzFAbUE
+        Arts Axis = 03ZiveeLn3NrsHsS4BFrYX
+        */
+
         window.onSpotifyIframeApiReady = (IFrameAPI) => {
             let element = document.getElementById('embed-iframe-zest')
-            let options = {
-                uri: 'spotify:episode:7syMFNbvkhJkNktazzqq4T',
-                width: '60%',
-                height: '200'
-            }
+            
             let callback = (EmbedController) => {
                 document.querySelectorAll('ul#episodes > li > button').forEach(episode => {
                     episode.addEventListener('click', () => {
@@ -143,7 +141,19 @@
                     })
                 })
             }
-            IFrameAPI.createController(element, options, callback);
+            fetch('https://api-dev.wusf.digital/spotify?id=03ZiveeLn3NrsHsS4BFrYX')
+            .then(response => response.json())
+            .then(uri => {
+                // Spotify iFrame API Reference
+                // https://developer.spotify.com/documentation/embeds/references/iframe-api/
+                let options = {
+                    uri: uri[0],
+                    width: '60%',
+                    height: '200'
+                }
+                IFrameAPI.createController(element, options, callback)  
+            })
+            .catch(err => console.log(err))
         }
     </script>
 </body>
