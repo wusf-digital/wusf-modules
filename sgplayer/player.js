@@ -42,8 +42,8 @@ class Player {
 
     #getStationStream() {
         const streams = {
-            wusf: 'https://streaming.wusf.fm/wusf',
-            wsmr: 'https://streaming.floridaclassicalstation.fm/wsmr'
+            wusf: 'https://streaming.wusf.fm/wusf-web',
+            wsmr: 'https://streaming.floridaclassicalstation.fm/wsmr-web'
         }
         const audioStream = new Audio(streams[this.station])
         return audioStream

@@ -45,7 +45,7 @@ const config = {
                 }
             ],
             "metaData": {
-                "enabled": true,
+                "enabled": false,
                 "autoScrollSong": true,
                 "autoScrollPrev": false,
                 "songArraySize": 15,
@@ -71,9 +71,9 @@ const config = {
             "type": "audio",
             "source": [
                 {
-                    "title":"AAC", 
-                    "type":"audio/aac", 
-                    "src":"https://wusf.streamguys1.com/wsmr"
+                    "title": "AAC", 
+                    "type": "audio/aac", 
+                    "src": "https://wusf.streamguys1.com/wsmr"
                 }
             ],
             "metaData": {
@@ -86,7 +86,7 @@ const config = {
                     "key": "bde4ce9b8e5f8db632bc31aa5f5d8877dd9360fa",
                     "scraperId": "86be031f-4151-408f-a15e-6a2b1f536751",
                     "socketIO": { 
-                        "forceNew":true 
+                        "forceNew": true 
                     }
                 },
                 "delay": false,
