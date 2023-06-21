@@ -5,6 +5,48 @@ function ClassicalPlaylist() {
     const [ date, setDate ] = React.useState(moment().format('YYYY-MM-DD'))
     const [ displayDate, setDisplayDate ] = React.useState('')
     const [ disabled, setDisabled ] = React.useState(true)
+    const [ shouldUpdate, setShouldUpdate ] = React.useState(true)
+    const socketRef = React.useRef(null);
+
+    React.useEffect(() => {
+        // Establish WebSocket connection
+        socketRef.current = new WebSocket('wss://websocket.wsmr.org');
+
+        // Handle messages received from the server
+        socketRef.current.onmessage = (event) => {
+            const response = JSON.parse(event.data);
+            if (response === 'Pong...') {
+                console.log(response)
+                setShouldUpdate(false)
+                return
+            } 
+            console.log('New song playing...')
+            setShouldUpdate(true)
+        };
+
+        // Send a heartbeat every 3 minutes
+        const heartbeatInterval = setInterval(() => {
+        const heartbeatMessage = {
+            action: 'sendMessage',
+            message: 'ping',
+        };
+        socketRef.current.send(JSON.stringify(heartbeatMessage));
+        console.log('Sent heartbeat');
+        }, 3 * 60 * 1000);
+
+        // Close the connection after 90 minutes
+        const connectionTimeout = setTimeout(() => {
+            socketRef.current.close();
+            console.log('WebSocket connection closed after 90 minutes');
+        }, 90 * 60 * 1000);
+
+        // Clean up function
+        return () => {
+            clearInterval(heartbeatInterval);
+            clearTimeout(connectionTimeout);
+            socketRef.current.close();
+        };
+    }, []);
 
     React.useEffect(() => {
         async function fetchPlaylist(date) {
@@ -29,11 +71,16 @@ function ClassicalPlaylist() {
 
             } catch(error) {
                 console.error(error)
-            }
-           
+            } 
+        }
+
+        if (shouldUpdate) {
+            console.log('go fetch playlist, another song played')
+            fetchPlaylist(date)
+            setShouldUpdate(false)
         } 
-        fetchPlaylist(date)
-    }, [ date, displayDate ])
+        
+    }, [ date, displayDate, shouldUpdate ])
 
     function previousDate() {
         setDate(moment(date).subtract(1, 'days').format('YYYY-MM-DD'))
