@@ -1,7 +1,7 @@
 :root {
-    --WSMR-primary: rgb(0, 99, 132);
-    --WSMR-secondary: rgb(98, 204, 220);
-    --WSMR-tertiary: rgb(77, 67, 131);
+    --WSMR-primary: #303e48;
+    --WSMR-secondary: #ffc600;
+    --WSMR-tertiary: #303337;
 }
 
 /* Header background image */
@@ -60,15 +60,15 @@
 [data-header-background=true][data-search-open=false] 
 .PH-search-button, [data-header-background=true][data-search-open=false] 
 .PH-search-button-mobile {
-    background: firebrick;
-    border-color: firebrick;
+    background: var(--WSMR-primary);
+    border-color: var(--WSMR-primary);
 }
 
 .PH-donate-button.gtm_donate, [data-header-background=true][data-search-open=false] 
 .PH-search-button, [data-header-background=true][data-search-open=false] 
 .PH-search-button-mobile {
-    background: firebrick;
-    border-color: firebrick;
+    background: var(--WSMR-primary);
+    border-color: var(--WSMR-primary);
 }
 
 .PH-donate-button.gtm_donate a:hover {
