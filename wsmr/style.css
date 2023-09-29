@@ -1,3 +1,9 @@
+:root {
+    --WSMR-primary: #303e48;
+    --WSMR-secondary: #ffc600;
+    --WSMR-tertiary: #303337;
+}
+
 html {
     line-height: 1.5;
     box-sizing: border-box;
@@ -18,7 +24,7 @@ body {
     font-family: 'Share', cursive;
     font-weight: 700;
     font-size: xx-large;
-    color: #006484;
+    color: #303e48;
 }
 .playlist__button-group {
     display: flex;
@@ -33,7 +39,7 @@ body {
     font-weight: 700;
     border: 1px solid lightgray;
     cursor: pointer;
-    color: #006484;
+    color: #303e48;
     width: 50%;
     padding: 15px 0;
     font-size: x-large;
@@ -46,8 +52,8 @@ body {
     content: " >>"
 }
 .playlist__button--previous:hover, .playlist__button--next:hover {
-    color: whitesmoke;
-    background-color: #006484;
+    color: #303e48;
+    background-color: #ffc600;
 }
 .playlist__button--next:disabled {
     background-color: lightgray;
@@ -80,7 +86,7 @@ td {
     font-family: 'Share', cursive;
     font-size: large;
     text-transform: uppercase;
-    background-color: #006484;
+    background-color: #303e48;;
     color: whitesmoke;
 }
 .playlist__label-spine {
