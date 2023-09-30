@@ -8,21 +8,24 @@
 
     async function currentlyPlaying() {
         try {
-            let response = await (await fetch(`https://api.wsmr.org/v2/songs/WSMR/day`)).json()
-            response = response.reverse()[0]
+            let response = await (await fetch(`https://api.wusf.digital/nowPlaying/WSMR/day`)).json()
+            response = response[0]
+            const title = response.song.extraInfo.title
+            const artist = response.song.extraInfo.artist
             if (playingNowSummaryExists) {
-                document.querySelector('#playing-now__summary').innerHTML = response.summary
+                document.querySelector('#playing-now__summary').innerHTML = `${title} - ${artist}`
             }
         } catch(error) {
             console.error(error)
         }
     }
 
-    const path = location.pathname
-    const regex = /\/classical[^ ]*/
-    if (path.match(regex)) {
-        currentlyPlaying()
-    }
+    // const path = location.pathname
+    // const regex = /\/classical[^ ]*/
+    // if (path.match(regex)) {
+    //     currentlyPlaying()
+    // }
+    currentlyPlaying()
 
     /*  WEB SOCKET CONNECTION FOR AUTOMATICALLY UPDATING OF WSMR PIECES
         
