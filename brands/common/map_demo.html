@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+    <style>
+        #map { height: 70vh; margin-top: 3em; }
+    </style>
+    <title>Mural Locations - Quick Demo</title>
+</head>
+<body>
+    <h1>Mural Locations</h1>
+    <div id="map"></div>
+
+    <script>
+        const locations = [
+            ["Lakeland", 28, -82, "Great Ocean Front Property"],
+            ["Tampa", 27.955, -82.45, "Cool Mural"],
+            ["East Hillsborough", 27.8, -82.1, "Even Better Mural"],
+            ["Clearwater", 27.955, -82.8, "Best Looking One Here"],
+            ["Pasco", 28.3, -82.5, "No, it's really here"]
+        ];
+
+        const map = L.map('map').setView([28.1, -82.45], 10);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        for (let i = 0; i < locations.length; i++) {
+            const marker = new L.marker([locations[i][1], locations[i][2]])
+                .bindPopup(`<strong>${locations[i][0]}</strong>
+                <br>${locations[i][3]}<br>
+                <img src="https://placehold.jp/150x150.png" height="120" width="120" />
+                `)
+                .addTo(map);
+        }
+    </script>
+</body>
+</html>
