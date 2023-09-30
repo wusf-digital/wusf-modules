@@ -12,7 +12,9 @@
 </div>
     
 <script>
-    (function start() {
+    addEventListener('DOMContentLoaded', (event) => start());
+
+    function start() {
 
         function insertAfter(newNode, referenceNode) {
             referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
@@ -39,7 +41,7 @@
 
             article.forEach(p => {
                 if (p.items) {
-                    if (!p.items[0].hasOwnProperty('body')) {
+                    if (!p.items[0].hasOwnProperty('body') && (!p.items[0].hasOwnProperty('text'))) {
                         let [ html ] = p.items
                         const articleText = convertHtmlToText(html)
                         combineText.push(articleText)
@@ -98,7 +100,7 @@
         const wusfAIStreamButton = document.querySelector('.wusf-ai-stream')
         wusfAIStreamButton.addEventListener('click', getAIAudioStream)
 
-    })()  
+    } 
 
 </script>
 </body>
