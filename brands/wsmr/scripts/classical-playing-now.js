@@ -6,9 +6,13 @@
     */
     const playingNowSummaryExists = !!document.querySelector('#playing-now__summary')
 
+    // Get the current date in yyyy-mm-dd format for the Eastern Time Zone
+    const currentDateInEasternTimeZone = getCurrentDateInEasternTimeZone()
+    console.log(currentDateInEasternTimeZone)
+
     async function currentlyPlaying() {
         try {
-            let response = await (await fetch(`https://api.wusf.digital/nowPlaying/WSMR/day`)).json()
+            let response = await (await fetch(`https://api.wusf.digital/nowPlaying/WSMR/day?date=${currentDateInEasternTimeZone}`)).json()
             response = response[0]
             const title = response.song.extraInfo.title
             const artist = response.song.extraInfo.artist
@@ -84,4 +88,29 @@
         }))
         console.log("Ping...")
     }
+
+    function getCurrentDateInEasternTimeZone() {
+        // Create a new Date object for the current date and time in the Eastern Time Zone
+        const currentDate = new Date();
+      
+        // Specify the time zone and format options
+        const options = {
+          timeZone: 'America/New_York',
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+        };
+      
+        // Format the date using toLocaleString with the specified options
+        const formattedDate = currentDate.toLocaleString('en-US', options);
+      
+        // Split the formatted date into parts
+        const [month, day, year] = formattedDate.split('/');
+      
+        // Rearrange the parts into yyyy-mm-dd format
+        const yyyyMmDdFormat = `${year}-${month}-${day}`;
+      
+        return yyyyMmDdFormat;
+      }
+      
 })()
