@@ -152,7 +152,7 @@ We don't want this to display on the WSMR Page */
 }
 
 /* WSMR Social Media Custom CSS */
-/* WSMR does not use Twitter and YouTube. */
+/* WSMR does not use Twitter. */
 
 .SocialBar-items-item {
 	flex-shrink: 0;
@@ -163,9 +163,9 @@ We don't want this to display on the WSMR Page */
     display: none;
 }
 
-.SocialLink[data-social-service=youtube] {
+/*.SocialLink[data-social-service=youtube] {
     display: none;
-}
+}*/
 
 /* CUSTOM PROMOS */
 
