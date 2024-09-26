@@ -144,9 +144,9 @@ footer.Page-footer {
     background: var(--WSMR-primary);
 }
 
-/* Hide Alert Bar
+Hide Alert Bar
 News can activate this bar in times of breaking news
-We don't want this to display on the WSMR Page */
+We don't want this to display on the WSMR Page
 .AlertBar {
     display: none;
 }
